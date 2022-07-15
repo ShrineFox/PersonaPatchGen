@@ -1,0 +1,737 @@
+PPU-e72e715d646a94770d1902364bc66fe33b1b6606:
+  P5EX:
+    Games:
+      "Persona 5":
+        BLES02247: [ All ]
+        NPEB02436: [ All ]
+        BLUS31604: [ All ]
+        NPUB31848: [ All ]
+    Author: DeathChaos, Sierra, Scarltz
+    Notes:
+    Patch Version: 1.5.3
+    Patch:
+      # redirect uses of exact copy of GetEquipPersona to the first one to free some code space
+      - [ be32, 0x001efdb8, 0x4806c085 ] 
+      - [ be32, 0x001efef0, 0x4806bf4d ] 
+      
+      # Load Futaba navi voicepack for all IDs above 4
+      - [ be32, 0x00745888, 0x2c1e000a ] # cmpwi      r30, 0xA
+      - [ be32, 0x0074588c, 0x4081006c ] # ble        0x007458f8
+      
+      # prevent navi game over dialogue on encounters 790 and up
+      - [ be32, 0x00b1be24, 0x480000f0 ] # NOP
+      
+      # fix PT Joker Portrait until model 200
+      - [ be16, 0x004ead92, 200 ] #
+      #- [ be32, 0x00baaa84, 0x00cf1718 ]
+      # idk what the fuck this is but it fixes the random crash
+      - [ be32, 0x00803370, 0x281b0000 ]
+      
+      # Boss voice stuff
+      
+      # Enable attack cue id on black mask voice set
+      - [ be32, 0x00ba90ec, 0x00cf0918 ]
+      
+      # enable Intro BCD on all new encounters
+      - [ be32, 0x00788088, 0x40800098 ] # bge        0x00788120
+      
+      # Disable Player Swordtrack loading
+      - [ be32, 0x00265cc, 0x38600000 ] # li   param_1,0x0
+      
+      # Make Emergency Shift use Single GAP
+      - [ be32, 0x00626230, 0x428000cc ] # b LAB_006262fc
+      
+      #expand confidant poem limit
+      - [ be32, 0xb649a7, 24 ]
+      - [ be32, 0xb649af, 24 ] 
+      
+      # Player model COUNT 18 Test
+      #- [ be32, 0x00332d14, 0x60000000 ]
+      
+      # Expand DLC Outfit BGM List
+      # Skip DLC Check for new outfits
+      - [ be32, 0x0019b830, 0x60000000 ]
+      - [ be32, 0x0019b83c, 0x60000000 ]
+      
+      # Increase red menu bg size
+      - [ bef32,0x4c1400, 2.00000000 ]
+      - [ bef32,0x4c4d9c, 2.00000000 ]
+      - [ be32, 0x4c4cd8, 0x60000000 ]
+      
+      # Expand Active Skills to 2000
+      - [ be32, 0x000444ac, 0x2c1b07d0 ] # idk, have > 799 checks tho
+      - [ be32, 0x001d258c, 0x2c1f07d0 ]
+      - [ be32, 0x002613bc, 0x2c0307d0 ]
+      - [ be32, 0x00256850, 0x2c0307d0 ]
+      - [ be32, 0x0026149c, 0x2c1e07d0 ]
+      - [ be32, 0x00261598, 0x2c1e07d0 ]
+      - [ be32, 0x00449ff8, 0x2c0e0000 ]
+      - [ be32, 0x0051c130, 0x2c1c07d0 ]
+      - [ be32, 0x007dd768, 0x2c1f07d0 ]
+      - [ be32, 0x002586e4, 0x280307d0 ]
+      - [ be32, 0x006816f8, 0x280507d0 ]
+      - [ be32, 0x007e8398, 0x60000000 ]
+      - [ be32, 0x007e839c, 0x60000000 ]
+      - [ be32, 0x007e83a0, 0x60000000 ]
+      - [ be32, 0x007e83a4, 0x60000000 ]
+      - [ be32, 0x007f5bfc, 0x281d07d0 ]
+      - [ be32, 0x0080f09c, 0x60000000 ] # nametags
+      - [ be32, 0x0080f0a0, 0x60000000 ]
+      - [ be32, 0x0080f0a4, 0x281d07d0 ]
+    
+      - [ be32, 0x0082a010, 0x2c8307d0 ] # show skill > 799 in skill list
+      - [ be32, 0x00829e18, 0x2c8307d0 ]
+      - [ be32, 0x00829ea8, 0x2c8307d0 ]
+    
+      - [ be32, 0x002500BC, 0x60000000 ] # from GetSkillData, originally returns Segment0 if bigger than 799
+      - [ be32, 0x002500c0, 0x60000000 ]
+      
+      # expanding dialogue cutins
+      - [ be64, 0xb8e17c, 0x305f6d61696e5f30 ]
+      - [ be64, 0xb8e184, 0x2f437574496e4d61 ]
+      - [ be64, 0xb8e18c, 0x696e5f305f313100 ] # 0_main_0/CutInMain_0_11
+      #
+      - [ be64, 0xb8e198, 0x305f6d61696e5f30 ]
+      - [ be64, 0xb8e1a0, 0x2f437574496e4d61 ]
+      - [ be64, 0xb8e1a8, 0x696e5f305f313200 ] # 0_main_0/CutInMain_0_12
+      #
+      - [ be64, 0xb8e1b8, 0x305f6d61696e5f30 ]
+      - [ be64, 0xb8e1c0, 0x2f437574496e4d61 ]
+      - [ be64, 0xb8e1c8, 0x696e5f305f313300 ] # 0_main_0/CutInMain_0_13
+      #
+      - [ be64, 0xb8e1d4, 0x305f6d61696e5f30 ]
+      - [ be64, 0xb8e1dc, 0x2f437574496e4d61 ]
+      - [ be64, 0xb8e1e4, 0x696e5f305f313400 ] # 0_main_0/CutInMain_0_14
+      # update count
+      - [ be32, 0x00df305c, 15 ]
+      # update pointer to new pointer list
+      - [ be32, 0x00df3060, 0x0074b128 ] #
+      # pointers to names
+      - [ be32, 0x0074b128, 0x00b81314 ] #
+      - [ be32, 0x0074b12C, 0x00b8132c ] #
+      - [ be32, 0x0074b130, 0x00b81344 ] #
+      - [ be32, 0x0074b134, 0x00b8135c ] #
+      - [ be32, 0x0074b138, 0x00b81374 ] #
+      - [ be32, 0x0074b13C, 0x00b8138c ] #
+      - [ be32, 0x0074b140, 0x00b813a4 ] #
+      - [ be32, 0x0074b144, 0x00b813bc ] #
+      - [ be32, 0x0074b148, 0x00b813d4 ] #
+      - [ be32, 0x0074b14C, 0x00b813ec ] #
+      - [ be32, 0x0074b150, 0x00b81404 ] #
+      - [ be32, 0x0074b154, 0x00b8e17c ] # Kasumi, 11
+      - [ be32, 0x0074b158, 0x00b8e198 ] # Sumire, 12
+      - [ be32, 0x0074b15C, 0x00b8e1b8 ] # Maruki, 13
+      - [ be32, 0x0074b160, 0x00b8e1d4 ] # Maruki, 14
+      
+      # apply Akechi encounter code to encounters 830 and up
+      - [ be32, 0x00630848, 0x484fcea4 ] #   b       0x00b2d6ec
+      - [ be32, 0x00b2d6ec, 0x7bff0020 ] #   rldicl  r31, r31, 0x0, 0x20
+      - [ be32, 0x00b2d6f0, 0x2c04033E ] #   cmpwi   r4, 0x33E
+      - [ be32, 0x00b2d6f4, 0x40800008 ] #   bge     8
+      - [ be32, 0x00b2d6f8, 0x4bb03154 ] #   b       0x0063084c
+      - [ be32, 0x00b2d6fc, 0x4bb03ea8 ] #   b       0x006315a4
+      #
+      #- [ be32, 0x006a7fec, 0x4280ff68 ] #   b       0x006a7f54
+      
+      # Agnes summon fix
+      # The game normally checks if Persona ID is specifically Johanna to do something
+      # to make this work with Agnes, we change the check to if Persona is NOT Anat
+      # this is needed because Makoto's bike animations are a special condition 
+      - [ be32, 0x00285e94, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00285e98, 0x40820020 ] #   bne        
+      
+      - [ be32, 0x0067186c, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00671870, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x00671a00, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00671a04, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x006750cc, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x006750d0, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x006752f0, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x006752f4, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x0068097c, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00680980, 0x4182000c ] #   beq        
+      
+      - [ be32, 0x00687abc, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00687ac4, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x0069ba94, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x0069ba98, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x0069c288, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x0069c28c, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x0069c358, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x0069c35c, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x006ae7d8, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x006ae7dc, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x006aeaa8, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x006aeaac, 0x40820008 ] #   bne        
+      
+      - [ be32, 0x006eceb4, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x006eceb8, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x006ed5d8, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x006ed5dc, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x006edcbc, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x006edcc0, 0x41820018 ] #   beq        
+      
+      - [ be32, 0x006ee53c, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x006ee540, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x006ef490, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x006ef494, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x006ef924, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x006ef928, 0x40820008 ] #   bne        
+      
+      - [ be32, 0x00701114, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00701118, 0x4182008c ] #   beq        
+      
+      - [ be32, 0x00701868, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x0070186c, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x0070e8d4, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x0070e8d8, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x0070f07c, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x0070f080, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x0070fe0c, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x0070fe10, 0x40820008 ] #   bne        
+      
+      - [ be32, 0x00714278, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x0071427c, 0x40820008 ] #   bne        
+      
+      - [ be32, 0x00716de0, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00716de4, 0x40820008 ] #   bne        
+      
+      - [ be32, 0x007170b4, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x007170b8, 0x40820008 ] #   bne        
+      
+      - [ be32, 0x0071e76c, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x0071e770, 0x40820008 ] #   bne        
+      
+      - [ be32, 0x00755518, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00755520, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x00755cf8, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00755d00, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x0075d708, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x0075d70c, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x0075df34, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x0075df38, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x00767d84, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00767d88, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x00767f3c, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00767f44, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x0076886c, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00768874, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x0076a3e0, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x0076a3e8, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x0077163c, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00771640, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x00772040, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00772044, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x007787e4, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x007787e8, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x0077901c, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00779020, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x00779300, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00779304, 0x41820008 ] #   beq        
+      
+      - [ be32, 0x00780d88, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00780d90, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x00781568, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00781570, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x0078705c, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00787060, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x00787740, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00787744, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x0078ead8, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x0078eae0, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x0078f2d8, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x0078f2e0, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x00793960, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00793968, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x00794230, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x00794238, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x007a20b0, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x007a20b8, 0x41820010 ] #   beq        
+      
+      - [ be32, 0x007a2a28, 0x2c0300d8 ] #   cmpwi      r3, 0xd8
+      - [ be32, 0x007a2a30, 0x41820010 ] #   beq    
+      
+       
+PPU-e72e715d646a94770d1902364bc66fe33b1b6606:
+  Mod SPRX:
+    Games:
+      "Persona 5":
+        BLES02247: [ All ]
+        NPEB02436: [ All ]
+        BLUS31604: [ All ]
+        NPUB31848: [ All ]
+    Author: TGE
+    Notes: 
+    Patch Version: 1.8.5
+    Patch:
+      - [ be32, 0xB4669C, 0x26090058 ] # replace _sys_heap_delete_heap with sys_prx_load_module
+      - [ be32, 0xB46678, 0x9f18429d ] # replace _sys_heap_malloc with sys_prx_start_module
+      - [ byte, 0xB4695F, 0 ]          # set cellSail import count to 0
+
+      # inject loader code into main
+      # bin2rpcs3patch begin shk_elf_loader_P5
+      - [ be32, 0x10250, 0x48a2bc21 ]
+      - [ be32, 0xa3be70, 0xf821ff81 ]
+      - [ be32, 0xa3be74, 0x7c0802a6 ]
+      - [ be32, 0xa3be78, 0xf8010090 ]
+      - [ be32, 0xa3be7c, 0xf84100a8 ]
+      - [ be32, 0xa3be80, 0x3c6000a4 ]
+      - [ be32, 0xa3be84, 0x3863bed0 ]
+      - [ be32, 0xa3be88, 0x38800000 ]
+      - [ be32, 0xa3be8c, 0x38a00000 ]
+      - [ be32, 0xa3be90, 0x48109fcd ]
+      - [ be32, 0xa3be94, 0x7c6307b4 ]
+      - [ be32, 0xa3be98, 0x38800000 ]
+      - [ be32, 0xa3be9c, 0x38a00000 ]
+      - [ be32, 0xa3bea0, 0x38c10070 ]
+      - [ be32, 0xa3bea4, 0x38e00000 ]
+      - [ be32, 0xa3bea8, 0x39000000 ]
+      - [ be32, 0xa3beac, 0x48109e91 ]
+      - [ be32, 0xa3beb0, 0xe8010090 ]
+      - [ be32, 0xa3beb4, 0xe84100a8 ]
+      - [ be32, 0xa3beb8, 0x38210080 ]
+      - [ be32, 0xa3bebc, 0x7c0803a6 ]
+      - [ be32, 0xa3bec0, 0x4e800020 ]
+      - [ be32, 0xa3bec4, 0x60000000 ]
+      - [ be32, 0xa3bec8, 0x60000000 ]
+      - [ be32, 0xa3becc, 0x60000000 ]
+      - [ be32, 0xa3bed0, 0x2f617070 ]
+      - [ be32, 0xa3bed4, 0x5f686f6d ]
+      - [ be32, 0xa3bed8, 0x652f6d6f ]
+      - [ be32, 0xa3bedc, 0x642e7370 ]
+      - [ be32, 0xa3bee0, 0x72780000 ]
+      - [ be32, 0xa3bee4, 0x0 ]
+      - [ be32, 0xa3bee8, 0x0 ]
+      - [ be32, 0xa3beec, 0x0 ]
+      # bin2rpcs3patch end
+
+      # bin2rpcs3patch begin shk_elf_inject_P5
+      - [ be32, 0xa3be6c, 0x480000dc ]
+      - [ be32, 0x9209b0, 0x4811b5a0 ]
+      - [ be32, 0x6cf04, 0x489cf054 ]
+      - [ be32, 0x10db4, 0x48a2b1ac ]
+      - [ be32, 0x1e9cfc, 0x4885226c ]
+      - [ be32, 0x1e9d54, 0x4885221c ]
+      - [ be32, 0x1e9d28, 0x48852250 ]
+      - [ be32, 0x1edff8, 0x4884df88 ]
+      - [ be32, 0x1ee000, 0x4884df88 ]
+      - [ be32, 0x24ba4c, 0x487f0544 ]
+      - [ be32, 0x24bf5c, 0x487f003c ]
+      - [ be32, 0x7ba410, 0x48281b90 ]
+      - [ be32, 0x7ba448, 0x48281b60 ]
+      - [ be32, 0x74c12c, 0x482efe84 ]
+      - [ be32, 0x74b124, 0x482f0e94 ]
+      - [ be32, 0x1c2c74, 0x4887934c ]
+      - [ be32, 0x118280, 0x48923d48 ]
+      - [ be32, 0x426ab8, 0x48615518 ]
+      - [ be32, 0x735164, 0x48306e74 ]
+      - [ be32, 0x967abc, 0x480d4524 ]
+      - [ be32, 0x190ac, 0x48a22f3c ]
+      - [ be32, 0x877b68, 0x481c4488 ]
+      - [ be32, 0xb25390, 0x4bf16c68 ]
+      - [ be32, 0xb2d664, 0x4bf0e99c ]
+      - [ be32, 0x39b74, 0x48a02494 ]
+      - [ be32, 0x62dfdc, 0x4840e034 ]
+      - [ be32, 0x264950, 0x487d76c8 ]
+      - [ be32, 0x2636dc, 0x487d8944 ]
+      - [ be32, 0x263728, 0x487d8900 ]
+      - [ be32, 0x263660, 0x487d89d0 ]
+      - [ be32, 0x2637ac, 0x487d888c ]
+      - [ be32, 0x263df8, 0x487d8248 ]
+      - [ be32, 0x511d6c, 0x4852a2dc ]
+      - [ be32, 0x74a3e8, 0x482f1c68 ]
+      - [ be32, 0x74a378, 0x482f1ce0 ]
+      - [ be32, 0x10fca4, 0x4892c3bc ]
+      - [ be32, 0xb20618, 0x4bf1ba50 ]
+      - [ be32, 0x1e9ac0, 0x488525b0 ]
+      - [ be32, 0x1e9b1c, 0x4885255c ]
+      - [ be32, 0x1e9be0, 0x488524a0 ]
+      - [ be32, 0x1e9b7c, 0x4885250c ]
+      - [ be32, 0x26b390, 0x487d0d00 ]
+      - [ be32, 0x26b360, 0x487d0d38 ]
+      - [ be32, 0x26b2b0, 0x487d0df0 ]
+      - [ be32, 0x26b2e0, 0x487d0dc8 ]
+      - [ be32, 0x26b320, 0x487d0d90 ]
+      - [ be32, 0x26aff0, 0x487d10c8 ]
+      - [ be32, 0x26b094, 0x487d102c ]
+      - [ be32, 0x26b148, 0x487d0f80 ]
+      - [ be32, 0x26b1fc, 0x487d0ed4 ]
+      - [ be32, 0x72360c, 0x48318acc ]
+      - [ be32, 0xaf22e4, 0x4bf49dfc ]
+      - [ be32, 0x114c7c, 0x4892746c ]
+      - [ be32, 0xac0a6c, 0x4bf7b684 ]
+      - [ be32, 0x785578, 0x482b6b80 ]
+      - [ be32, 0x7852a4, 0x482b6e5c ]
+      - [ be32, 0xb24b74, 0x4bf17594 ]
+      - [ be32, 0x3a5d8, 0x48a01b38 ]
+      - [ be32, 0x3a618, 0x48a01b00 ]
+      - [ be32, 0x3a658, 0x48a01ac8 ]
+      - [ be32, 0x3a698, 0x48a01a90 ]
+      - [ be32, 0x425b0c, 0x48616624 ]
+      - [ be32, 0x114b74, 0x489275c4 ]
+      - [ be32, 0xab8ed4, 0x4bf8326c ]
+      - [ be32, 0x3735d8, 0x486c8b70 ]
+      - [ be32, 0x630060, 0x4840c0f0 ]
+      - [ be32, 0x263b94, 0x487d85c4 ]
+      - [ be32, 0x74d250, 0x482eef10 ]
+      - [ be32, 0x3b9644, 0x48682b24 ]
+      - [ be32, 0x74aac0, 0x482f16b0 ]
+      - [ be32, 0x1ee1bc, 0x4884dfbc ]
+      - [ be32, 0xb1c1a0, 0x4bf1ffe0 ]
+      - [ be32, 0xb1c398, 0x4bf1fdf0 ]
+      - [ be32, 0xb1c610, 0x4bf1fb80 ]
+      - [ be32, 0xb20ec8, 0x4bf1b2d0 ]
+      - [ be32, 0xb1ca18, 0x4bf1f788 ]
+      - [ be32, 0xb21980, 0x4bf1a828 ]
+      - [ be32, 0xb21bf8, 0x4bf1a5b8 ]
+      - [ be32, 0xb21e28, 0x4bf1a390 ]
+      - [ be32, 0xb22138, 0x4bf1a088 ]
+      - [ be32, 0xb22f60, 0x4bf19268 ]
+      - [ be32, 0xb1bf38, 0x4bf20298 ]
+      - [ be32, 0xaf3cb0, 0x4bf48528 ]
+      - [ be32, 0x1cf704, 0x4886cadc ]
+      - [ be32, 0x829ce8, 0x48212500 ]
+      - [ be32, 0x43fac, 0x489f8244 ]
+      - [ be32, 0x262258, 0x487d9fa0 ]
+      - [ be32, 0x259658, 0x487e2ba8 ]
+      - [ be32, 0x252a10, 0x487e97f8 ]
+      - [ be32, 0x264708, 0x487d7b08 ]
+      - [ be32, 0x263580, 0x487d8c98 ]
+      - [ be32, 0x2635a0, 0x487d8c80 ]
+      - [ be32, 0x745e28, 0x482f6400 ]
+      - [ be32, 0x256830, 0x487e5a00 ]
+      - [ be32, 0x25b888, 0x487e09b0 ]
+      - [ be32, 0x25b740, 0x487e0b00 ]
+      - [ be32, 0x25b7b8, 0x487e0a90 ]
+      - [ be32, 0x24bb54, 0x487f06fc ]
+      - [ be32, 0x661220, 0x483db038 ]
+      - [ be32, 0x338a04, 0x4870385c ]
+      - [ be32, 0x7ed620, 0x4824ec48 ]
+      - [ be32, 0x7af1c0, 0x4828d0b0 ]
+      - [ be32, 0x784d18, 0x482b7560 ]
+      - [ be32, 0x3a6e4, 0x48a01b9c ]
+      - [ be32, 0x3a70c, 0x48a01b7c ]
+      - [ be32, 0x25906c, 0x487e3224 ]
+      - [ be32, 0x435c0, 0x489f8cd8 ]
+      - [ be32, 0xb24f84, 0x4bf1731c ]
+      - [ be32, 0xb1bd50, 0x4bf20558 ]
+      - [ be32, 0xb25348, 0x4bf16f68 ]
+      - [ be32, 0x74b294, 0x482f1024 ]
+      - [ be32, 0xb24938, 0x4bf17988 ]
+      - [ be32, 0x60b90, 0x489db738 ]
+      - [ be32, 0x4b24c, 0x489f1084 ]
+      - [ be32, 0x4951c, 0x489f2dbc ]
+      - [ be32, 0xbee20, 0x4897d4c0 ]
+      - [ be32, 0x927d50, 0x48114598 ]
+      - [ be32, 0x6ccc8, 0x489cf628 ]
+      - [ be32, 0x2625d4, 0x487d9d24 ]
+      - [ be32, 0x45d24, 0x489f65dc ]
+      - [ be32, 0xb2cee8, 0x4bf0f420 ]
+      - [ be32, 0x332b4c, 0x487097c4 ]
+      - [ be32, 0x4eaca4, 0x48551674 ]
+      - [ be32, 0xa3bef0, 0xf821ff81 ]
+      - [ be32, 0xa3bef4, 0xfbe10078 ]
+      - [ be32, 0xa3bef8, 0x7fe802a6 ]
+      - [ be32, 0xa3befc, 0xfbe10090 ]
+      - [ be32, 0xa3bf00, 0x3fe000ce ]
+      - [ be32, 0xa3bf04, 0x63ff2cb8 ]
+      - [ be32, 0xa3bf08, 0x83ff0000 ]
+      - [ be32, 0xa3bf0c, 0x7fe0fa14 ]
+      - [ be32, 0xa3bf10, 0x83ff0000 ]
+      - [ be32, 0xa3bf14, 0x801f0000 ]
+      - [ be32, 0xa3bf18, 0x7c0903a6 ]
+      - [ be32, 0xa3bf1c, 0xf8410028 ]
+      - [ be32, 0xa3bf20, 0x805f0004 ]
+      - [ be32, 0xa3bf24, 0x7c3f0b78 ]
+      - [ be32, 0xa3bf28, 0x4e800421 ]
+      - [ be32, 0xa3bf2c, 0xe8410028 ]
+      - [ be32, 0xa3bf30, 0xebe10000 ]
+      - [ be32, 0xa3bf34, 0xe81f0010 ]
+      - [ be32, 0xa3bf38, 0x7c0803a6 ]
+      - [ be32, 0xa3bf3c, 0x7fe1fb78 ]
+      - [ be32, 0xa3bf40, 0xebfffff8 ]
+      - [ be32, 0xa3bf44, 0x4e800020 ]
+      - [ be32, 0xa3bf48, 0x38000000 ]
+      - [ be32, 0xa3bf4c, 0x4bffffa4 ]
+      - [ be32, 0xa3bf50, 0x38000004 ]
+      - [ be32, 0xa3bf54, 0x4bffff9c ]
+      - [ be32, 0xa3bf58, 0x38000008 ]
+      - [ be32, 0xa3bf5c, 0x4bffff94 ]
+      - [ be32, 0xa3bf60, 0x3800000c ]
+      - [ be32, 0xa3bf64, 0x4bffff8c ]
+      - [ be32, 0xa3bf68, 0x38000010 ]
+      - [ be32, 0xa3bf6c, 0x4bffff84 ]
+      - [ be32, 0xa3bf70, 0x38000014 ]
+      - [ be32, 0xa3bf74, 0x4bffff7c ]
+      - [ be32, 0xa3bf78, 0x38000018 ]
+      - [ be32, 0xa3bf7c, 0x4bffff74 ]
+      - [ be32, 0xa3bf80, 0x3800001c ]
+      - [ be32, 0xa3bf84, 0x4bffff6c ]
+      - [ be32, 0xa3bf88, 0x38000020 ]
+      - [ be32, 0xa3bf8c, 0x4bffff64 ]
+      - [ be32, 0xa3bf90, 0x38000024 ]
+      - [ be32, 0xa3bf94, 0x4bffff5c ]
+      - [ be32, 0xa3bf98, 0x38000028 ]
+      - [ be32, 0xa3bf9c, 0x4bffff54 ]
+      - [ be32, 0xa3bfa0, 0x3800002c ]
+      - [ be32, 0xa3bfa4, 0x4bffff4c ]
+      - [ be32, 0xa3bfa8, 0x38000030 ]
+      - [ be32, 0xa3bfac, 0x4bffff44 ]
+      - [ be32, 0xa3bfb0, 0x38000034 ]
+      - [ be32, 0xa3bfb4, 0x4bffff3c ]
+      - [ be32, 0xa3bfb8, 0x38000038 ]
+      - [ be32, 0xa3bfbc, 0x4bffff34 ]
+      - [ be32, 0xa3bfc0, 0x3800003c ]
+      - [ be32, 0xa3bfc4, 0x4bffff2c ]
+      - [ be32, 0xa3bfc8, 0x38000040 ]
+      - [ be32, 0xa3bfcc, 0x4bffff24 ]
+      - [ be32, 0xa3bfd0, 0x38000044 ]
+      - [ be32, 0xa3bfd4, 0x4bffff1c ]
+      - [ be32, 0xa3bfd8, 0x38000048 ]
+      - [ be32, 0xa3bfdc, 0x4bffff14 ]
+      - [ be32, 0xa3bfe0, 0x3800004c ]
+      - [ be32, 0xa3bfe4, 0x4bffff0c ]
+      - [ be32, 0xa3bfe8, 0x38000050 ]
+      - [ be32, 0xa3bfec, 0x4bffff04 ]
+      - [ be32, 0xa3bff0, 0x38000054 ]
+      - [ be32, 0xa3bff4, 0x4bfffefc ]
+      - [ be32, 0xa3bff8, 0x38000058 ]
+      - [ be32, 0xa3bffc, 0x4bfffef4 ]
+      - [ be32, 0xa3c000, 0x3800005c ]
+      - [ be32, 0xa3c004, 0x4bfffeec ]
+      - [ be32, 0xa3c008, 0x38000060 ]
+      - [ be32, 0xa3c00c, 0x4bfffee4 ]
+      - [ be32, 0xa3c010, 0x38000064 ]
+      - [ be32, 0xa3c014, 0x4bfffedc ]
+      - [ be32, 0xa3c018, 0x38000068 ]
+      - [ be32, 0xa3c01c, 0x4bfffed4 ]
+      - [ be32, 0xa3c020, 0x3800006c ]
+      - [ be32, 0xa3c024, 0x4bfffecc ]
+      - [ be32, 0xa3c028, 0x38000070 ]
+      - [ be32, 0xa3c02c, 0x4bfffec4 ]
+      - [ be32, 0xa3c030, 0x38000074 ]
+      - [ be32, 0xa3c034, 0x4bfffebc ]
+      - [ be32, 0xa3c038, 0x38000078 ]
+      - [ be32, 0xa3c03c, 0x4bfffeb4 ]
+      - [ be32, 0xa3c040, 0x3800007c ]
+      - [ be32, 0xa3c044, 0x4bfffeac ]
+      - [ be32, 0xa3c048, 0x38000080 ]
+      - [ be32, 0xa3c04c, 0x4bfffea4 ]
+      - [ be32, 0xa3c050, 0x38000084 ]
+      - [ be32, 0xa3c054, 0x4bfffe9c ]
+      - [ be32, 0xa3c058, 0x38000088 ]
+      - [ be32, 0xa3c05c, 0x4bfffe94 ]
+      - [ be32, 0xa3c060, 0x3800008c ]
+      - [ be32, 0xa3c064, 0x4bfffe8c ]
+      - [ be32, 0xa3c068, 0x38000090 ]
+      - [ be32, 0xa3c06c, 0x4bfffe84 ]
+      - [ be32, 0xa3c070, 0x38000094 ]
+      - [ be32, 0xa3c074, 0x4bfffe7c ]
+      - [ be32, 0xa3c078, 0x38000098 ]
+      - [ be32, 0xa3c07c, 0x4bfffe74 ]
+      - [ be32, 0xa3c080, 0x3800009c ]
+      - [ be32, 0xa3c084, 0x4bfffe6c ]
+      - [ be32, 0xa3c088, 0x380000a0 ]
+      - [ be32, 0xa3c08c, 0x4bfffe64 ]
+      - [ be32, 0xa3c090, 0x380000a4 ]
+      - [ be32, 0xa3c094, 0x4bfffe5c ]
+      - [ be32, 0xa3c098, 0x380000a8 ]
+      - [ be32, 0xa3c09c, 0x4bfffe54 ]
+      - [ be32, 0xa3c0a0, 0x380000ac ]
+      - [ be32, 0xa3c0a4, 0x4bfffe4c ]
+      - [ be32, 0xa3c0a8, 0x380000b0 ]
+      - [ be32, 0xa3c0ac, 0x4bfffe44 ]
+      - [ be32, 0xa3c0b0, 0x380000b4 ]
+      - [ be32, 0xa3c0b4, 0x4bfffe3c ]
+      - [ be32, 0xa3c0b8, 0x380000b8 ]
+      - [ be32, 0xa3c0bc, 0x4bfffe34 ]
+      - [ be32, 0xa3c0c0, 0x380000bc ]
+      - [ be32, 0xa3c0c4, 0x4bfffe2c ]
+      - [ be32, 0xa3c0c8, 0x380000c0 ]
+      - [ be32, 0xa3c0cc, 0x4bfffe24 ]
+      - [ be32, 0xa3c0d0, 0x380000c4 ]
+      - [ be32, 0xa3c0d4, 0x4bfffe1c ]
+      - [ be32, 0xa3c0d8, 0x380000c8 ]
+      - [ be32, 0xa3c0dc, 0x4bfffe14 ]
+      - [ be32, 0xa3c0e0, 0x380000cc ]
+      - [ be32, 0xa3c0e4, 0x4bfffe0c ]
+      - [ be32, 0xa3c0e8, 0x380000d0 ]
+      - [ be32, 0xa3c0ec, 0x4bfffe04 ]
+      - [ be32, 0xa3c0f0, 0x380000d4 ]
+      - [ be32, 0xa3c0f4, 0x4bfffdfc ]
+      - [ be32, 0xa3c0f8, 0x380000d8 ]
+      - [ be32, 0xa3c0fc, 0x4bfffdf4 ]
+      - [ be32, 0xa3c100, 0x380000dc ]
+      - [ be32, 0xa3c104, 0x4bfffdec ]
+      - [ be32, 0xa3c108, 0x380000e0 ]
+      - [ be32, 0xa3c10c, 0x4bfffde4 ]
+      - [ be32, 0xa3c110, 0x380000e4 ]
+      - [ be32, 0xa3c114, 0x4bfffddc ]
+      - [ be32, 0xa3c118, 0x380000e8 ]
+      - [ be32, 0xa3c11c, 0x4bfffdd4 ]
+      - [ be32, 0xa3c120, 0x380000ec ]
+      - [ be32, 0xa3c124, 0x4bfffdcc ]
+      - [ be32, 0xa3c128, 0x380000f0 ]
+      - [ be32, 0xa3c12c, 0x4bfffdc4 ]
+      - [ be32, 0xa3c130, 0x380000f4 ]
+      - [ be32, 0xa3c134, 0x4bfffdbc ]
+      - [ be32, 0xa3c138, 0x380000f8 ]
+      - [ be32, 0xa3c13c, 0x4bfffdb4 ]
+      - [ be32, 0xa3c140, 0x380000fc ]
+      - [ be32, 0xa3c144, 0x4bfffdac ]
+      - [ be32, 0xa3c148, 0x38000100 ]
+      - [ be32, 0xa3c14c, 0x4bfffda4 ]
+      - [ be32, 0xa3c150, 0x38000104 ]
+      - [ be32, 0xa3c154, 0x4bfffd9c ]
+      - [ be32, 0xa3c158, 0x38000108 ]
+      - [ be32, 0xa3c15c, 0x4bfffd94 ]
+      - [ be32, 0xa3c160, 0x3800010c ]
+      - [ be32, 0xa3c164, 0x4bfffd8c ]
+      - [ be32, 0xa3c168, 0x38000110 ]
+      - [ be32, 0xa3c16c, 0x4bfffd84 ]
+      - [ be32, 0xa3c170, 0x38000114 ]
+      - [ be32, 0xa3c174, 0x4bfffd7c ]
+      - [ be32, 0xa3c178, 0x38000118 ]
+      - [ be32, 0xa3c17c, 0x4bfffd74 ]
+      - [ be32, 0xa3c180, 0x3800011c ]
+      - [ be32, 0xa3c184, 0x4bfffd6c ]
+      - [ be32, 0xa3c188, 0x38000120 ]
+      - [ be32, 0xa3c18c, 0x4bfffd64 ]
+      - [ be32, 0xa3c190, 0x38000124 ]
+      - [ be32, 0xa3c194, 0x4bfffd5c ]
+      - [ be32, 0xa3c198, 0x38000128 ]
+      - [ be32, 0xa3c19c, 0x4bfffd54 ]
+      - [ be32, 0xa3c1a0, 0x3800012c ]
+      - [ be32, 0xa3c1a4, 0x4bfffd4c ]
+      - [ be32, 0xa3c1a8, 0x38000130 ]
+      - [ be32, 0xa3c1ac, 0x4bfffd44 ]
+      - [ be32, 0xa3c1b0, 0x38000134 ]
+      - [ be32, 0xa3c1b4, 0x4bfffd3c ]
+      - [ be32, 0xa3c1b8, 0x38000138 ]
+      - [ be32, 0xa3c1bc, 0x4bfffd34 ]
+      - [ be32, 0xa3c1c0, 0x3800013c ]
+      - [ be32, 0xa3c1c4, 0x4bfffd2c ]
+      - [ be32, 0xa3c1c8, 0x38000140 ]
+      - [ be32, 0xa3c1cc, 0x4bfffd24 ]
+      - [ be32, 0xa3c1d0, 0x38000144 ]
+      - [ be32, 0xa3c1d4, 0x4bfffd1c ]
+      - [ be32, 0xa3c1d8, 0x38000148 ]
+      - [ be32, 0xa3c1dc, 0x4bfffd14 ]
+      - [ be32, 0xa3c1e0, 0x3800014c ]
+      - [ be32, 0xa3c1e4, 0x4bfffd0c ]
+      - [ be32, 0xa3c1e8, 0x38000150 ]
+      - [ be32, 0xa3c1ec, 0x4bfffd04 ]
+      - [ be32, 0xa3c1f0, 0x38000154 ]
+      - [ be32, 0xa3c1f4, 0x4bfffcfc ]
+      - [ be32, 0xa3c1f8, 0x38000158 ]
+      - [ be32, 0xa3c1fc, 0x4bfffcf4 ]
+      - [ be32, 0xa3c200, 0x3800015c ]
+      - [ be32, 0xa3c204, 0x4bfffcec ]
+      - [ be32, 0xa3c208, 0x38000160 ]
+      - [ be32, 0xa3c20c, 0x4bfffce4 ]
+      - [ be32, 0xa3c210, 0x38000164 ]
+      - [ be32, 0xa3c214, 0x4bfffcdc ]
+      - [ be32, 0xa3c218, 0x38000168 ]
+      - [ be32, 0xa3c21c, 0x4bfffcd4 ]
+      - [ be32, 0xa3c220, 0x3800016c ]
+      - [ be32, 0xa3c224, 0x4bfffccc ]
+      - [ be32, 0xa3c228, 0x38000170 ]
+      - [ be32, 0xa3c22c, 0x4bfffcc4 ]
+      - [ be32, 0xa3c230, 0x38000174 ]
+      - [ be32, 0xa3c234, 0x4bfffcbc ]
+      - [ be32, 0xa3c238, 0x38000178 ]
+      - [ be32, 0xa3c23c, 0x4bfffcb4 ]
+      - [ be32, 0xa3c240, 0x3800017c ]
+      - [ be32, 0xa3c244, 0x4bfffcac ]
+      - [ be32, 0xa3c248, 0x38000180 ]
+      - [ be32, 0xa3c24c, 0x4bfffca4 ]
+      - [ be32, 0xa3c250, 0x38000184 ]
+      - [ be32, 0xa3c254, 0x4bfffc9c ]
+      - [ be32, 0xa3c258, 0x38000188 ]
+      - [ be32, 0xa3c25c, 0x4bfffc94 ]
+      - [ be32, 0xa3c260, 0x3800018c ]
+      - [ be32, 0xa3c264, 0x4bfffc8c ]
+      - [ be32, 0xa3c268, 0x38000190 ]
+      - [ be32, 0xa3c26c, 0x4bfffc84 ]
+      - [ be32, 0xa3c270, 0x38000194 ]
+      - [ be32, 0xa3c274, 0x4bfffc7c ]
+      - [ be32, 0xa3c278, 0x38000198 ]
+      - [ be32, 0xa3c27c, 0x4bfffc74 ]
+      - [ be32, 0xa3c280, 0x3800019c ]
+      - [ be32, 0xa3c284, 0x4bfffc6c ]
+      - [ be32, 0xa3c288, 0x380001a0 ]
+      - [ be32, 0xa3c28c, 0x4bfffc64 ]
+      - [ be32, 0xa3c290, 0x380001a4 ]
+      - [ be32, 0xa3c294, 0x4bfffc5c ]
+      - [ be32, 0xa3c298, 0x380001a8 ]
+      - [ be32, 0xa3c29c, 0x4bfffc54 ]
+      - [ be32, 0xa3c2a0, 0x380001ac ]
+      - [ be32, 0xa3c2a4, 0x4bfffc4c ]
+      - [ be32, 0xa3c2a8, 0x380001b0 ]
+      - [ be32, 0xa3c2ac, 0x4bfffc44 ]
+      - [ be32, 0xa3c2b0, 0x380001b4 ]
+      - [ be32, 0xa3c2b4, 0x4bfffc3c ]
+      - [ be32, 0xa3c2b8, 0x380001b8 ]
+      - [ be32, 0xa3c2bc, 0x4bfffc34 ]
+      - [ be32, 0xa3c2c0, 0x380001bc ]
+      - [ be32, 0xa3c2c4, 0x4bfffc2c ]
+      - [ be32, 0xa3c2c8, 0x380001c0 ]
+      - [ be32, 0xa3c2cc, 0x4bfffc24 ]
+      - [ be32, 0xa3c2d0, 0x380001c4 ]
+      - [ be32, 0xa3c2d4, 0x4bfffc1c ]
+      - [ be32, 0xa3c2d8, 0x380001c8 ]
+      - [ be32, 0xa3c2dc, 0x4bfffc14 ]
+      - [ be32, 0xa3c2e0, 0x380001cc ]
+      - [ be32, 0xa3c2e4, 0x4bfffc0c ]
+      - [ be32, 0xa3c2e8, 0x380001d0 ]
+      - [ be32, 0xa3c2ec, 0x4bfffc04 ]
+      - [ be32, 0xa3c2f0, 0x380001d4 ]
+      - [ be32, 0xa3c2f4, 0x4bfffbfc ]
+      - [ be32, 0xa3c2f8, 0x380001d8 ]
+      - [ be32, 0xa3c2fc, 0x4bfffbf4 ]
+      - [ be32, 0xa3c300, 0x380001dc ]
+      - [ be32, 0xa3c304, 0x4bfffbec ]
+      - [ be32, 0xa3c308, 0x380001e0 ]
+      - [ be32, 0xa3c30c, 0x4bfffbe4 ]
+      - [ be32, 0xa3c310, 0x380001e4 ]
+      - [ be32, 0xa3c314, 0x4bfffbdc ]
+      - [ be32, 0xa3c318, 0x380001e8 ]
+      - [ be32, 0xa3c31c, 0x4bfffbd4 ]
+      - [ be32, 0xce2cb8, 0xbadf00d ]
+      # bin2rpcs3patch end
