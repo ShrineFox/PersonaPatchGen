@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>PersonaPatchGen</RootNamespace>
     <AssemblyName>PersonaPatchGen</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -37,6 +37,9 @@
     <Reference Include="DarkUI, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\DarkUI.2.0.2\lib\DarkUI.dll</HintPath>
     </Reference>
+    <Reference Include="Dotnetrix.TabControl">
+      <HintPath>..\ShrineFox.IO\Classes\WinForms\Extensions\Dotnetrix.TabControl.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,27 +56,37 @@
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\Games\3DSGames.cs" />
     <Compile Include="Classes\Games\Patches\3DSPatches.cs" />
-    <Compile Include="Classes\Games\Patches\PS2Games.cs" />
     <Compile Include="Classes\Games\Patches\PS2Patches.cs" />
     <Compile Include="Classes\Games\Patches\PS3Patches.cs" />
     <Compile Include="Classes\Games\Patches\PS4Patches.cs" />
     <Compile Include="Classes\Games\Patches\PSPPatches.cs" />
     <Compile Include="Classes\Games\Patches\PSVPatches.cs" />
+    <Compile Include="Classes\Games\PCGames.cs" />
+    <Compile Include="Classes\Games\PS2Games.cs" />
     <Compile Include="Classes\Games\PS3Games.cs" />
     <Compile Include="Classes\Games\PS4Games.cs" />
     <Compile Include="Classes\Games\PSPGames.cs" />
     <Compile Include="Classes\Games\PSVGames.cs" />
     <Compile Include="Classes\Patch.cs" />
     <Compile Include="Classes\Platform.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\WizardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\WizardForm.Designer.cs">
+      <DependentUpon>WizardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\WizardForm.resx">
+      <DependentUpon>WizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -86,10 +99,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="App_Data\yml_patches\p5_ex\patch.yml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\yml_patches\patch.yml">
+    <None Include="Forms\Documents\Welcome.rtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
@@ -102,13 +112,48 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="yml\lipsum\patch.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="yml\p5_ex\hardware\p5ex\conf.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="yml\p5_ex\hardware\p5ex\mod.sprx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="yml\p5_ex\hardware\patches\patch.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="yml\p5_ex\patches\patch.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="yml\p5_ex\USRDIR\config.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="yml\p5_ex\USRDIR\mod.sprx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="yml\patch.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\pnach\P3FES_hostFS.txt" />
-    <Content Include="App_Data\pnach\P4_hostFS.txt" />
+    <Content Include="Forms\Images\Welcome.png" />
+    <Content Include="pnach\P3FES_hostFS.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="pnach\P4_hostFS.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShrineFox.IO\ShrineFox.IO.csproj">
+      <Project>{7640412a-7372-4925-b20c-0178d8818a8f}</Project>
+      <Name>ShrineFox.IO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

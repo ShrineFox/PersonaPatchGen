@@ -11,8 +11,10 @@ namespace ShrineFoxCom
             "P5 Modding Community Patches", "Force PSZ Models", "Disable EXIST.TBL Check", 
             "Encounter BGM Random Order", "Encounter BGM in Order", "Fix Script Printing Functions" };
 
-        private static List<GamePatch> P5Patches = Patches.ParseYML(".\\App_Data\\yml_patches\\patch.yml");
-        private static List<GamePatch> P5EXPatches = Patches.ParseYML(".\\App_Data\\yml_patches\\p5_ex\\patch.yml")
+        private static List<GamePatch> P5Patches = Patches.ParseYML(
+            ".\\yml\\patch.yml");
+        private static List<GamePatch> P5EXPatches = Patches.ParseYML(
+            ".\\yml\\p5_ex\\patches\\patch.yml")
             .Concat(P5Patches.Where(x => !disabledEXPatches.Any(y => y.Equals(x.Name))))
             .ToList();
 

@@ -976,7 +976,7 @@ PPU-b8c34f774adb367761706a7f685d4f8d9d355426:
       - [ be32, 0x00FEE292, 0x00000000 ]
       - [ be32, 0x00FEE296, 0x00000000 ]
 PPU-b8c34f774adb367761706a7f685d4f8d9d355426:
-  Disable Normal Distortion Filter [<=99% Alert & Velvet Room:
+  Disable Normal Distortion Filter [<=99% Alert & Velvet Room]:
     Games:
       "Persona 5":
         BLES02247: [ All ]
@@ -1203,7 +1203,7 @@ PPU-b8c34f774adb367761706a7f685d4f8d9d355426:
       - [ be64, 0x00B477B0, 0x656E76735F66696C ]
       - [ byte, 0x00B477B8, 0x65 ]
 PPU-b8c34f774adb367761706a7f685d4f8d9d355426:
-  Disable EXIST.TBL Check:
+  Disable EXIST TBL Check:
     Games:
       "Persona 5":
         BLES02247: [ All ]
@@ -1272,7 +1272,7 @@ PPU-b8c34f774adb367761706a7f685d4f8d9d355426:
       - [ be32, 0x007038b4, 0x80840008 ] #Exit Order Menu Transition Fix
       - [ be32, 0x007039f0, 0x80840008 ] #Exit Item Menu Transition Fix
 PPU-b8c34f774adb367761706a7f685d4f8d9d355426:
-  Fix SEL_DEFKEY:
+  Fix SEL DEFKEY:
     Games:
       "Persona 5":
         BLES02247: [ All ]
