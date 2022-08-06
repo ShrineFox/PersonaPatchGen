@@ -30,6 +30,7 @@ namespace PersonaPatchGen
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WizardForm));
             this.tlp_Main = new System.Windows.Forms.TableLayoutPanel();
             this.progressBar_Main = new System.Windows.Forms.ProgressBar();
             this.tabControl_Main = new ShrineFox.IO.TabControl();
@@ -310,6 +311,7 @@ namespace PersonaPatchGen
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 493);
             this.Controls.Add(this.tlp_Main);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(930, 540);
             this.MinimumSize = new System.Drawing.Size(930, 540);
             this.Name = "WizardForm";
