@@ -49,8 +49,8 @@ namespace PersonaPatchGen
             "./pnach/P4_hostFS.txt",
             "./yml/patch.yml",
             "./yml/p5_ex/patches/patch.yml",
-            "./yml/p5_ex/patches/USRDIR/config.yml",
-            "./yml/p5_ex/patches/USRDIR/mod.sprx",
+            "./yml/p5_ex/USRDIR/config.yml",
+            "./yml/p5_ex/USRDIR/mod.sprx",
             "./yml/p5_ex/hardware/p5ex/conf.yml",
             "./yml/p5_ex/hardware/p5ex/mod.sprx"
         };
@@ -76,18 +76,9 @@ namespace PersonaPatchGen
 
         private void CreatePages()
         {
-            CreatPage_Welcome();
-            CreatPage_Updates();
-        }
-
-        private void CreatPage_Welcome()
-        {
             rtb_1_Welcome.LoadFile(@"./Forms/Documents/Welcome.rtf");
-        }
-
-        private void CreatPage_Updates()
-        {
             rtb_2_Updates.LoadFile(@"./Forms/Documents/Updates.rtf");
+            rtb_3_Platform.LoadFile(@"./Forms/Documents/Platform.rtf");
         }
 
         private void Platform_Changed(object sender, EventArgs e)
@@ -103,6 +94,7 @@ namespace PersonaPatchGen
             {
                 selectedPlatform = platforms.Single(x => x.Name.Equals(comboBox_Platform.SelectedItem.ToString()));
                 comboBox_Region.Visible = true; lbl_Region.Visible = true;
+                comboBox_Game.Visible = true; lbl_Game.Visible = true;
             }
             else
             {
@@ -160,18 +152,14 @@ namespace PersonaPatchGen
 
         private void TryAgain_Click(object sender, EventArgs e)
         {
-            if (!downloadComplete)
-            {
-                btn_TryAgain_2.Enabled = false;
-                DownloadPatches();
-            }
+            btn_TryAgain_2.Enabled = false;
+            DownloadPatches();
         }
 
         private void DownloadPatches()
         {
             circleBar_Updates.Value = 20;
-
-            bool failedDownload = false;
+            btn_Next_2.Enabled = false;
 
             rtb_2_Updates.AppendText($"\r\ndownload started {DateTime.Now}\r\n-------------------");
             foreach (var url in downloads)
@@ -189,14 +177,12 @@ namespace PersonaPatchGen
                         rtb_2_Updates.AppendText($"\r\nFailed to download: {url}");
                         btn_TryAgain_2.Text = "Try Again";
                         btn_TryAgain_2.Enabled = true;
-                        failedDownload = true;
                     }
                     circleBar_Updates.PerformStep();
                 }
             }
-            if (!failedDownload)
-                downloadComplete = true;
             circleBar_Updates.Text = "done";
+            btn_Next_2.Enabled = true;
         }
 
         // Prevent users navigating TabControl via Ctrl+Tab and Ctrl+Shift+Tab.
