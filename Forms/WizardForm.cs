@@ -20,11 +20,13 @@ namespace PersonaPatchGen
         {
             new Platform() { Name = "PlayStation 2",
                              ShortName = "PS2",
-                             Games = Games.PS2Games
+                             Games = Games.PS2Games,
+                             EmulatorName = "PCSX2"
             },
             new Platform() { Name = "PlayStation 3",
                              ShortName = "PS3",
-                             Games = Games.PS3Games
+                             Games = Games.PS3Games,
+                             EmulatorName = "RPCS3"
             },
             new Platform() { Name = "PlayStation 4",
                              ShortName = "PS4",
@@ -32,15 +34,18 @@ namespace PersonaPatchGen
             },
             new Platform() { Name = "PlayStation Vita",
                              ShortName = "PSV",
-                             Games = Games.PSVGames
+                             Games = Games.PSVGames,
+                             EmulatorName = "Vita3K"
             },
             new Platform() { Name = "PlayStation Portable",
                              ShortName = "PSP",
-                             Games = Games.PSPGames
+                             Games = Games.PSPGames,
+                             EmulatorName = "PPSSPP"
             },
             new Platform() { Name = "Nintendo 3DS",
                              ShortName = "3DS",
-                             Games = Games.PQGames
+                             Games = Games.PQGames,
+                             EmulatorName = "Citra"
             }
         };
         public static List<string> downloads = new List<string>()
@@ -94,13 +99,14 @@ namespace PersonaPatchGen
             {
                 selectedPlatform = platforms.Single(x => x.Name.Equals(comboBox_Platform.SelectedItem.ToString()));
                 comboBox_Region.Visible = true; lbl_Region.Visible = true;
-                comboBox_Game.Visible = true; lbl_Game.Visible = true;
+                SetupTargetPlatformPage();
             }
             else
             {
                 comboBox_Region.Visible = false; lbl_Region.Visible = false;
-                comboBox_Game.Visible = false; lbl_Game.Visible = false;
             }
+            comboBox_Game.Visible = false; lbl_Game.Visible = false;
+            btn_Next.Enabled = false;
         }
 
         private void Region_Changed(object sender, EventArgs e)
@@ -122,9 +128,11 @@ namespace PersonaPatchGen
                 foreach (var game in regionGames)
                     comboBox_Game.Items.Add(game.Name);
                 comboBox_Game.Visible = true; lbl_Game.Visible = true;
+                comboBox_Game.SelectedIndex = 0;
             }
             else
                 comboBox_Game.Visible = false; lbl_Game.Visible = false;
+            btn_Next.Enabled = false;
         }
 
         private void Game_Changed(object sender, EventArgs e)
@@ -142,10 +150,20 @@ namespace PersonaPatchGen
 
         private void Next_Click(object sender, EventArgs e)
         {
+            NextPage();
+        }
+
+        private void NextPage()
+        {
             tabControl_Main.SelectedIndex += 1;
         }
 
         private void Back_Click(object sender, EventArgs e)
+        {
+            PreviousPage();
+        }
+
+        private void PreviousPage()
         {
             tabControl_Main.SelectedIndex -= 1;
         }
@@ -194,6 +212,76 @@ namespace PersonaPatchGen
                     return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void Target_Changed(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void MainTab_Changed(object sender, EventArgs e)
+        {
+            if (tabControl_Main.SelectedTab.Text == "Platform")
+            {
+                
+            }
+        }
+
+        private void SetupTargetPlatformPage()
+        {
+            if (selectedPlatform.EmulatorName == "")
+            {
+                radio_Console.Checked = true;
+                radio_Emu.Checked = false;
+                radio_Emu.Enabled = false;
+
+                lbl_ExePath.Visible = false;
+                tlp_3_Platform_ExePath.Visible = false;
+                btn_3_Next.Enabled = true;
+            }
+            else
+            {
+                radio_Console.Checked = false;
+                radio_Emu.Checked = true;
+                radio_Emu.Text = selectedPlatform.EmulatorName;
+                radio_Emu.Enabled = true;
+
+                lbl_ExePath.Visible = true;
+                lbl_ExePath.Text = $"{selectedPlatform.EmulatorName}.exe Path:";
+                tlp_3_Platform_ExePath.Visible = true;
+                btn_3_Next.Enabled = false;
+            }
+        }
+
+        private void ExePath_Browse_Click(object sender, EventArgs e)
+        {
+            string path = ShrineFox.IO.WinFormsEvents.FilePath_Click($"Select your emulator's {selectedPlatform.EmulatorName}.exe");
+            txt_ExePath.Text = path;
+
+            if (File.Exists(txt_ExePath.Text))
+                btn_3_Next.Enabled = true;
+            else
+                btn_3_Next.Enabled = false;
+        }
+
+        private void Console_Checked(object sender, EventArgs e)
+        {
+            if (radio_Console.Checked)
+            {
+                lbl_ExePath.Visible = false;
+                tlp_3_Platform_ExePath.Visible = false;
+                btn_3_Next.Enabled = true;
+            }
+            else
+            {
+                lbl_ExePath.Visible = true;
+                tlp_3_Platform_ExePath.Visible = true;
+
+                if (File.Exists(txt_ExePath.Text))
+                    btn_3_Next.Enabled = true;
+                else
+                    btn_3_Next.Enabled = false;
+            }
         }
     }
 }

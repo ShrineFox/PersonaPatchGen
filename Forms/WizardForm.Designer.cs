@@ -32,7 +32,7 @@ namespace PersonaPatchGen
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WizardForm));
             this.tlp_Main = new System.Windows.Forms.TableLayoutPanel();
-            this.progressBar_Main = new ShrineFox.IO.SFProgressBar();
+            this.progressBar_Main = new System.Windows.Forms.ProgressBar();
             this.tabControl_Main = new ShrineFox.IO.TabControl();
             this.tabPage_1_Welcome = new System.Windows.Forms.TabPage();
             this.tlp_1_Welcome = new System.Windows.Forms.TableLayoutPanel();
@@ -63,12 +63,18 @@ namespace PersonaPatchGen
             this.pnl_3_Platform = new System.Windows.Forms.Panel();
             this.pnl_3_Platform_Inner = new System.Windows.Forms.Panel();
             this.tlp_3_Platform_Inner = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_TargetPlatform = new DarkUI.Controls.DarkLabel();
-            this.comboBox_TargetPlatform = new DarkUI.Controls.DarkComboBox();
-            this.rtb_3_Platform = new ShrineFox.IO.SFRichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_3_Back = new DarkUI.Controls.DarkButton();
             this.btn_3_Next = new DarkUI.Controls.DarkButton();
+            this.lbl_TargetPlatform = new DarkUI.Controls.DarkLabel();
+            this.rtb_3_Platform = new ShrineFox.IO.SFRichTextBox();
+            this.lbl_ExePath = new DarkUI.Controls.DarkLabel();
+            this.tlp_3_Platform_ExePath = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_ExePath = new DarkUI.Controls.DarkButton();
+            this.txt_ExePath = new DarkUI.Controls.DarkTextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.radio_Emu = new DarkUI.Controls.DarkRadioButton();
+            this.radio_Console = new DarkUI.Controls.DarkRadioButton();
             this.tlp_Main.SuspendLayout();
             this.tabControl_Main.SuspendLayout();
             this.tabPage_1_Welcome.SuspendLayout();
@@ -85,6 +91,8 @@ namespace PersonaPatchGen
             this.pnl_3_Platform_Inner.SuspendLayout();
             this.tlp_3_Platform_Inner.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tlp_3_Platform_ExePath.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlp_Main
@@ -136,6 +144,7 @@ namespace PersonaPatchGen
             this.tabControl_Main.Size = new System.Drawing.Size(915, 464);
             this.tabControl_Main.TabColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.tabControl_Main.TabIndex = 1;
+            this.tabControl_Main.SelectedIndexChanged += new System.EventHandler(this.MainTab_Changed);
             // 
             // tabPage_1_Welcome
             // 
@@ -411,11 +420,11 @@ namespace PersonaPatchGen
             this.rtb_2_Updates.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.rtb_2_Updates.ForeColor = System.Drawing.Color.LightGray;
             this.rtb_2_Updates.HideSelection = false;
-            this.rtb_2_Updates.Location = new System.Drawing.Point(112, 0);
+            this.rtb_2_Updates.Location = new System.Drawing.Point(111, 0);
             this.rtb_2_Updates.Margin = new System.Windows.Forms.Padding(0);
             this.rtb_2_Updates.Name = "rtb_2_Updates";
             this.rtb_2_Updates.ReadOnly = true;
-            this.rtb_2_Updates.Size = new System.Drawing.Size(448, 213);
+            this.rtb_2_Updates.Size = new System.Drawing.Size(446, 210);
             this.rtb_2_Updates.TabIndex = 1;
             this.rtb_2_Updates.Text = "";
             // 
@@ -429,12 +438,12 @@ namespace PersonaPatchGen
             this.tlp_2_Updates_Buttons.Controls.Add(this.btn_TryAgain_2, 1, 0);
             this.tlp_2_Updates_Buttons.Controls.Add(this.btn_Next_2, 2, 0);
             this.tlp_2_Updates_Buttons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_2_Updates_Buttons.Location = new System.Drawing.Point(112, 341);
+            this.tlp_2_Updates_Buttons.Location = new System.Drawing.Point(111, 336);
             this.tlp_2_Updates_Buttons.Margin = new System.Windows.Forms.Padding(0);
             this.tlp_2_Updates_Buttons.Name = "tlp_2_Updates_Buttons";
             this.tlp_2_Updates_Buttons.RowCount = 1;
             this.tlp_2_Updates_Buttons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_2_Updates_Buttons.Size = new System.Drawing.Size(448, 86);
+            this.tlp_2_Updates_Buttons.Size = new System.Drawing.Size(446, 85);
             this.tlp_2_Updates_Buttons.TabIndex = 3;
             // 
             // btn_Back_2
@@ -445,7 +454,7 @@ namespace PersonaPatchGen
             this.btn_Back_2.Margin = new System.Windows.Forms.Padding(15);
             this.btn_Back_2.Name = "btn_Back_2";
             this.btn_Back_2.Padding = new System.Windows.Forms.Padding(5);
-            this.btn_Back_2.Size = new System.Drawing.Size(124, 56);
+            this.btn_Back_2.Size = new System.Drawing.Size(123, 55);
             this.btn_Back_2.TabIndex = 5;
             this.btn_Back_2.Text = "< Back";
             this.btn_Back_2.Click += new System.EventHandler(this.Back_Click);
@@ -454,11 +463,11 @@ namespace PersonaPatchGen
             // 
             this.btn_TryAgain_2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_TryAgain_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btn_TryAgain_2.Location = new System.Drawing.Point(169, 15);
+            this.btn_TryAgain_2.Location = new System.Drawing.Point(168, 15);
             this.btn_TryAgain_2.Margin = new System.Windows.Forms.Padding(15);
             this.btn_TryAgain_2.Name = "btn_TryAgain_2";
             this.btn_TryAgain_2.Padding = new System.Windows.Forms.Padding(5);
-            this.btn_TryAgain_2.Size = new System.Drawing.Size(124, 56);
+            this.btn_TryAgain_2.Size = new System.Drawing.Size(123, 55);
             this.btn_TryAgain_2.TabIndex = 4;
             this.btn_TryAgain_2.Text = "Download";
             this.btn_TryAgain_2.Click += new System.EventHandler(this.TryAgain_Click);
@@ -467,11 +476,11 @@ namespace PersonaPatchGen
             // 
             this.btn_Next_2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Next_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btn_Next_2.Location = new System.Drawing.Point(323, 15);
+            this.btn_Next_2.Location = new System.Drawing.Point(321, 15);
             this.btn_Next_2.Margin = new System.Windows.Forms.Padding(15);
             this.btn_Next_2.Name = "btn_Next_2";
             this.btn_Next_2.Padding = new System.Windows.Forms.Padding(5);
-            this.btn_Next_2.Size = new System.Drawing.Size(110, 56);
+            this.btn_Next_2.Size = new System.Drawing.Size(110, 55);
             this.btn_Next_2.TabIndex = 3;
             this.btn_Next_2.Text = "Next >";
             this.btn_Next_2.Click += new System.EventHandler(this.Next_Click);
@@ -487,7 +496,7 @@ namespace PersonaPatchGen
             this.circleBar_Updates.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.circleBar_Updates.InnerMargin = 2;
             this.circleBar_Updates.InnerWidth = -1;
-            this.circleBar_Updates.Location = new System.Drawing.Point(275, 216);
+            this.circleBar_Updates.Location = new System.Drawing.Point(273, 213);
             this.circleBar_Updates.MarqueeAnimationSpeed = 2000;
             this.circleBar_Updates.Name = "circleBar_Updates";
             this.circleBar_Updates.OuterColor = System.Drawing.Color.Gray;
@@ -496,7 +505,7 @@ namespace PersonaPatchGen
             this.circleBar_Updates.ProgressColor = System.Drawing.Color.MintCream;
             this.circleBar_Updates.ProgressWidth = 25;
             this.circleBar_Updates.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.circleBar_Updates.Size = new System.Drawing.Size(122, 122);
+            this.circleBar_Updates.Size = new System.Drawing.Size(122, 120);
             this.circleBar_Updates.StartAngle = 270;
             this.circleBar_Updates.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
             this.circleBar_Updates.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
@@ -561,67 +570,23 @@ namespace PersonaPatchGen
             this.tlp_3_Platform_Inner.ColumnCount = 2;
             this.tlp_3_Platform_Inner.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tlp_3_Platform_Inner.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tlp_3_Platform_Inner.Controls.Add(this.tableLayoutPanel1, 1, 2);
+            this.tlp_3_Platform_Inner.Controls.Add(this.tableLayoutPanel1, 1, 3);
             this.tlp_3_Platform_Inner.Controls.Add(this.lbl_TargetPlatform, 0, 1);
-            this.tlp_3_Platform_Inner.Controls.Add(this.comboBox_TargetPlatform, 1, 1);
             this.tlp_3_Platform_Inner.Controls.Add(this.rtb_3_Platform, 1, 0);
+            this.tlp_3_Platform_Inner.Controls.Add(this.lbl_ExePath, 0, 2);
+            this.tlp_3_Platform_Inner.Controls.Add(this.tlp_3_Platform_ExePath, 1, 2);
+            this.tlp_3_Platform_Inner.Controls.Add(this.tableLayoutPanel2, 1, 1);
             this.tlp_3_Platform_Inner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_3_Platform_Inner.Location = new System.Drawing.Point(0, 0);
             this.tlp_3_Platform_Inner.Margin = new System.Windows.Forms.Padding(0);
             this.tlp_3_Platform_Inner.Name = "tlp_3_Platform_Inner";
-            this.tlp_3_Platform_Inner.RowCount = 3;
+            this.tlp_3_Platform_Inner.RowCount = 4;
             this.tlp_3_Platform_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_3_Platform_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tlp_3_Platform_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tlp_3_Platform_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tlp_3_Platform_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tlp_3_Platform_Inner.Size = new System.Drawing.Size(560, 427);
             this.tlp_3_Platform_Inner.TabIndex = 2;
-            // 
-            // lbl_TargetPlatform
-            // 
-            this.lbl_TargetPlatform.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_TargetPlatform.AutoSize = true;
-            this.lbl_TargetPlatform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lbl_TargetPlatform.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.lbl_TargetPlatform.Location = new System.Drawing.Point(27, 253);
-            this.lbl_TargetPlatform.Name = "lbl_TargetPlatform";
-            this.lbl_TargetPlatform.Size = new System.Drawing.Size(82, 48);
-            this.lbl_TargetPlatform.TabIndex = 3;
-            this.lbl_TargetPlatform.Text = "Target Platform:";
-            this.lbl_TargetPlatform.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // comboBox_TargetPlatform
-            // 
-            this.comboBox_TargetPlatform.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox_TargetPlatform.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.comboBox_TargetPlatform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.comboBox_TargetPlatform.FormattingEnabled = true;
-            this.comboBox_TargetPlatform.Items.AddRange(new object[] {
-            "",
-            "Emulator",
-            "Console"});
-            this.comboBox_TargetPlatform.Location = new System.Drawing.Point(127, 262);
-            this.comboBox_TargetPlatform.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
-            this.comboBox_TargetPlatform.Name = "comboBox_TargetPlatform";
-            this.comboBox_TargetPlatform.Size = new System.Drawing.Size(418, 29);
-            this.comboBox_TargetPlatform.TabIndex = 8;
-            // 
-            // rtb_3_Platform
-            // 
-            this.rtb_3_Platform.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtb_3_Platform.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.rtb_3_Platform.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_3_Platform.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rtb_3_Platform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.rtb_3_Platform.ForeColor = System.Drawing.Color.LightGray;
-            this.rtb_3_Platform.Location = new System.Drawing.Point(112, 0);
-            this.rtb_3_Platform.Margin = new System.Windows.Forms.Padding(0);
-            this.rtb_3_Platform.Name = "rtb_3_Platform";
-            this.rtb_3_Platform.ReadOnly = true;
-            this.rtb_3_Platform.Size = new System.Drawing.Size(448, 213);
-            this.rtb_3_Platform.TabIndex = 1;
-            this.rtb_3_Platform.Text = "";
             // 
             // tableLayoutPanel1
             // 
@@ -656,7 +621,6 @@ namespace PersonaPatchGen
             // btn_3_Next
             // 
             this.btn_3_Next.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_3_Next.Enabled = false;
             this.btn_3_Next.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.btn_3_Next.Location = new System.Drawing.Point(323, 15);
             this.btn_3_Next.Margin = new System.Windows.Forms.Padding(15);
@@ -666,6 +630,135 @@ namespace PersonaPatchGen
             this.btn_3_Next.TabIndex = 3;
             this.btn_3_Next.Text = "Next >";
             this.btn_3_Next.Click += new System.EventHandler(this.Next_Click);
+            // 
+            // lbl_TargetPlatform
+            // 
+            this.lbl_TargetPlatform.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbl_TargetPlatform.AutoSize = true;
+            this.lbl_TargetPlatform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.lbl_TargetPlatform.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.lbl_TargetPlatform.Location = new System.Drawing.Point(27, 221);
+            this.lbl_TargetPlatform.Name = "lbl_TargetPlatform";
+            this.lbl_TargetPlatform.Size = new System.Drawing.Size(82, 48);
+            this.lbl_TargetPlatform.TabIndex = 3;
+            this.lbl_TargetPlatform.Text = "Target Platform:";
+            this.lbl_TargetPlatform.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // rtb_3_Platform
+            // 
+            this.rtb_3_Platform.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtb_3_Platform.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.rtb_3_Platform.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtb_3_Platform.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rtb_3_Platform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.rtb_3_Platform.ForeColor = System.Drawing.Color.LightGray;
+            this.rtb_3_Platform.Location = new System.Drawing.Point(112, 0);
+            this.rtb_3_Platform.Margin = new System.Windows.Forms.Padding(0);
+            this.rtb_3_Platform.Name = "rtb_3_Platform";
+            this.rtb_3_Platform.ReadOnly = true;
+            this.rtb_3_Platform.Size = new System.Drawing.Size(448, 213);
+            this.rtb_3_Platform.TabIndex = 1;
+            this.rtb_3_Platform.Text = "";
+            // 
+            // lbl_ExePath
+            // 
+            this.lbl_ExePath.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbl_ExePath.AutoSize = true;
+            this.lbl_ExePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.lbl_ExePath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.lbl_ExePath.Location = new System.Drawing.Point(18, 285);
+            this.lbl_ExePath.Name = "lbl_ExePath";
+            this.lbl_ExePath.Size = new System.Drawing.Size(91, 48);
+            this.lbl_ExePath.TabIndex = 10;
+            this.lbl_ExePath.Text = "Emulator Exe Path:";
+            this.lbl_ExePath.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lbl_ExePath.Visible = false;
+            // 
+            // tlp_3_Platform_ExePath
+            // 
+            this.tlp_3_Platform_ExePath.ColumnCount = 2;
+            this.tlp_3_Platform_ExePath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlp_3_Platform_ExePath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
+            this.tlp_3_Platform_ExePath.Controls.Add(this.btn_ExePath, 0, 0);
+            this.tlp_3_Platform_ExePath.Controls.Add(this.txt_ExePath, 0, 0);
+            this.tlp_3_Platform_ExePath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlp_3_Platform_ExePath.Location = new System.Drawing.Point(112, 277);
+            this.tlp_3_Platform_ExePath.Margin = new System.Windows.Forms.Padding(0);
+            this.tlp_3_Platform_ExePath.Name = "tlp_3_Platform_ExePath";
+            this.tlp_3_Platform_ExePath.RowCount = 1;
+            this.tlp_3_Platform_ExePath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlp_3_Platform_ExePath.Size = new System.Drawing.Size(448, 64);
+            this.tlp_3_Platform_ExePath.TabIndex = 11;
+            this.tlp_3_Platform_ExePath.Visible = false;
+            // 
+            // btn_ExePath
+            // 
+            this.btn_ExePath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_ExePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.btn_ExePath.Location = new System.Drawing.Point(370, 20);
+            this.btn_ExePath.Margin = new System.Windows.Forms.Padding(10, 20, 10, 20);
+            this.btn_ExePath.Name = "btn_ExePath";
+            this.btn_ExePath.Padding = new System.Windows.Forms.Padding(5);
+            this.btn_ExePath.Size = new System.Drawing.Size(68, 24);
+            this.btn_ExePath.TabIndex = 13;
+            this.btn_ExePath.Text = "...";
+            this.btn_ExePath.Click += new System.EventHandler(this.ExePath_Browse_Click);
+            // 
+            // txt_ExePath
+            // 
+            this.txt_ExePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_ExePath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.txt_ExePath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_ExePath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.txt_ExePath.Location = new System.Drawing.Point(15, 21);
+            this.txt_ExePath.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
+            this.txt_ExePath.Name = "txt_ExePath";
+            this.txt_ExePath.Size = new System.Drawing.Size(330, 22);
+            this.txt_ExePath.TabIndex = 12;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.radio_Emu, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.radio_Console, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(114, 213);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(446, 64);
+            this.tableLayoutPanel2.TabIndex = 12;
+            // 
+            // radio_Emu
+            // 
+            this.radio_Emu.AutoSize = true;
+            this.radio_Emu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.radio_Emu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.radio_Emu.Location = new System.Drawing.Point(226, 3);
+            this.radio_Emu.Name = "radio_Emu";
+            this.radio_Emu.Size = new System.Drawing.Size(110, 58);
+            this.radio_Emu.TabIndex = 1;
+            this.radio_Emu.Text = "Emulator";
+            this.radio_Emu.CheckedChanged += new System.EventHandler(this.Console_Checked);
+            // 
+            // radio_Console
+            // 
+            this.radio_Console.AutoSize = true;
+            this.radio_Console.Checked = true;
+            this.radio_Console.Dock = System.Windows.Forms.DockStyle.Right;
+            this.radio_Console.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.radio_Console.Location = new System.Drawing.Point(114, 3);
+            this.radio_Console.Name = "radio_Console";
+            this.radio_Console.Size = new System.Drawing.Size(106, 58);
+            this.radio_Console.TabIndex = 0;
+            this.radio_Console.TabStop = true;
+            this.radio_Console.Text = "Console";
+            this.radio_Console.CheckedChanged += new System.EventHandler(this.Console_Checked);
             // 
             // WizardForm
             // 
@@ -697,6 +790,10 @@ namespace PersonaPatchGen
             this.tlp_3_Platform_Inner.ResumeLayout(false);
             this.tlp_3_Platform_Inner.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tlp_3_Platform_ExePath.ResumeLayout(false);
+            this.tlp_3_Platform_ExePath.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -704,7 +801,7 @@ namespace PersonaPatchGen
         #endregion
 
         private TableLayoutPanel tlp_Main;
-        private ShrineFox.IO.SFProgressBar progressBar_Main;
+        private ProgressBar progressBar_Main;
         private ShrineFox.IO.TabControl tabControl_Main;
         private TabPage tabPage_1_Welcome;
         private TabPage tabPage_2_Updates;
@@ -736,11 +833,17 @@ namespace PersonaPatchGen
         private Panel pnl_3_Platform_Inner;
         private TableLayoutPanel tlp_3_Platform_Inner;
         private DarkUI.Controls.DarkLabel lbl_TargetPlatform;
-        private DarkUI.Controls.DarkComboBox comboBox_TargetPlatform;
         private ShrineFox.IO.SFRichTextBox rtb_3_Platform;
         private TableLayoutPanel tableLayoutPanel1;
         private DarkUI.Controls.DarkButton btn_3_Back;
         private DarkUI.Controls.DarkButton btn_3_Next;
+        private DarkUI.Controls.DarkLabel lbl_ExePath;
+        private TableLayoutPanel tlp_3_Platform_ExePath;
+        private DarkUI.Controls.DarkTextBox txt_ExePath;
+        private DarkUI.Controls.DarkButton btn_ExePath;
+        private TableLayoutPanel tableLayoutPanel2;
+        private DarkUI.Controls.DarkRadioButton radio_Console;
+        private DarkUI.Controls.DarkRadioButton radio_Emu;
     }
 }
 
