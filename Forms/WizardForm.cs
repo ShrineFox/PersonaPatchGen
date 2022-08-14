@@ -16,6 +16,9 @@ namespace PersonaPatchGen
 {
     public partial class WizardForm : DarkForm
     {
+
+        // Setup Form
+
         public static List<Platform> platforms = new List<Platform>()
         {
             new Platform() { Name = "PlayStation 2",
@@ -86,6 +89,8 @@ namespace PersonaPatchGen
             rtb_3_Platform.LoadFile(@"./Forms/Documents/Platform.rtf");
         }
 
+        // Page 1: Game Select
+
         private void Platform_Changed(object sender, EventArgs e)
         {
             UpdateSelectedPlatform();
@@ -148,84 +153,37 @@ namespace PersonaPatchGen
                 btn_Next.Enabled = false;
         }
 
-        private void Next_Click(object sender, EventArgs e)
-        {
-            NextPage();
-        }
-
-        private void NextPage()
-        {
-            tabControl_Main.SelectedIndex += 1;
-        }
-
-        private void Back_Click(object sender, EventArgs e)
-        {
-            PreviousPage();
-        }
-
-        private void PreviousPage()
-        {
-            tabControl_Main.SelectedIndex -= 1;
-        }
-
-        private void TryAgain_Click(object sender, EventArgs e)
-        {
-            btn_TryAgain_2.Enabled = false;
-            DownloadPatches();
-        }
+        // Page 2: Download Updates
 
         private void DownloadPatches()
         {
-            circleBar_Updates.Value = 20;
-            btn_Next_2.Enabled = false;
+            progressBar_Updates.Value = 20;
+            btn_Next.Enabled = false;
 
-            rtb_2_Updates.AppendText($"\r\ndownload started {DateTime.Now}\r\n-------------------");
+            rtb_Updates_Log.AppendText($"\r\ndownload started {DateTime.Now}\r\n-------------------");
             foreach (var url in downloads)
             {
                 using (var client = new WebClient())
                 {
-                    circleBar_Updates.Text = Path.GetFileName(url);
                     try
                     {
                         client.DownloadFile(url.Replace("./", "https://shrinefox.com/"), url);
-                        rtb_2_Updates.AppendText($"\r\nUpdated: {url}");
+                        rtb_Updates_Log.AppendText($"\r\nUpdated: {url}");
                     }
                     catch
                     {
-                        rtb_2_Updates.AppendText($"\r\nFailed to download: {url}");
-                        btn_TryAgain_2.Text = "Try Again";
-                        btn_TryAgain_2.Enabled = true;
+                        rtb_Updates_Log.AppendText($"\r\nFailed to download: {url}");
+                        btn_Action.Text = "Try Again";
+                        btn_Action.Enabled = true;
                     }
-                    circleBar_Updates.PerformStep();
+                    progressBar_Updates.PerformStep();
                 }
             }
-            circleBar_Updates.Text = "done";
-            btn_Next_2.Enabled = true;
+            rtb_Updates_Log.AppendText($"\r\nDone");
+            btn_Next.Enabled = true;
         }
 
-        // Prevent users navigating TabControl via Ctrl+Tab and Ctrl+Shift+Tab.
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            if (ActiveControl is TabControl)
-            {
-                if (System.Convert.ToBoolean(keyData & Keys.Tab | Keys.Control))
-                    return true;
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-
-        private void Target_Changed(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void MainTab_Changed(object sender, EventArgs e)
-        {
-            if (tabControl_Main.SelectedTab.Text == "Platform")
-            {
-                
-            }
-        }
+        // Page 3: Target Platform
 
         private void SetupTargetPlatformPage()
         {
@@ -237,7 +195,6 @@ namespace PersonaPatchGen
 
                 lbl_ExePath.Visible = false;
                 tlp_3_Platform_ExePath.Visible = false;
-                btn_3_Next.Enabled = true;
             }
             else
             {
@@ -247,41 +204,130 @@ namespace PersonaPatchGen
                 radio_Emu.Enabled = true;
 
                 lbl_ExePath.Visible = true;
-                lbl_ExePath.Text = $"{selectedPlatform.EmulatorName}.exe Path:";
+                lbl_ExePath.Text = $"{selectedPlatform.EmulatorName} .exe Path:";
                 tlp_3_Platform_ExePath.Visible = true;
-                btn_3_Next.Enabled = false;
             }
         }
 
-        private void ExePath_Browse_Click(object sender, EventArgs e)
+        private void ExePath_Browse(object sender, EventArgs e)
         {
             string path = ShrineFox.IO.WinFormsEvents.FilePath_Click($"Select your emulator's {selectedPlatform.EmulatorName}.exe");
             txt_ExePath.Text = path;
 
             if (File.Exists(txt_ExePath.Text))
-                btn_3_Next.Enabled = true;
+                btn_Next.Enabled = true;
             else
-                btn_3_Next.Enabled = false;
+                btn_Next.Enabled = false;
         }
 
-        private void Console_Checked(object sender, EventArgs e)
+        private void Checked_Changed(object sender, EventArgs e)
         {
             if (radio_Console.Checked)
             {
                 lbl_ExePath.Visible = false;
                 tlp_3_Platform_ExePath.Visible = false;
-                btn_3_Next.Enabled = true;
+                btn_Next.Enabled = true;
             }
             else
             {
                 lbl_ExePath.Visible = true;
                 tlp_3_Platform_ExePath.Visible = true;
 
-                if (File.Exists(txt_ExePath.Text))
-                    btn_3_Next.Enabled = true;
+                if (!File.Exists(txt_ExePath.Text))
+                    btn_Next.Enabled = false;
                 else
-                    btn_3_Next.Enabled = false;
+                    btn_Next.Enabled = true;
             }
+        }
+
+        private void ExePath_TextChanged(object sender, EventArgs e)
+        {
+            if (File.Exists(txt_ExePath.Text))
+                btn_Next.Enabled = true;
+            else
+                btn_Next.Enabled = false;
+        }
+
+
+        // Changing Selected Tab
+
+        private void MainTab_Changed(object sender, EventArgs e)
+        {
+            SetupPageButtons();
+        }
+
+        private void SetupPageButtons()
+        {
+            // Only show Previous Page button when current page > 0
+            if (tabControl_Main.SelectedIndex >= 1)
+                btn_Back.Visible = true;
+            else
+                btn_Back.Visible = false;
+            // Disable Next Button until conditions to advance are met
+            btn_Next.Enabled = true;
+            if (tabControl_Main.SelectedTab.Text == "Platform" && selectedPlatform.EmulatorName != "" && !radio_Console.Checked)
+            {
+                if (!File.Exists(txt_ExePath.Text))
+                    btn_Next.Enabled = false;
+            }
+            // Only show Action button when used by a page
+            if (tabControl_Main.SelectedTab.Text == "Updates")
+            {
+                btn_Action.Text = "Download";
+                btn_Action.Visible = true;
+                btn_Action.Enabled = true;
+            }
+            else
+            {
+                btn_Action.Visible = false;
+                btn_Action.Enabled = false;
+            }
+        }
+
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            PreviousPage();
+        }
+
+        private void Action_Clicked(object sender, EventArgs e)
+        {
+            PerformAction();
+        }
+
+        private void PerformAction()
+        {
+            if (tabControl_Main.SelectedTab.Text == "Updates")
+            {
+                btn_Action.Enabled = false;
+                DownloadPatches();
+            }
+        }
+
+        private void Next_Clicked(object sender, EventArgs e)
+        {
+            NextPage();
+        }
+
+        private void NextPage()
+        {
+            tabControl_Main.SelectedIndex += 1;
+        }
+
+        private void PreviousPage()
+        {
+            
+            tabControl_Main.SelectedIndex -= 1;
+        }
+
+        // Prevent users navigating TabControl via Ctrl+Tab and Ctrl+Shift+Tab.
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (ActiveControl is TabControl)
+            {
+                if (System.Convert.ToBoolean(keyData & Keys.Tab | Keys.Control))
+                    return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
