@@ -51,6 +51,7 @@ namespace PersonaPatchGen
                              EmulatorName = "Citra"
             }
         };
+
         public static List<string> downloads = new List<string>()
         {
             "./pnach/P3FES_hostFS.txt",
@@ -66,9 +67,9 @@ namespace PersonaPatchGen
         Platform selectedPlatform = new Platform();
         Game selectedGame = new Game();
         string selectedRegion = "";
-        string selectedTarget = "";
         string PPUHash = "";
-        bool downloadComplete = false;
+        bool patchesInitialized = false;
+        bool selectAll = true;
 
         public WizardForm()
         {
@@ -85,8 +86,16 @@ namespace PersonaPatchGen
         private void CreatePages()
         {
             rtb_1_Welcome.LoadFile(@"./Forms/Documents/Welcome.rtf");
-            rtb_2_Updates.LoadFile(@"./Forms/Documents/Updates.rtf");
+            ShowLastUpdated();
             rtb_3_Platform.LoadFile(@"./Forms/Documents/Platform.rtf");
+            rtb_4_Patches.LoadFile(@"./Forms/Documents/Patches.rtf");
+            rtb_5_Apply.LoadFile(@"./Forms/Documents/Apply.rtf");
+        }
+
+        private void ShowLastUpdated()
+        {
+            rtb_2_Updates.LoadFile(@"./Forms/Documents/Updates.rtf");
+            rtb_2_Updates.AppendText($"\r\nLast Updated: {File.GetLastWriteTime("./yml/patch.yml")}");
         }
 
         // Page 1: Game Select
@@ -147,6 +156,7 @@ namespace PersonaPatchGen
                 selectedGame = selectedPlatform.Games.Single(x =>
                     x.Name.Equals(comboBox_Game.SelectedItem.ToString())
                     && x.Region.Equals(selectedRegion));
+                ResetPatches();
                 btn_Next.Enabled = true;
             }
             else
@@ -180,6 +190,7 @@ namespace PersonaPatchGen
                 }
             }
             rtb_Updates_Log.AppendText($"\r\nDone");
+            ShowLastUpdated();
             btn_Next.Enabled = true;
         }
 
@@ -222,6 +233,8 @@ namespace PersonaPatchGen
 
         private void Checked_Changed(object sender, EventArgs e)
         {
+            ResetPatches();
+
             if (radio_Console.Checked)
             {
                 lbl_ExePath.Visible = false;
@@ -263,25 +276,104 @@ namespace PersonaPatchGen
                 btn_Back.Visible = true;
             else
                 btn_Back.Visible = false;
-            // Disable Next Button until conditions to advance are met
+            // Disable Next Button unless conditions to advance are met
+            btn_Next.Visible = true;
             btn_Next.Enabled = true;
             if (tabControl_Main.SelectedTab.Text == "Platform" && selectedPlatform.EmulatorName != "" && !radio_Console.Checked)
             {
                 if (!File.Exists(txt_ExePath.Text))
                     btn_Next.Enabled = false;
             }
+            else if (tabControl_Main.SelectedTab.Text == "Apply")
+                btn_Next.Visible = false;
             // Only show Action button when used by a page
+            btn_Action.Visible = false;
+            btn_Action.Enabled = false;
             if (tabControl_Main.SelectedTab.Text == "Updates")
             {
                 btn_Action.Text = "Download";
                 btn_Action.Visible = true;
                 btn_Action.Enabled = true;
             }
+            else if (tabControl_Main.SelectedTab.Text == "Patches")
+            {
+                btn_Action.Text = "Toggle All";
+                btn_Action.Visible = true;
+                btn_Action.Enabled = true;
+            }
+            else if (tabControl_Main.SelectedTab.Text == "Apply")
+            {
+                btn_Action.Text = "Apply Patches";
+                btn_Action.Visible = true;
+                btn_Action.Enabled = true;
+            }
+
+            // Reload patches if game platform or target platform have changed
+            // or load for the first time when Patches page has been reached
+            if (!patchesInitialized && tabControl_Main.SelectedTab.Text == "Patches")
+            {
+                SetupPatches();
+            }
+        }
+
+        // Select Patches Page
+
+        private void SetupPatches()
+        {
+            foreach (var patch in selectedGame.Patches)
+            {
+                chkListBox_Patches.Items.Add(patch.Name, patch.OnByDefault);
+            }
+            patchesInitialized = true;
+
+            if (radio_Console.Checked)
+            {
+                lbl_ConsoleIP.Visible = true;
+                txt_ConsoleIP.Visible = true;
+            }
             else
             {
-                btn_Action.Visible = false;
-                btn_Action.Enabled = false;
+                lbl_ConsoleIP.Visible = false;
+                txt_ConsoleIP.Visible = false;
             }
+
+        }
+
+        private void ResetPatches()
+        {
+            chkListBox_Patches.Items.Clear();
+            patchesInitialized = false;
+        }
+
+        private void SelectedPatch_Changed(object sender, EventArgs e)
+        {
+            if (chkListBox_Patches.SelectedItem != null &&
+                selectedGame.Patches.Any(x => x.Name.Equals(chkListBox_Patches.SelectedItem.ToString())))
+            {
+                var selectedPatch = selectedGame.Patches.Single(x => x.Name.Equals(chkListBox_Patches.SelectedItem.ToString()));
+
+                rtb_Patches_Log.Clear();
+                rtb_Patches_Log.AppendText($"{selectedPatch.Name} {selectedPatch.Version} by {selectedPatch.Author}\n\n" +
+                    $"{selectedPatch.Description}");
+            }
+        }
+
+        private void ToggleAllPatches()
+        {
+            for (int i = 0; i < chkListBox_Patches.Items.Count; i++)
+            {
+                if (selectAll)
+                    chkListBox_Patches.SetItemCheckState(i, CheckState.Checked);
+                else
+                    chkListBox_Patches.SetItemCheckState(i, CheckState.Unchecked);
+            }
+            selectAll = !selectAll;
+        }
+
+        // Apply Patches Page 
+        private void ApplyPatches()
+        {
+            throw new NotImplementedException();
         }
 
         private void Back_Clicked(object sender, EventArgs e)
@@ -300,6 +392,14 @@ namespace PersonaPatchGen
             {
                 btn_Action.Enabled = false;
                 DownloadPatches();
+            }
+            else if (tabControl_Main.SelectedTab.Text == "Patches")
+            {
+                ToggleAllPatches();
+            }
+            else if (tabControl_Main.SelectedTab.Text == "Apply")
+            {
+                ApplyPatches();
             }
         }
 
