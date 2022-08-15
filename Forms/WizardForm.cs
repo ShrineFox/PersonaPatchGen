@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DarkUI.Forms;
+using ShrineFox.IO;
 using ShrineFoxCom;
 
 namespace PersonaPatchGen
@@ -80,7 +81,17 @@ namespace PersonaPatchGen
         private void SetInitialAppearance()
         {
             tabControl_Main.HideTabs = true;
+            SetupLogging();
             CreatePages();
+        }
+
+        private void SetupLogging()
+        {
+            Output.LogPath = "PatchLog.txt";
+            Output.LogControl = rtb_Apply_Log;
+            #if DEBUG
+                Output.VerboseLogging = true;
+            #endif
         }
 
         private void CreatePages()
@@ -239,18 +250,48 @@ namespace PersonaPatchGen
             {
                 lbl_ExePath.Visible = false;
                 tlp_3_Platform_ExePath.Visible = false;
-                btn_Next.Enabled = true;
+                SetInputFileLabels();
             }
             else
             {
                 lbl_ExePath.Visible = true;
                 tlp_3_Platform_ExePath.Visible = true;
+                lbl_PKGPath.Visible = false;
+                tlp_3_Platform_PKGPath.Visible = false;
 
                 if (!File.Exists(txt_ExePath.Text))
                     btn_Next.Enabled = false;
                 else
                     btn_Next.Enabled = true;
             }
+        }
+
+        private void SetInputFileLabels()
+        {
+            if (selectedPlatform.ShortName != "3DS")
+            {
+                lbl_PKGPath.Visible = true;
+                tlp_3_Platform_PKGPath.Visible = true;
+            }
+            
+            switch (selectedPlatform.ShortName)
+            {
+                case "PS2":
+                    lbl_PKGPath.Text = ".ISO Path:";
+                    break;
+                case "PS3":
+                case "PSV":
+                    lbl_PKGPath.Text = "EBOOT.BIN Path:";
+                    break;
+                default:
+                    lbl_PKGPath.Text = "Base Game FPKG Path:";
+                    break;
+            }
+
+            if (!File.Exists(txt_PKGPath.Text) && (selectedPlatform.ShortName != "3DS"))
+                btn_Next.Enabled = false;
+            else
+                btn_Next.Enabled = true;
         }
 
         private void ExePath_TextChanged(object sender, EventArgs e)
@@ -279,10 +320,18 @@ namespace PersonaPatchGen
             // Disable Next Button unless conditions to advance are met
             btn_Next.Visible = true;
             btn_Next.Enabled = true;
-            if (tabControl_Main.SelectedTab.Text == "Platform" && selectedPlatform.EmulatorName != "" && !radio_Console.Checked)
+            if (tabControl_Main.SelectedTab.Text == "Platform")
             {
-                if (!File.Exists(txt_ExePath.Text))
-                    btn_Next.Enabled = false;
+                if (selectedPlatform.EmulatorName != "" && !radio_Console.Checked)
+                {
+                    if (!File.Exists(txt_ExePath.Text))
+                        btn_Next.Enabled = false;
+                }
+                else if (radio_Console.Checked)
+                {
+                    if (!File.Exists(txt_PKGPath.Text))
+                        btn_Next.Enabled = false;
+                }
             }
             else if (tabControl_Main.SelectedTab.Text == "Apply")
                 btn_Next.Visible = false;
@@ -330,6 +379,7 @@ namespace PersonaPatchGen
             {
                 lbl_ConsoleIP.Visible = true;
                 txt_ConsoleIP.Visible = true;
+                lbl_ExePath.Visible = false;
             }
             else
             {
@@ -373,7 +423,61 @@ namespace PersonaPatchGen
         // Apply Patches Page 
         private void ApplyPatches()
         {
-            throw new NotImplementedException();
+            btn_Action.Enabled = false;
+
+            switch(selectedPlatform.ShortName)
+            {
+                case "PS2":
+                    PatchPS2Game();
+                    break;
+                case "PS3":
+                    PatchPS3Game();
+                    break;
+                case "PS4":
+                    PatchPS4Game();
+                    break;
+                case "3DS":
+                    Patch3DSGame();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void Patch3DSGame()
+        {
+            /*
+            ApplyPatches();
+            FTPCodeBin();
+            */
+        }
+
+        private void PatchPS4Game()
+        {
+            /*
+            ExtractELF();
+            PatchELF();
+            CreateUpdate();
+            */
+        }
+
+        private void PatchPS3Game()
+        {
+            /*
+            CreateYML();
+            PatchEBOOT();
+            FTPEBOOT();
+            */
+        }
+
+        private void PatchPS2Game()
+        {
+            /*
+            ExtractISO();
+            CreatePNACH();
+            PatchExecutable();
+            RepackISO();
+            */
         }
 
         private void Back_Clicked(object sender, EventArgs e)
@@ -415,18 +519,15 @@ namespace PersonaPatchGen
 
         private void PreviousPage()
         {
-            
             tabControl_Main.SelectedIndex -= 1;
         }
 
         // Prevent users navigating TabControl via Ctrl+Tab and Ctrl+Shift+Tab.
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (ActiveControl is TabControl)
-            {
-                if (System.Convert.ToBoolean(keyData & Keys.Tab | Keys.Control))
-                    return true;
-            }
+            if (System.Convert.ToBoolean(keyData & Keys.Tab | Keys.Control))
+                return true;
+
             return base.ProcessCmdKey(ref msg, keyData);
         }
     }
