@@ -236,34 +236,42 @@ namespace PersonaPatchGen
             string path = ShrineFox.IO.WinFormsEvents.FilePath_Click($"Select your emulator's {selectedPlatform.EmulatorName}.exe");
             txt_ExePath.Text = path;
 
-            if (File.Exists(txt_ExePath.Text))
+            AdvanceIfEmuValid();
+        }
+
+        private void AdvanceIfEmuValid()
+        {
+            if (!radio_Console.Checked && File.Exists(txt_ExePath.Text))
                 btn_Next.Enabled = true;
             else
                 btn_Next.Enabled = false;
         }
 
+        private void PKGPath_Browse(object sender, EventArgs e)
+        {
+            string path = ShrineFox.IO.WinFormsEvents.FilePath_Click($"Select game file");
+            txt_PKGPath.Text = path;
+
+            AdvanceIfPKGValid();
+        }
+
+        private void AdvanceIfPKGValid()
+        {
+            if (radio_Console.Checked && File.Exists(txt_PKGPath.Text))
+                btn_Next.Enabled = true;
+            else
+                btn_Next.Enabled = false;
+        }
+
+        private void Path_TextChanged(object sender, EventArgs e)
+        {
+            AdvanceIfPKGValid();
+            AdvanceIfEmuValid();
+        }
+
         private void Checked_Changed(object sender, EventArgs e)
         {
             ResetPatches();
-
-            if (radio_Console.Checked)
-            {
-                lbl_ExePath.Visible = false;
-                tlp_3_Platform_ExePath.Visible = false;
-                SetInputFileLabels();
-            }
-            else
-            {
-                lbl_ExePath.Visible = true;
-                tlp_3_Platform_ExePath.Visible = true;
-                lbl_PKGPath.Visible = false;
-                tlp_3_Platform_PKGPath.Visible = false;
-
-                if (!File.Exists(txt_ExePath.Text))
-                    btn_Next.Enabled = false;
-                else
-                    btn_Next.Enabled = true;
-            }
         }
 
         private void SetInputFileLabels()
@@ -281,7 +289,8 @@ namespace PersonaPatchGen
                     break;
                 case "PS3":
                 case "PSV":
-                    lbl_PKGPath.Text = "EBOOT.BIN Path:";
+                case "PSP":
+                    lbl_PKGPath.Text = "EBOOT .BIN Path:";
                     break;
                 default:
                     lbl_PKGPath.Text = "Base Game FPKG Path:";
@@ -293,15 +302,6 @@ namespace PersonaPatchGen
             else
                 btn_Next.Enabled = true;
         }
-
-        private void ExePath_TextChanged(object sender, EventArgs e)
-        {
-            if (File.Exists(txt_ExePath.Text))
-                btn_Next.Enabled = true;
-            else
-                btn_Next.Enabled = false;
-        }
-
 
         // Changing Selected Tab
 
@@ -329,8 +329,11 @@ namespace PersonaPatchGen
                 }
                 else if (radio_Console.Checked)
                 {
-                    if (!File.Exists(txt_PKGPath.Text))
+                    if ((selectedPlatform.ShortName == "PS4" || selectedPlatform.ShortName == "PSV" || selectedPlatform.ShortName == "PS2" || selectedPlatform.ShortName == "PSP")
+                        && !File.Exists(txt_PKGPath.Text))
                         btn_Next.Enabled = false;
+                    else
+                        btn_Next.Enabled = true;
                 }
             }
             else if (tabControl_Main.SelectedTab.Text == "Apply")
@@ -393,6 +396,25 @@ namespace PersonaPatchGen
         {
             chkListBox_Patches.Items.Clear();
             patchesInitialized = false;
+
+            if (radio_Console.Checked)
+            {
+                lbl_ExePath.Visible = false;
+                tlp_3_Platform_ExePath.Visible = false;
+                SetInputFileLabels();
+            }
+            else
+            {
+                lbl_ExePath.Visible = true;
+                tlp_3_Platform_ExePath.Visible = true;
+                lbl_PKGPath.Visible = false;
+                tlp_3_Platform_PKGPath.Visible = false;
+
+                if (!File.Exists(txt_ExePath.Text))
+                    btn_Next.Enabled = false;
+                else
+                    btn_Next.Enabled = true;
+            }
         }
 
         private void SelectedPatch_Changed(object sender, EventArgs e)
