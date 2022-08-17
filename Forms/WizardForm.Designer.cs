@@ -81,6 +81,7 @@ namespace PersonaPatchGen
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.rtb_Apply_Log = new ShrineFox.IO.SFRichTextBox();
             this.rtb_5_Apply = new ShrineFox.IO.SFRichTextBox();
+            this.chk_Permutations = new System.Windows.Forms.CheckBox();
             this.tlp_Main.SuspendLayout();
             this.pnl_Main_Inner.SuspendLayout();
             this.tlp_Main_Inner.SuspendLayout();
@@ -709,6 +710,7 @@ namespace PersonaPatchGen
             this.tlp_4_Patches_Inner.Controls.Add(this.rtb_Patches_Log, 0, 2);
             this.tlp_4_Patches_Inner.Controls.Add(this.rtb_4_Patches, 1, 0);
             this.tlp_4_Patches_Inner.Controls.Add(this.chkListBox_Patches, 1, 1);
+            this.tlp_4_Patches_Inner.Controls.Add(this.chk_Permutations, 0, 1);
             this.tlp_4_Patches_Inner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_4_Patches_Inner.Location = new System.Drawing.Point(0, 0);
             this.tlp_4_Patches_Inner.Margin = new System.Windows.Forms.Padding(0);
@@ -878,6 +880,19 @@ namespace PersonaPatchGen
             this.rtb_5_Apply.TabIndex = 1;
             this.rtb_5_Apply.Text = "";
             // 
+            // chk_Permutations
+            // 
+            this.chk_Permutations.AutoSize = true;
+            this.chk_Permutations.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.chk_Permutations.Location = new System.Drawing.Point(3, 279);
+            this.chk_Permutations.Name = "chk_Permutations";
+            this.chk_Permutations.Size = new System.Drawing.Size(105, 21);
+            this.chk_Permutations.TabIndex = 6;
+            this.chk_Permutations.Text = "All Combos";
+            this.chk_Permutations.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.chk_Permutations.UseVisualStyleBackColor = true;
+            this.chk_Permutations.Visible = false;
+            // 
             // WizardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -911,6 +926,7 @@ namespace PersonaPatchGen
             this.tableLayoutPanel2.PerformLayout();
             this.tabPage_4_Patches.ResumeLayout(false);
             this.tlp_4_Patches_Inner.ResumeLayout(false);
+            this.tlp_4_Patches_Inner.PerformLayout();
             this.tabPage_5_Apply.ResumeLayout(false);
             this.tlp_5_Apply.ResumeLayout(false);
             this.tlp_5_Apply.PerformLayout();
@@ -970,6 +986,7 @@ namespace PersonaPatchGen
         private TableLayoutPanel tlp_3_Platform_PKGPath;
         private DarkUI.Controls.DarkButton btn_PKGPath;
         private DarkUI.Controls.DarkTextBox txt_PKGPath;
+        private CheckBox chk_Permutations;
     }
 }
 

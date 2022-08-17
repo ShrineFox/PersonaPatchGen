@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DarkUI.Forms;
@@ -83,15 +84,21 @@ namespace PersonaPatchGen
             tabControl_Main.HideTabs = true;
             SetupLogging();
             CreatePages();
+
+#if DEBUG
+            Output.VerboseLogging = true;
+            comboBox_Platform.SelectedIndex = comboBox_Platform.Items.IndexOf("PlayStation 4");
+            comboBox_Region.SelectedIndex = comboBox_Region.Items.IndexOf("USA");
+            comboBox_Game.SelectedIndex = comboBox_Game.Items.IndexOf("Persona 5 Dancing");
+            txt_PKGPath.Text = @"F:\Games\Persona\Backups\PS4\Persona 5 Dancing\USA\UP2611-CUSA12380_00-PERSONA5DUS00000-A0100-V0100.pkg";
+            btn_Next.Enabled = true;
+#endif
         }
 
         private void SetupLogging()
         {
             Output.LogPath = "PatchLog.txt";
             Output.LogControl = rtb_Apply_Log;
-            #if DEBUG
-                Output.VerboseLogging = true;
-            #endif
         }
 
         private void CreatePages()
@@ -161,6 +168,11 @@ namespace PersonaPatchGen
         }
 
         private void Game_Changed(object sender, EventArgs e)
+        {
+            UpdateSelectedGame();
+        }
+
+        private void UpdateSelectedGame()
         {
             if (selectedPlatform.Games.Any(x => x.Name.Equals(comboBox_Game.SelectedItem.ToString())))
             {
@@ -290,10 +302,17 @@ namespace PersonaPatchGen
                 case "PS3":
                 case "PSV":
                 case "PSP":
+                    chk_Permutations.Visible = true;
                     lbl_PKGPath.Text = "EBOOT .BIN Path:";
                     break;
-                default:
+                case "PS4":
+                    chk_Permutations.Visible = true;
                     lbl_PKGPath.Text = "Base Game FPKG Path:";
+                    break;
+                default:
+                    chk_Permutations.Visible = false;
+                    chk_Permutations.Checked = false;
+                    lbl_PKGPath.Text = "Input File Path:";
                     break;
             }
 
@@ -446,6 +465,7 @@ namespace PersonaPatchGen
         private void ApplyPatches()
         {
             btn_Action.Enabled = false;
+            rtb_Apply_Log.Clear();
 
             switch(selectedPlatform.ShortName)
             {
@@ -476,11 +496,53 @@ namespace PersonaPatchGen
 
         private void PatchPS4Game()
         {
-            /*
-            ExtractELF();
-            PatchELF();
-            CreateUpdate();
-            */
+            ExtractPS4Bins();
+            //ExtractPS4ELF();
+            //PatchELF();
+            //CreateUpdate();
+        }
+
+        private async void ExtractPS4Bins()
+        {
+            string outputDir = Path.Combine(Exe.Directory(), "extracted");
+            if (Directory.Exists(outputDir))
+                Directory.Delete(outputDir, true);
+            Directory.CreateDirectory(outputDir);
+
+            Exe.Run("Dependencies\\PS4\\PkgTool.exe", $"pkg_listentries \"{txt_PKGPath.Text}\"");
+            await Task.Delay(400);
+            int start = rtb_Apply_Log.Text.LastIndexOf('?');
+            string[] output = Regex.Replace(rtb_Apply_Log.Text.Substring(start).Replace("? Name\n", ""), " {2,}", "\t").Split('\n');
+            rtb_Apply_Log.Clear();
+
+            foreach (var line in output)
+            {
+                string[] splitLine = line.Split('\t');
+                switch (splitLine.Last())
+                {
+                    case "NPBIND_DAT":
+                        ExtractPKGFile(Convert.ToInt32(splitLine[3]), $"{outputDir}\\npbind.dat");
+                        break;
+                    case "NPTITLE_DAT":
+                        ExtractPKGFile(Convert.ToInt32(splitLine[3]), $"{outputDir}\\nptitle.dat");
+                        break;
+                    case "PARAM_SFO":
+                        ExtractPKGFile(Convert.ToInt32(splitLine[3]), $"{outputDir}\\param.sfo");
+                        break;
+                    default:
+                        break;
+                }
+            }
+            await Task.Delay(400);
+            if (File.Exists(".\\extracted\\nptitle.dat") && File.Exists(".\\extracted\\npbind.dat") && File.Exists(".\\extracted\\param.sfo"))
+                Output.Log("Successfully extracted files from Base Game FPKG!");
+            else
+                Output.Log("Failed to extract all of the following files from Base Game FPKG:\r\n\tnptitle.dat npbind.dat param.sfo");
+        }
+
+        private void ExtractPKGFile(int id, string outputPath)
+        {
+            Exe.Run("Dependencies\\PS4\\PkgTool.exe", $"pkg_extractentry --passcode 00000000000000000000000000000000 \"{txt_PKGPath.Text}\" {id} \"{outputPath}\"");
         }
 
         private void PatchPS3Game()

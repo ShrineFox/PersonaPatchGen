@@ -163,6 +163,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Amicitia.ico" />
+    <Content Include="Dependencies\ext\di.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\ext\libatrac9.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\ext\sc.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\ext\trp_compare_default.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\orbis-pub-cmd.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\LibOrbisPkg.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\PkgTool.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Forms\Images\Welcome.png" />
     <Content Include="pnach\P3FES_hostFS.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
