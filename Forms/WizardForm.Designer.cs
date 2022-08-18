@@ -74,14 +74,14 @@ namespace PersonaPatchGen
             this.rtb_Patches_Log = new ShrineFox.IO.SFRichTextBox();
             this.rtb_4_Patches = new ShrineFox.IO.SFRichTextBox();
             this.chkListBox_Patches = new System.Windows.Forms.CheckedListBox();
+            this.chk_Permutations = new System.Windows.Forms.CheckBox();
             this.tabPage_5_Apply = new System.Windows.Forms.TabPage();
             this.tlp_5_Apply = new System.Windows.Forms.TableLayoutPanel();
             this.txt_ConsoleIP = new DarkUI.Controls.DarkTextBox();
             this.lbl_ConsoleIP = new DarkUI.Controls.DarkLabel();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progressBar_Apply = new System.Windows.Forms.ProgressBar();
             this.rtb_Apply_Log = new ShrineFox.IO.SFRichTextBox();
             this.rtb_5_Apply = new ShrineFox.IO.SFRichTextBox();
-            this.chk_Permutations = new System.Windows.Forms.CheckBox();
             this.tlp_Main.SuspendLayout();
             this.pnl_Main_Inner.SuspendLayout();
             this.tlp_Main_Inner.SuspendLayout();
@@ -773,6 +773,19 @@ namespace PersonaPatchGen
             this.chkListBox_Patches.TabIndex = 5;
             this.chkListBox_Patches.SelectedIndexChanged += new System.EventHandler(this.SelectedPatch_Changed);
             // 
+            // chk_Permutations
+            // 
+            this.chk_Permutations.AutoSize = true;
+            this.chk_Permutations.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.chk_Permutations.Location = new System.Drawing.Point(3, 279);
+            this.chk_Permutations.Name = "chk_Permutations";
+            this.chk_Permutations.Size = new System.Drawing.Size(105, 21);
+            this.chk_Permutations.TabIndex = 6;
+            this.chk_Permutations.Text = "All Combos";
+            this.chk_Permutations.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.chk_Permutations.UseVisualStyleBackColor = true;
+            this.chk_Permutations.Visible = false;
+            // 
             // tabPage_5_Apply
             // 
             this.tabPage_5_Apply.Controls.Add(this.tlp_5_Apply);
@@ -792,7 +805,7 @@ namespace PersonaPatchGen
             this.tlp_5_Apply.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tlp_5_Apply.Controls.Add(this.txt_ConsoleIP, 1, 1);
             this.tlp_5_Apply.Controls.Add(this.lbl_ConsoleIP, 0, 1);
-            this.tlp_5_Apply.Controls.Add(this.progressBar1, 0, 3);
+            this.tlp_5_Apply.Controls.Add(this.progressBar_Apply, 0, 3);
             this.tlp_5_Apply.Controls.Add(this.rtb_Apply_Log, 0, 2);
             this.tlp_5_Apply.Controls.Add(this.rtb_5_Apply, 1, 0);
             this.tlp_5_Apply.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -834,14 +847,14 @@ namespace PersonaPatchGen
             this.lbl_ConsoleIP.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.lbl_ConsoleIP.Visible = false;
             // 
-            // progressBar1
+            // progressBar_Apply
             // 
-            this.tlp_5_Apply.SetColumnSpan(this.progressBar1, 2);
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(3, 367);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(550, 35);
-            this.progressBar1.TabIndex = 2;
+            this.tlp_5_Apply.SetColumnSpan(this.progressBar_Apply, 2);
+            this.progressBar_Apply.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progressBar_Apply.Location = new System.Drawing.Point(3, 367);
+            this.progressBar_Apply.Name = "progressBar_Apply";
+            this.progressBar_Apply.Size = new System.Drawing.Size(550, 35);
+            this.progressBar_Apply.TabIndex = 2;
             // 
             // rtb_Apply_Log
             // 
@@ -879,19 +892,6 @@ namespace PersonaPatchGen
             this.rtb_5_Apply.Size = new System.Drawing.Size(445, 101);
             this.rtb_5_Apply.TabIndex = 1;
             this.rtb_5_Apply.Text = "";
-            // 
-            // chk_Permutations
-            // 
-            this.chk_Permutations.AutoSize = true;
-            this.chk_Permutations.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.chk_Permutations.Location = new System.Drawing.Point(3, 279);
-            this.chk_Permutations.Name = "chk_Permutations";
-            this.chk_Permutations.Size = new System.Drawing.Size(105, 21);
-            this.chk_Permutations.TabIndex = 6;
-            this.chk_Permutations.Text = "All Combos";
-            this.chk_Permutations.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chk_Permutations.UseVisualStyleBackColor = true;
-            this.chk_Permutations.Visible = false;
             // 
             // WizardForm
             // 
@@ -977,7 +977,7 @@ namespace PersonaPatchGen
         private CheckedListBox chkListBox_Patches;
         private TabPage tabPage_5_Apply;
         private TableLayoutPanel tlp_5_Apply;
-        private ProgressBar progressBar1;
+        private ProgressBar progressBar_Apply;
         private ShrineFox.IO.SFRichTextBox rtb_Apply_Log;
         private ShrineFox.IO.SFRichTextBox rtb_5_Apply;
         private DarkUI.Controls.DarkLabel lbl_ConsoleIP;

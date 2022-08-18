@@ -16,6 +16,7 @@ namespace ShrineFoxCom
         public string SHA1 { get; set; } = "";
         public string CRC { get; set; } = "";
         public string ImageUrl { get; set; } = "";
+        public string PKGName { get; set; } = "";
         public List<GamePatch> Patches { get; set; } = new List<GamePatch>();
     }
 }

@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -108,6 +109,232 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Dependencies\PS4\GenGP4\CUSA12811-patch.gp4" />
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch.gp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_discmap.plt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_discmap_patch.plt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_module\libc.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_module\libSceAudioLatencyEstimation.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_module\libSceFace.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_module\libSceFaceTracker.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_module\libSceFios2.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_module\libSceHand.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_module\libSceHandTracker.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_module\libSceHeadTracker.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_module\libSceJobManager.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_module\libSceNpToolkit2.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_module\libSceS3DConversion.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\about\right.sprx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\app\playgo-chunk.dat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\playgo-chunk.dat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\playgo-chunk.sha">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\psreserved.dat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\trophy\trophy00.trp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA05877_0100\env.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA05877_0100\intro_skip.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA05877_0100\mod_support.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA05877_0100\mod_support2.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA05877_0100\no_trp.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA05877_0100\share_button.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA05877_0100\square.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA05877_0100\zzz.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA06638_0100\all_dlc.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA06638_0100\env.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA06638_0100\intro_skip.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA06638_0100\mod_support.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA06638_0100\mod_support2.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA06638_0100\no_trp.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA06638_0100\share_button.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA06638_0100\square.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA06638_0100\zzz.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA12380_0100\intro_skip.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA12380_0100\mod.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA12380_0100\no_trp.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA12380_0100\overlay.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA12380_0100\psvc.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA12636_0100\intro_skip.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA12636_0100\mod.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA12636_0100\no_trp.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA12636_0100\overlay.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA12636_0100\psvc.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA12811_0100\intro_skip.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA12811_0100\mod.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA12811_0100\no_trp.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA17416_0102\0505.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA17416_0102\all_dlc.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA17416_0102\bgm_ord.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA17416_0102\bgm_rnd.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA17416_0102\dlc_msg.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA17416_0102\env.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA17416_0102\intro_skip.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA17416_0102\mod.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA17416_0102\no_trp.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA17416_0102\p5_save.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA17416_0102\share_button.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA17416_0102\square.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\CUSA17416_0102\zzz.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\PCSE00764_0101\auto.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\PCSE00764_0101\intro_skip.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\PCSE00764_0101\mod.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\PCSE00764_0101\no_trp.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\PCSE01274_0100\auto.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\PCSE01274_0100\intro_skip.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\PCSE01274_0100\mod.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\PCSE01274_0100\no_trp.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\PCSE01275_0100\auto.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\PCSE01275_0100\intro_skip.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\PCSE01275_0100\mod.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\ppp\xdelta\PCSE01275_0100\no_trp.xdelta">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Forms\Documents\Apply.rtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -163,25 +390,64 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Amicitia.ico" />
-    <Content Include="Dependencies\ext\di.exe">
+    <Content Include="Dependencies\PS4\ext\di.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dependencies\ext\libatrac9.dll">
+    <Content Include="Dependencies\PS4\ext\libatrac9.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dependencies\ext\sc.exe">
+    <Content Include="Dependencies\PS4\ext\sc.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dependencies\ext\trp_compare_default.css">
+    <Content Include="Dependencies\PS4\ext\trp_compare_default.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dependencies\orbis-pub-cmd.exe">
+    <Content Include="Dependencies\PS4\GenGP4\CUSA12811-patch\sce_sys\changeinfo\changeinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\changeinfo\changeinfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\changeinfo\changeinfo_02.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\changeinfo\changeinfo_03.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\changeinfo\changeinfo_04.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\changeinfo\changeinfo_05.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\changeinfo\changeinfo_20.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\changeinfo\changeinfo_22.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\playgo-manifest.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Dependencies\PS4\LibOrbisPkg.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\orbis-pub-cmd.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\orbis-pub-prx.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Dependencies\PS4\PkgTool.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\ppp\patch.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\ppp\xdelta\conf.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\xdelta.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Forms\Images\Welcome.png" />
@@ -197,6 +463,9 @@
       <Project>{7640412a-7372-4925-b20c-0178d8818a8f}</Project>
       <Name>ShrineFox.IO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dependencies\PS4\GenGP4\CUSA17416-patch\USRDIR\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
