@@ -20,7 +20,6 @@ namespace PersonaPatchGen
 {
     public partial class WizardForm : DarkForm
     {
-        private BackgroundWorker backgroundWorker;
         // Setup Form
 
         public static List<Platform> platforms = new List<Platform>()
@@ -78,74 +77,13 @@ namespace PersonaPatchGen
 
         public WizardForm()
         {
-            //Form.CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
-            InitializeBackgroundWorker();
             SetInitialAppearance();
-        }
-
-        private void InitializeBackgroundWorker()
-        {
-            backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            backgroundWorker.DoWork += new DoWorkEventHandler(BackgroundWorker_DoWork);
-            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BackgroundWorker_RunWorkerCompleted);
-            backgroundWorker.ProgressChanged += new ProgressChangedEventHandler(BackgroundWorker_ProgressChanged);
-        }
-
-        // This event handler updates the progress bar.
-        private void BackgroundWorker_ProgressChanged(object sender,
-            ProgressChangedEventArgs e)
-        {
-            this.progressBar_Apply.Value = e.ProgressPercentage;
-            this.progressBar_Updates.Value = e.ProgressPercentage;
-        }
-
-        // This event handler deals with the results of the
-        // background operation.
-        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            // First, handle the case where an exception was thrown.
-            if (e.Error != null)
-            {
-                MessageBox.Show(e.Error.Message);
-            }
-            else if (e.Cancelled)
-            {
-                // Next, handle the case where the user canceled
-                // the operation.
-                // Note that due to a race condition in
-                // the DoWork event handler, the Cancelled
-                // flag may not have been set, even though
-                // CancelAsync was called.
-
-                // resultLabel.Text = "Canceled";
-            }
-            else
-            {
-                // Finally, handle the case where the operation
-                // succeeded.
-                
-                // resultLabel.Text = e.Result.ToString();
-            }
-        }
-
-
-        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            // Get the BackgroundWorker that raised this event.
-            BackgroundWorker worker = sender as BackgroundWorker;
-
-            // Assign the result of the computation
-            // to the Result property of the DoWorkEventArgs
-            // object. This is will be available to the
-            // RunWorkerCompleted eventhandler.
-            e.Result = PerformAction(worker);
         }
 
         private void SetInitialAppearance()
         {
             tabControl_Main.HideTabs = true;
-            SetupLogging();
             CreatePages();
 
 #if DEBUG
@@ -156,12 +94,6 @@ namespace PersonaPatchGen
             txt_PKGPath.Text = @"C:\Users\Ryan\Documents\GitHub\EP2475-CUSA12811_00-PERSONA4DEU00000-A0100-V0100.pkg";
             btn_Next.Enabled = true;
 #endif
-        }
-
-        private void SetupLogging()
-        {
-            Output.LogPath = "PatchLog.txt";
-            Output.LogControl = rtb_Apply_Log;
         }
 
         private void CreatePages()
@@ -251,34 +183,59 @@ namespace PersonaPatchGen
 
         // Page 2: Download Updates
 
-        private void DownloadPatches(BackgroundWorker worker)
+        private void DownloadPatches()
         {
             btn_Next.Enabled = false;
-
-            rtb_Updates_Log.AppendText($"\r\ndownload started {DateTime.Now}\r\n-------------------");
-            for (int i = 0; i < downloads.Count; i++)
+            new Thread(() =>
             {
-                string url = downloads[i];
+                Thread.CurrentThread.IsBackground = true;
 
-                using (var client = new WebClient())
+                DownloadLog($"\r\ndownload started {DateTime.Now}\r\n-------------------");
+                for (int i = 0; i < downloads.Count; i++)
                 {
-                    try
+                    string url = downloads[i];
+
+                    using (var client = new WebClient())
                     {
-                        client.DownloadFile(url.Replace("./", "https://shrinefox.com/"), url);
-                        rtb_Updates_Log.AppendText($"\r\nUpdated: {url}");
+                        try
+                        {
+                            client.DownloadFile(url.Replace("./", "https://shrinefox.com/"), url);
+                            DownloadLog($"\r\nUpdated: {url}");
+                        }
+                        catch
+                        {
+                            DownloadLog($"\r\nFailed to download: {url}");
+                            btn_Action.Text = "Try Again";
+                            btn_Action.Enabled = true;
+                        }
+                        var fraction = Decimal.Divide(i + 1, downloads.Count());
+                        int progress = Convert.ToInt32(fraction * 100);
+                        SetProgress(progress);
                     }
-                    catch
-                    {
-                        rtb_Updates_Log.AppendText($"\r\nFailed to download: {url}");
-                        btn_Action.Text = "Try Again";
-                        btn_Action.Enabled = true;
-                    }
-                    worker.ReportProgress((i/downloads.Count) * 100);
                 }
-            }
-            rtb_Updates_Log.AppendText($"\r\nDone");
+                DownloadLog($"\r\nDone!");
+                SetProgress(100);
+                SystemSounds.Exclamation.Play();
+            }).Start();
+
             ShowLastUpdated();
             btn_Next.Enabled = true;
+        }
+
+        private void DownloadLog(string msg)
+        {
+            rtb_Updates_Log.SyncUI(() => { rtb_Updates_Log.AppendText(msg); }, true);
+        }
+
+        private void PatchLog(string msg)
+        {
+            rtb_Patches_Log.SyncUI(() => { rtb_Patches_Log.AppendText(msg); }, true);
+        }
+
+        private void SetProgress(int percent)
+        {
+            progressBar_Apply.SyncUI(() => { progressBar_Apply.Value = percent; progressBar_Apply.Update(); }, true);
+            progressBar_Updates.SyncUI(() => { progressBar_Updates.Value = percent; progressBar_Updates.Update(); }, true);
         }
 
         // Page 3: Target Platform
@@ -526,33 +483,37 @@ namespace PersonaPatchGen
         }
 
         // Apply Patches Page 
-        private void ApplyPatches(BackgroundWorker worker)
+        private void ApplyPatches()
         {
             btn_Action.Enabled = false;
             btn_Back.Enabled = false;
             rtb_Apply_Log.Clear();
 
-            switch (selectedPlatform.ShortName)
+            new Thread(() =>
             {
-                case "PS2":
-                    PatchPS2Game();
-                    break;
-                case "PS3":
-                    PatchPS3Game();
-                    break;
-                case "PS4":
-                    PatchPS4Game(worker);
-                    break;
-                case "3DS":
-                    Patch3DSGame();
-                    break;
-                default:
-                    break;
-            }
+                Thread.CurrentThread.IsBackground = true;
+                switch (selectedPlatform.ShortName)
+                {
+                    case "PS2":
+                        PatchPS2Game();
+                        break;
+                    case "PS3":
+                        PatchPS3Game();
+                        break;
+                    case "PS4":
+                        PatchPS4Game();
+                        break;
+                    case "3DS":
+                        Patch3DSGame();
+                        break;
+                    default:
+                        break;
+                }
+                SetProgress(100);
+                SystemSounds.Exclamation.Play();
+                MessageBox.Show("Done!");
+            }).Start();
 
-            worker.ReportProgress(100);
-            SystemSounds.Exclamation.Play();
-            MessageBox.Show("Done!");
             btn_Action.Enabled = true;
             btn_Back.Enabled = true;
         }
@@ -565,9 +526,9 @@ namespace PersonaPatchGen
             */
         }
 
-        private void PatchPS4Game(BackgroundWorker worker)
+        private void PatchPS4Game()
         {
-            worker.ReportProgress(0);
+            SetProgress(0);
 
             if (Python3Installed())
             {
@@ -585,9 +546,9 @@ namespace PersonaPatchGen
 
                     for (int i = 0; i < patchCombos.Count; i++)
                     {
-                        Output.Log($"Creating PKG ({i + 1}/{patchCombos.Count()}, please be patient as this can take a very long time...");
+                        PatchLog($"Creating PKG ({i + 1}/{patchCombos.Count()}, please be patient as this can take a very long time...");
                         Thread.Sleep(200);
-                        CreateUpdatePKG(patchCombos[i], outputDir, worker);
+                        CreateUpdatePKG(patchCombos[i], outputDir);
                     }
                 }
             }
@@ -624,7 +585,7 @@ namespace PersonaPatchGen
             return false;
         }
 
-        private void CreateUpdatePKG(List<GamePatch> patchCombo, string outputDir, BackgroundWorker worker)
+        private void CreateUpdatePKG(List<GamePatch> patchCombo, string outputDir)
         {
             List<string> patchNames = new List<string>();
             List<string> patchShortNames = new List<string>();
@@ -634,9 +595,9 @@ namespace PersonaPatchGen
                 patchShortNames.Add(patch.ShortName);
             }
                 
-            Output.Log($"\t{String.Join("+", patchNames)}");
+            PatchLog($"\t{String.Join("+", patchNames)}");
 
-            worker.ReportProgress(1);
+            SetProgress(1);
 
             // Update path in gp4 to PKG
             string gp4Path = Path.Combine(Exe.Directory(), $"Dependencies\\PS4\\GenGP4\\{selectedGame.TitleID}-patch.gp4");
@@ -645,7 +606,7 @@ namespace PersonaPatchGen
                 if (gp4Text[i].Contains("app_path="))
                     gp4Text[i] = $"      app_path=\"{txt_PKGPath.Text}\"";
 
-            worker.ReportProgress(5);
+            SetProgress(5);
 
             // Create working dir from dependencies folder (updated with extracted files from base game PKG)
             string genGP4Dir = Path.Combine(Exe.Directory(), $"Dependencies\\PS4\\GenGP4\\{selectedGame.TitleID}-patch");
@@ -661,28 +622,28 @@ namespace PersonaPatchGen
             FileSys.CopyDir(genGP4Dir, patchDir);
             File.Copy(gp4Path, Path.Combine(Path.GetDirectoryName(patchDir), $"{selectedGame.TitleID}-patch.gp4"), true);
 
-            worker.ReportProgress(10);
+            SetProgress(10);
 
             // Patch EBOOT
             if (PatchEBOOTWithPPP(Path.Combine(genGP4Dir, "eboot.bin"), patchShortNames))
             {
-                Output.Log($"Patched EBOOT successfully.");
+                PatchLog($"Patched EBOOT successfully.");
 
-                worker.ReportProgress(20);
+                SetProgress(20);
 
                 // Update PKG description
                 File.WriteAllText($"{genGP4Dir}\\sce_sys\\changeinfo\\changeinfo.xml", $"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<changeinfo>\n  <changes app_ver=\"01.01\">\n    <![CDATA[\nPatched using ShrineFox's PersonaPatcher2 Software\n(based on zarroboogs's ppp):\n\n - {string.Join("\n - ", patchNames)}\n    ]]>\n  </changes>\n</changeinfo>");
-                Output.Log("Edited Update PKG description.");
+                PatchLog("Edited Update PKG description.");
 
-                worker.ReportProgress(30);
+                SetProgress(30);
 
                 if (BuildPKG(patchShortNames, genGP4Dir))
-                    Output.Log("Update PKG created successfully!");
+                    PatchLog("Update PKG created successfully!");
                 else
-                    Output.Log("Update PKG creation failed.");
+                    PatchLog("Update PKG creation failed.");
             }
             else
-                Output.Log("Patched EBOOT creation failed.");
+                PatchLog("Patched EBOOT creation failed.");
         }
 
         private bool BuildPKG(List<string> patchShortNames, string genGP4Dir)
@@ -712,11 +673,11 @@ namespace PersonaPatchGen
                     File.Delete(newEbootPath);
                 File.Move(Path.Combine(genGP4Dir, "eboot.bin"), newEbootPath);
                 string newPKGPath = Path.Combine(outputPKG, selectedGame.PKGName);
-                Output.Log("Patched EBOOT moved to Output folder");
+                PatchLog("Patched EBOOT moved to Output folder");
                 if (File.Exists(newPKGPath))
                     File.Delete(newPKGPath);
                 File.Move(pkgPath, newPKGPath);
-                Output.Log("Update PKG moved to Output folder");
+                PatchLog("Update PKG moved to Output folder");
                 return true;
             }
             return false;
@@ -783,10 +744,10 @@ namespace PersonaPatchGen
 
         private void ExtractPKG(string outputDir)
         {
-            Output.Log("Extracting PKG. Please wait, this may take a long time. This step only needs to be performed once...");
+            PatchLog("Extracting PKG. Please wait, this may take a long time. This step only needs to be performed once...");
             Thread.Sleep(200);
             Exe.Run("Dependencies\\PS4\\orbis-pub-cmd.exe", $"img_extract --passcode 00000000000000000000000000000000 \"{txt_PKGPath.Text}\" \"{outputDir}\"");
-            Output.Log("Successfully extracted files from Base Game FPKG!");
+            PatchLog("Successfully extracted files from Base Game FPKG!");
         }
 
         private void PatchPS3Game()
@@ -815,15 +776,15 @@ namespace PersonaPatchGen
 
         private void Action_Clicked(object sender, EventArgs e)
         {
-            backgroundWorker.RunWorkerAsync();
+            PerformAction();
         }
 
-        private bool PerformAction(BackgroundWorker worker)
+        private bool PerformAction()
         {
             if (tabControl_Main.SelectedTab.Text == "Updates")
             {
                 btn_Action.Enabled = false;
-                DownloadPatches(worker);
+                DownloadPatches();
             }
             else if (tabControl_Main.SelectedTab.Text == "Patches")
             {
@@ -831,7 +792,7 @@ namespace PersonaPatchGen
             }
             else if (tabControl_Main.SelectedTab.Text == "Apply")
             {
-                ApplyPatches(worker);
+                ApplyPatches();
             }
 
             return true;
