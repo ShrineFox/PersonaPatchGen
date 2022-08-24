@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace ShrineFoxCom
+namespace PersonaPatchGen
 {
     public partial class Patches
     {
