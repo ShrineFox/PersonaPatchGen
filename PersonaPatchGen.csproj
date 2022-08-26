@@ -79,25 +79,34 @@
     <Compile Include="Classes\Games\PSVGames.cs" />
     <Compile Include="Classes\Patch.cs" />
     <Compile Include="Classes\Platform.cs" />
-    <Compile Include="Forms\WizardForm.cs">
+    <Compile Include="Forms\InstallWizard\Classes\Events\Event_Procedures.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\WizardForm.Designer.cs">
+    <Compile Include="Forms\InstallWizard\Classes\Events\FormControl_Events.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstallWizard\Classes\Patching\3DS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstallWizard\Classes\Patching\PS2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstallWizard\Classes\Patching\PS3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstallWizard\Classes\Patching\PS4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstallWizard\WizardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstallWizard\WizardForm.Designer.cs">
       <DependentUpon>WizardForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\WizardForm.resx">
+    <EmbeddedResource Include="Forms\InstallWizard\WizardForm.resx">
       <DependentUpon>WizardForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -335,19 +344,19 @@
     <None Include="Dependencies\PS4\ppp\xdelta\PCSE01275_0100\no_trp.xdelta">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Forms\Documents\Apply.rtf">
+    <None Include="Forms\InstallWizard\Documents\Apply.rtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Forms\Documents\Patches.rtf">
+    <None Include="Forms\InstallWizard\Documents\Patches.rtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Forms\Documents\Platform.rtf">
+    <None Include="Forms\InstallWizard\Documents\Platform.rtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Forms\Documents\Updates.rtf">
+    <None Include="Forms\InstallWizard\Documents\Updates.rtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Forms\Documents\Welcome.rtf">
+    <None Include="Forms\InstallWizard\Documents\Welcome.rtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
@@ -450,7 +459,7 @@
     <Content Include="Dependencies\xdelta.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Forms\Images\Welcome.png" />
+    <Content Include="Forms\InstallWizard\Images\Welcome.png" />
     <Content Include="pnach\P3FES_hostFS.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

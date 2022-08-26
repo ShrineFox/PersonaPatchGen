@@ -31,16 +31,16 @@ namespace PersonaPatchGen
 
         private void CreatePages()
         {
-            rtb_1_Welcome.LoadFile(@"./Forms/Documents/Welcome.rtf");
+            rtb_1_Welcome.LoadFile(@"./Forms/InstallWizard/Documents/Welcome.rtf");
             ShowLastUpdated();
-            rtb_3_Platform.LoadFile(@"./Forms/Documents/Platform.rtf");
-            rtb_4_Patches.LoadFile(@"./Forms/Documents/Patches.rtf");
-            rtb_5_Apply.LoadFile(@"./Forms/Documents/Apply.rtf");
+            rtb_3_Platform.LoadFile(@"./Forms/InstallWizard/Documents/Platform.rtf");
+            rtb_4_Patches.LoadFile(@"./Forms/InstallWizard/Documents/Patches.rtf");
+            rtb_5_Apply.LoadFile(@"./Forms/InstallWizard/Documents/Apply.rtf");
         }
 
         private void ShowLastUpdated()
         {
-            rtb_2_Updates.LoadFile(@"./Forms/Documents/Updates.rtf");
+            rtb_2_Updates.LoadFile(@"./Forms/InstallWizard/Documents/Updates.rtf");
             rtb_2_Updates.AppendText($"\r\nLast Updated: {File.GetLastWriteTime("./yml/patch.yml")}");
         }
 
