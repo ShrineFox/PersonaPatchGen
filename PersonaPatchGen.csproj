@@ -118,7 +118,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Dependencies\PS4\GenGP4\CUSA12811-patch.gp4" />
+    <None Include="Dependencies\PS4\GenGP4\CUSA12811-patch.gp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch.gp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

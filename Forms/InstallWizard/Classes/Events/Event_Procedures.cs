@@ -335,6 +335,7 @@ namespace PersonaPatchGen
             btn_Back.Enabled = false;
             rtb_Apply_Log.Clear();
 
+            Thread.Sleep(200);
             new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;
@@ -410,6 +411,9 @@ namespace PersonaPatchGen
             }
             else if (tabControl_Main.SelectedTab.Text == "Apply")
             {
+                if (chk_Permutations.Checked)
+                    if (!WinFormsmDialogs.YesNoMsgBox("Generate All Patch Combos?", "You have checked the \"All Combos\" box, which means every possible combination of selected patches will be output. This can take a lot of time and use a lot of resources and disk space, are you sure you'd like to continue?"))
+                        return false;
                 ApplyPatches();
             }
 
@@ -424,9 +428,27 @@ namespace PersonaPatchGen
                 pythonPath = Python.FoundLocations.First().Value;
                 return true;
             }
-            else
-                MessageBox.Show("Please install Python 3.0 or higher in order to apply these patches.");
             return false;
+        }
+
+        private void DownloadPython3()
+        {
+            string downloadURL = "https://www.python.org/ftp/python/3.6.8/python-3.6.8-amd64.exe";
+            if (!Environment.Is64BitOperatingSystem)
+                downloadURL = "https://www.python.org/ftp/python/3.6.8/python-3.6.8.exe";
+
+            using (var client = new WebClient())
+            {
+                try
+                {
+                    client.DownloadFile(downloadURL, "pythonsetup.exe");
+                    Exe.Run("pythonsetup.exe");
+                }
+                catch
+                {
+                    MessageBox.Show("Failed to download and install Python automatically.");
+                }
+            }
         }
     }
 }

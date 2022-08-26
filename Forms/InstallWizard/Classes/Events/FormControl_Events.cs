@@ -54,12 +54,12 @@ namespace PersonaPatchGen
 
         private void DownloadLog(string msg)
         {
-            rtb_Updates_Log.SyncUI(() => { rtb_Updates_Log.AppendText(msg); }, true);
+            rtb_Updates_Log.SyncUI(() => { rtb_Updates_Log.AppendText($"\n[{DateTime.Now.ToString("MM/dd/yyyy HH:mm tt")}] {msg}"); }, true);
         }
 
         private void PatchLog(string msg)
         {
-            rtb_Patches_Log.SyncUI(() => { rtb_Patches_Log.AppendText(msg); }, true);
+            rtb_Patches_Log.SyncUI(() => { rtb_Apply_Log.AppendText($"\n[{DateTime.Now.ToString("MM/dd/yyyy HH:mm tt")}] {msg}"); }, true);
         }
 
         private void SetProgress(int percent)

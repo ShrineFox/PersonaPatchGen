@@ -20,7 +20,10 @@ namespace PersonaPatchGen
 
             if (Python3Installed())
             {
-                if (selectedGame.ShortName != "P5R" || CheckP5RUpdateFiles())
+                SetProgress(1);
+                PatchLog($"Beginning patching process, please wait...");
+
+                if (selectedGame.ShortName != "P5R" || (selectedGame.ShortName == "P5R" && CheckP5RUpdateFiles()))
                 {
                     string outputDir = Path.Combine(Exe.Directory(), $"Output\\{selectedGame.TitleID}");
                     if (!Directory.Exists($"{outputDir}\\base_extracted"))
@@ -28,17 +31,23 @@ namespace PersonaPatchGen
 
                     if (!File.Exists($"{outputDir}\\base_extracted\\Sc0\\nptitle.dat") || !File.Exists($"{outputDir}\\base_extracted\\Sc0\\npbind.dat")
                         || !File.Exists($"{outputDir}\\base_extracted\\Sc0\\param.sfo") || !File.Exists($"{outputDir}\\base_extracted\\Image0\\eboot.bin"))
-                        ExtractPKG(outputDir);
+                        ExtractPKG(outputDir + "\\base_extracted");
 
                     List<List<GamePatch>> patchCombos = GetPatchCombos();
 
                     for (int i = 0; i < patchCombos.Count; i++)
                     {
-                        PatchLog($"Creating PKG ({i + 1}/{patchCombos.Count()}, please be patient as this can take a very long time...");
+                        PatchLog($"Creating Fake Update PKG ({i + 1}/{patchCombos.Count()}), please be patient as this can take a very long time...");
                         Thread.Sleep(200);
                         CreateUpdatePKG(patchCombos[i], outputDir);
                     }
                 }
+            }
+            else
+            {
+                if (WinFormsmDialogs.YesNoMsgBox("Install Python 3?", "An installation of Python 3.0.0 or higher was not detected on the system. " +
+                    "It is required to complete the patching operation. Would you like to download and install it now?"))
+                    DownloadPython3();
             }
         }
 
@@ -78,9 +87,9 @@ namespace PersonaPatchGen
                 patchShortNames.Add(patch.ShortName);
             }
 
-            PatchLog($"\t{String.Join("+", patchNames)}");
+            PatchLog($"\tPatching EBOOT with: {String.Join(", ", patchNames)}");
 
-            SetProgress(1);
+            SetProgress(10);
 
             // Update path in gp4 to PKG
             string gp4Path = Path.Combine(Exe.Directory(), $"Dependencies\\PS4\\GenGP4\\{selectedGame.TitleID}-patch.gp4");
@@ -88,39 +97,43 @@ namespace PersonaPatchGen
             for (int i = 0; i < gp4Text.Count(); i++)
                 if (gp4Text[i].Contains("app_path="))
                     gp4Text[i] = $"      app_path=\"{txt_PKGPath.Text}\"";
+            File.WriteAllText(gp4Path, string.Join("\n", gp4Text));
 
-            SetProgress(5);
+            SetProgress(20);
 
             // Create working dir from dependencies folder (updated with extracted files from base game PKG)
             string genGP4Dir = Path.Combine(Exe.Directory(), $"Dependencies\\PS4\\GenGP4\\{selectedGame.TitleID}-patch");
             string patchDir = Path.Combine(outputDir, $"{selectedGame.TitleID}-patch");
-            if (File.Exists($"{outputDir}\\base_extracted\\Sc0\\nptitle.dat"))
-                File.Copy($"{outputDir}\\base_extracted\\Sc0\\nptitle.dat", Path.Combine(genGP4Dir, "sce_sys\\nptitle.dat"), true);
-            if (File.Exists($"{outputDir}\\base_extracted\\Sc0\\npbind.dat"))
-                File.Copy($"{outputDir}\\base_extracted\\Sc0\\npbind.dat", Path.Combine(genGP4Dir, "sce_sys\\npbind.dat"), true);
-            if (File.Exists($"{outputDir}\\base_extracted\\Sc0\\param.sfo"))
-                File.Copy($"{outputDir}\\base_extracted\\Sc0\\param.sfo", Path.Combine(genGP4Dir, "sce_sys\\param.sfo"), true);
-            if (File.Exists($"{outputDir}\\base_extracted\\Image0\\eboot.bin"))
-                File.Copy($"{outputDir}\\base_extracted\\Image0\\eboot.bin", Path.Combine(genGP4Dir, "eboot.bin"), true);
             FileSys.CopyDir(genGP4Dir, patchDir);
-            File.Copy(gp4Path, Path.Combine(Path.GetDirectoryName(patchDir), $"{selectedGame.TitleID}-patch.gp4"), true);
 
-            SetProgress(10);
+            if (File.Exists($"{outputDir}\\base_extracted\\Sc0\\nptitle.dat"))
+                File.Copy($"{outputDir}\\base_extracted\\Sc0\\nptitle.dat", Path.Combine(patchDir, "sce_sys\\nptitle.dat"), true);
+            if (File.Exists($"{outputDir}\\base_extracted\\Sc0\\npbind.dat"))
+                File.Copy($"{outputDir}\\base_extracted\\Sc0\\npbind.dat", Path.Combine(patchDir, "sce_sys\\npbind.dat"), true);
+            if (File.Exists($"{outputDir}\\base_extracted\\Sc0\\param.sfo"))
+                File.Copy($"{outputDir}\\base_extracted\\Sc0\\param.sfo", Path.Combine(patchDir, "sce_sys\\param.sfo"), true);
+            if (File.Exists($"{outputDir}\\base_extracted\\Image0\\eboot.bin"))
+                File.Copy($"{outputDir}\\base_extracted\\Image0\\eboot.bin", Path.Combine(patchDir, "eboot.bin"), true);
+
+            string tempGp4Path = Path.Combine(Path.GetDirectoryName(patchDir), $"{selectedGame.TitleID}-patch.gp4");
+            File.Copy(gp4Path, tempGp4Path, true);
+
+            SetProgress(30);
 
             // Patch EBOOT
-            if (PatchEBOOTWithPPP(Path.Combine(genGP4Dir, "eboot.bin"), patchShortNames))
+            if (PatchEBOOTWithPPP(Path.Combine(patchDir, "eboot.bin"), patchShortNames))
             {
                 PatchLog($"Patched EBOOT successfully.");
 
-                SetProgress(20);
+                SetProgress(50);
 
                 // Update PKG description
                 File.WriteAllText($"{genGP4Dir}\\sce_sys\\changeinfo\\changeinfo.xml", $"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<changeinfo>\n  <changes app_ver=\"01.01\">\n    <![CDATA[\nPatched using ShrineFox's PersonaPatcher2 Software\n(based on zarroboogs's ppp):\n\n - {string.Join("\n - ", patchNames)}\n    ]]>\n  </changes>\n</changeinfo>");
                 PatchLog("Edited Update PKG description.");
 
-                SetProgress(30);
+                SetProgress(70);
 
-                if (BuildPKG(patchShortNames, genGP4Dir))
+                if (BuildPKG(patchShortNames, tempGp4Path))
                     PatchLog("Update PKG created successfully!");
                 else
                     PatchLog("Update PKG creation failed.");
@@ -129,18 +142,19 @@ namespace PersonaPatchGen
                 PatchLog("Patched EBOOT creation failed.");
         }
 
-        private bool BuildPKG(List<string> patchShortNames, string genGP4Dir)
+        private bool BuildPKG(List<string> patchShortNames, string tempGp4Path)
         {
             // (Re)create temp dir
-            string tempPKGDir = Path.Combine(genGP4Dir, "Dependencies\\PS4\\temp");
-            Exe.CloseProcess("orbis-pub-cmd", true);
+            string tempPKGDir = Path.Combine(Path.GetDirectoryName(tempGp4Path), "temp");
+            string buildDir = Path.Combine(Path.GetDirectoryName(tempGp4Path), $"{selectedGame.TitleID}-patch");
             if (Directory.Exists(tempPKGDir))
                 Directory.Delete(tempPKGDir, true);
             Directory.CreateDirectory(tempPKGDir);
 
             // Generate new PKG file
+            Exe.CloseProcess("orbis-pub-cmd", true);
             string args = $"img_create --oformat pkg --tmp_path ./temp ./{selectedGame.TitleID}-patch.gp4 ./temp";
-            Exe.Run(Path.Combine(Exe.Directory(), $"Dependencies\\PS4\\orbis-pub-cmd.exe"), args, true, Path.GetDirectoryName(genGP4Dir));
+            Exe.Run(Path.Combine(Exe.Directory(), $"Dependencies\\PS4\\orbis-pub-cmd.exe"), args, true, Path.GetDirectoryName(buildDir));
 
             // Copy PKG/EBOOT to Output folder
             string pkgPath = $"Dependencies\\PS4\\{selectedGame.PKGName}";
@@ -154,7 +168,7 @@ namespace PersonaPatchGen
                 string newEbootPath = Path.Combine(outputEboot, "eboot.bin");
                 if (File.Exists(newEbootPath))
                     File.Delete(newEbootPath);
-                File.Move(Path.Combine(genGP4Dir, "eboot.bin"), newEbootPath);
+                File.Move(Path.Combine(buildDir, "eboot.bin"), newEbootPath);
                 string newPKGPath = Path.Combine(outputPKG, selectedGame.PKGName);
                 PatchLog("Patched EBOOT moved to Output folder");
                 if (File.Exists(newPKGPath))
