@@ -12,9 +12,9 @@ namespace PersonaPatchGen
             "Encounter BGM Random Order", "Encounter BGM in Order", "Fix Script Printing Functions" };
 
         private static List<GamePatch> P5Patches = Patches.ParseYML(
-            ".\\yml\\patch.yml");
+            ".\\Dependencies\\PS3\\patch.yml");
         private static List<GamePatch> P5EXPatches = Patches.ParseYML(
-            ".\\yml\\p5_ex\\patches\\patch.yml")
+            ".\\Dependencies\\PS3\\p5_ex\\patches\\patch.yml")
             .Concat(P5Patches.Where(x => !disabledEXPatches.Any(y => y.Equals(x.Name))))
             .ToList();
 

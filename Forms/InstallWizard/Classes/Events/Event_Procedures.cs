@@ -21,6 +21,7 @@ namespace PersonaPatchGen
 
 #if DEBUG
             Output.VerboseLogging = true;
+            Output.LogControl = rtb_Patches_Log;
             comboBox_Platform.SelectedIndex = comboBox_Platform.Items.IndexOf("PlayStation 4");
             comboBox_Region.SelectedIndex = comboBox_Region.Items.IndexOf("EUR");
             comboBox_Game.SelectedIndex = comboBox_Game.Items.IndexOf("Persona 4 Dancing");
@@ -41,7 +42,7 @@ namespace PersonaPatchGen
         private void ShowLastUpdated()
         {
             rtb_2_Updates.LoadFile(@"./Forms/InstallWizard/Documents/Updates.rtf");
-            rtb_2_Updates.AppendText($"\r\nLast Updated: {File.GetLastWriteTime("./yml/patch.yml")}");
+            rtb_2_Updates.AppendText($"\r\nLast Updated: {File.GetLastWriteTime("./Dependencies/PS3/patch.yml")}");
         }
 
         private void UpdateSelectedPlatform()
@@ -113,7 +114,8 @@ namespace PersonaPatchGen
                     {
                         try
                         {
-                            client.DownloadFile(url.Replace("./", "https://shrinefox.com/"), url);
+                            client.DownloadFile(url.Replace("./", "https://shrinefox.com/"), 
+                                url.Replace("./pnach", "./Dependencies/PS2").Replace("./yml", "./Dependencies/PS3"));
                             DownloadLog($"\r\nUpdated: {url}");
                         }
                         catch

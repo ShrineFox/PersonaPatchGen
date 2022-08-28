@@ -121,6 +121,9 @@
     <None Include="Dependencies\PS4\GenGP4\CUSA12811-patch.gp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA12811-patch\sce_sys\param.sfo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch.gp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -371,28 +374,28 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="yml\lipsum\patch.yml">
+    <None Include="Dependencies\PS3\lipsum\patch.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="yml\p5_ex\hardware\p5ex\conf.yml">
+    <None Include="Dependencies\PS3\p5_ex\hardware\p5ex\conf.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="yml\p5_ex\hardware\p5ex\mod.sprx">
+    <None Include="Dependencies\PS3\p5_ex\hardware\p5ex\mod.sprx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="yml\p5_ex\hardware\patches\patch.yml">
+    <None Include="Dependencies\PS3\p5_ex\hardware\patches\patch.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="yml\p5_ex\patches\patch.yml">
+    <None Include="Dependencies\PS3\p5_ex\patches\patch.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="yml\p5_ex\USRDIR\config.yml">
+    <None Include="Dependencies\PS3\p5_ex\USRDIR\config.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="yml\p5_ex\USRDIR\mod.sprx">
+    <None Include="Dependencies\PS3\p5_ex\USRDIR\mod.sprx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="yml\patch.yml">
+    <None Include="Dependencies\PS3\patch.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -458,14 +461,17 @@
     <Content Include="Dependencies\PS4\ppp\xdelta\conf.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Dependencies\PS4\ppp\unfself.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dependencies\xdelta.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Forms\InstallWizard\Images\Welcome.png" />
-    <Content Include="pnach\P3FES_hostFS.txt">
+    <Content Include="Dependencies\PS2\P3FES_hostFS.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="pnach\P4_hostFS.txt">
+    <Content Include="Dependencies\PS2\P4_hostFS.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
