@@ -26,16 +26,16 @@ namespace PersonaPatchGen
             SetProgress(25);
 
             List<GamePatch> selectedPatches = GetPatchCombos().FirstOrDefault();
-            string dirPath = Path.Combine(Exe.Directory(), $"Dependencies\\3DS\\{selectedGame.ShortName}");
+            string dirPath = Path.Combine(Exe.Directory(), $"Dependencies\\3DS\\{selectedGame.ShortName}\\ModCpk");
             string outputDir = Path.Combine(Exe.Directory(), $"Output\\3DS\\{selectedGame.ShortName}\\{selectedRegion}");
             bool canonNames = selectedPatches.Any(x => x.ShortName.Equals("canonNames"));
-            bool modCpk = selectedPatches.Any(x => x.ShortName.Equals("modCpk"));
             bool useCustomNames = false;
             bool isPQ2 = (selectedGame.ShortName == "PQ2");
             PQNameForm form = new PQNameForm(isPQ2);
 
             if (canonNames)
             {
+                dirPath += "\\CanonNames";
                 // Get custom character names
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)
@@ -43,14 +43,16 @@ namespace PersonaPatchGen
                 else
                     PatchLog("User cancelled custom name entry, using default names.");
             }
-            else
-                dirPath += "\\ModCpk";
 
             SetProgress(50);
 
             // Copy dependencies to output + dummy mod.cpk
             FileSys.CopyDir(dirPath, outputDir);
-            File.Copy(Path.Combine(Exe.Directory(), "Dependencies\\3DS\\mod.cpk"), Path.Combine(outputDir, "mod.cpk"));
+            string canonNamesDir = Path.Combine(outputDir, "CanonNames");
+            if (!canonNames)
+                if (Directory.Exists(canonNamesDir))
+                    Directory.Delete(canonNamesDir, true);
+            File.Copy(Path.Combine(Exe.Directory(), "Dependencies\\3DS\\mod.cpk"), Path.Combine(outputDir, "mod.cpk"), true);
 
             PatchLog("Copied selected patch files to Output.");
 
@@ -100,17 +102,17 @@ namespace PersonaPatchGen
 
         private void WriteFirstLastNames(BinaryWriter writer, string firstName, string lastName)
         {
-            writer.Write(firstName);
-            if (firstName.Length < 14)
-                writer.Write(" ");
-            writer.Write(lastName);
+            writer.Write(Encoding.ASCII.GetBytes(firstName));
+            if (firstName.Length < 14 || lastName.Length < 14)
+                writer.Write(Encoding.ASCII.GetBytes(" "));
+            writer.Write(Encoding.ASCII.GetBytes(lastName));
             writer.Write(new byte[28 - (writer.BaseStream.Position - (startPos + lengthWritten))]);
             lengthWritten += 28;
         }
 
         private void WriteSingleName(BinaryWriter writer, string name)
         {
-            writer.Write(name);
+            writer.Write(Encoding.ASCII.GetBytes(name));
             writer.Write(new byte[14 - (writer.BaseStream.Position - (startPos + lengthWritten))]);
             lengthWritten += 14;
         }

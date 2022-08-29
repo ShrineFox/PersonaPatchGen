@@ -368,7 +368,7 @@ namespace PersonaPatchGen
             this.Controls.Add(this.tlp_PQNames_Main);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PQNameForm";
-            this.Text = "PQNameForm";
+            this.Text = "Set Leader Names...";
             this.tlp_PQNames_Main.ResumeLayout(false);
             this.groupBox_PQNames.ResumeLayout(false);
             this.tlp_PQ1_Names.ResumeLayout(false);

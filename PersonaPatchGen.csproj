@@ -38,9 +38,6 @@
     <ApplicationIcon>Amicitia.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
-      <HintPath>packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
-    </Reference>
     <Reference Include="DarkUI, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\DarkUI.2.0.2\lib\DarkUI.dll</HintPath>
     </Reference>
@@ -58,9 +55,6 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WinFormAnimation, Version=1.6.0.4, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
-      <HintPath>packages\WinFormAnimation.1.6.0.4\lib\net40\WinFormAnimation.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Game.cs" />
@@ -79,34 +73,27 @@
     <Compile Include="Classes\Games\PSVGames.cs" />
     <Compile Include="Classes\Patch.cs" />
     <Compile Include="Classes\Platform.cs" />
-    <Compile Include="Forms\InstallWizard\Classes\Events\Event_Procedures.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InstallWizard\Classes\Events\FormControl_Events.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InstallWizard\Classes\Patching\3DS.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InstallWizard\Classes\Patching\PS2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InstallWizard\Classes\Patching\PS3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InstallWizard\Classes\Patching\PS4.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InstallWizard\WizardForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\InstallWizard\Classes\Events\Event_Procedures.cs" />
+    <Compile Include="Forms\InstallWizard\Classes\Events\FormControl_Events.cs" />
+    <Compile Include="Forms\InstallWizard\Classes\Patching\3DS.cs" />
+    <Compile Include="Forms\InstallWizard\Classes\Patching\PS2.cs" />
+    <Compile Include="Forms\InstallWizard\Classes\Patching\PS3.cs" />
+    <Compile Include="Forms\InstallWizard\Classes\Patching\PS4.cs" />
+    <Compile Include="Forms\InstallWizard\WizardForm.cs" />
     <Compile Include="Forms\InstallWizard\WizardForm.Designer.cs">
       <DependentUpon>WizardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PQNameForm\PQNameForm.cs" />
+    <Compile Include="Forms\PQNameForm\PQNameForm.Designer.cs">
+      <DependentUpon>PQNameForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\InstallWizard\WizardForm.resx">
       <DependentUpon>WizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PQNameForm\PQNameForm.resx">
+      <DependentUpon>PQNameForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -118,6 +105,33 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Dependencies\3DS\mod.cpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\3DS\PQ2\ModCpk\CanonNames\code.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\3DS\PQ2\ModCpk\CanonNames\exheader.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\3DS\PQ2\ModCpk\code.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\3DS\PQ2\ModCpk\exheader.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\3DS\PQ\ModCpk\CanonNames\code.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\3DS\PQ\ModCpk\CanonNames\exheader.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\3DS\PQ\ModCpk\code.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\3DS\PQ\ModCpk\exheader.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Dependencies\PS4\GenGP4\CUSA12811-patch.gp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
