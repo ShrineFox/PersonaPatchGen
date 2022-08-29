@@ -10,12 +10,42 @@ namespace PersonaPatchGen
     {
         private void PatchPS2Game()
         {
-            /*
             ExtractISO();
             CreatePNACH();
-            PatchExecutable();
-            RepackISO();
-            */
+            if (radio_Console.Checked)
+            {
+                PatchExecutable();
+                RepackISO();
+            }
+            else
+            {
+                UpdatePCSX2Settings();
+            }
+        }
+
+        private void ExtractISO()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CreatePNACH()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PatchExecutable()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void RepackISO()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void UpdatePCSX2Settings()
+        {
+            throw new NotImplementedException();
         }
     }
 }
