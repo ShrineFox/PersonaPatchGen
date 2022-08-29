@@ -59,7 +59,7 @@ namespace PersonaPatchGen
 
         private void PatchLog(string msg)
         {
-            rtb_Patches_Log.SyncUI(() => { rtb_Apply_Log.AppendText($"\n[{DateTime.Now.ToString("MM/dd/yyyy HH:mm tt")}] {msg}"); }, true);
+            rtb_Apply_Log.SyncUI(() => { rtb_Apply_Log.AppendText($"\n[{DateTime.Now.ToString("MM/dd/yyyy HH:mm tt")}] {msg}"); }, true);
         }
 
         private void SetProgress(int percent)

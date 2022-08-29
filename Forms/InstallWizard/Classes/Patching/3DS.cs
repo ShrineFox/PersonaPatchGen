@@ -1,35 +1,118 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ShrineFox.IO;
 
 namespace PersonaPatchGen
 {
     public partial class WizardForm
     {
+        private static long startPos = 5619776;
+        int lengthWritten = 0;
+
         private void Patch3DSGame()
         {
             Apply3DSPatches();
-            FTPCodeBin();
+            //FTPCodeBin();
         }
 
         private void Apply3DSPatches()
         {
             // Copy code.bin to Output
+            SetProgress(25);
 
             List<GamePatch> selectedPatches = GetPatchCombos().FirstOrDefault();
-            if (selectedPatches.Any(x => x.ShortName.Equals("canonNames")))
-            {
-                // Modify code.bin with names
-                using (PQNameForm form = new PQNameForm())
-                {
-                    form.Show();
+            string dirPath = Path.Combine(Exe.Directory(), $"Dependencies\\3DS\\{selectedGame.ShortName}");
+            string outputDir = Path.Combine(Exe.Directory(), $"Output\\3DS\\{selectedGame.ShortName}\\{selectedRegion}");
+            bool canonNames = selectedPatches.Any(x => x.ShortName.Equals("canonNames"));
+            bool modCpk = selectedPatches.Any(x => x.ShortName.Equals("modCpk"));
+            bool useCustomNames = false;
+            bool isPQ2 = (selectedGame.ShortName == "PQ2");
+            PQNameForm form = new PQNameForm(isPQ2);
 
-                    //string p3HeroName = form.P3HERO;
-                }
+            if (canonNames)
+            {
+                // Get custom character names
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                    useCustomNames = true;
+                else
+                    PatchLog("User cancelled custom name entry, using default names.");
             }
+            else
+                dirPath += "\\ModCpk";
+
+            SetProgress(50);
+
+            // Copy dependencies to output + dummy mod.cpk
+            FileSys.CopyDir(dirPath, outputDir);
+            File.Copy(Path.Combine(Exe.Directory(), "Dependencies\\3DS\\mod.cpk"), Path.Combine(outputDir, "mod.cpk"));
+
+            PatchLog("Copied selected patch files to Output.");
+
+            SetProgress(75);
+
+            // Modify code.bin with names
+            string codeBinPath = Path.Combine(outputDir, "code.bin");
+            using (FileSys.WaitForFile(codeBinPath)) { }
+            if (useCustomNames)
+            {
+                using (FileStream stream = new FileStream(codeBinPath, FileMode.Open))
+                    using (BinaryWriter writer = new BinaryWriter(stream))
+                {
+                    if (isPQ2)
+                        startPos = 6390016;
+                    writer.BaseStream.Position = startPos;
+                    if (!isPQ2)
+                    {
+                        WriteFirstLastNames(writer, form.P3HERO_First, form.P3HERO_Last);
+                        WriteSingleName(writer, form.P3HERO_Last);
+                        WriteSingleName(writer, form.P3HERO_First);
+                        WriteFirstLastNames(writer, form.P4HERO_First, form.P4HERO_Last);
+                        WriteSingleName(writer, form.P4HERO_Last);
+                        WriteSingleName(writer, form.P4HERO_First);
+                    }
+                    else
+                    {
+                        WriteSingleName(writer, form.P5HERO_First);
+                        WriteSingleName(writer, form.P5HERO_Last);
+                        WriteFirstLastNames(writer, form.P5HERO_First, form.P5HERO_Last);
+                        WriteSingleName(writer, form.P4HERO_First);
+                        WriteSingleName(writer, form.P4HERO_Last);
+                        WriteFirstLastNames(writer, form.P4HERO_First, form.P4HERO_Last);
+                        WriteSingleName(writer, form.P3HERO_First);
+                        WriteSingleName(writer, form.P3HERO_Last);
+                        WriteFirstLastNames(writer, form.P3HERO_First, form.P3HERO_Last);
+                        WriteSingleName(writer, form.P3PHERO_First);
+                        WriteSingleName(writer, form.P3PHERO_Last);
+                        WriteFirstLastNames(writer, form.P3PHERO_First, form.P3PHERO_Last);
+                    }
+                }
+                PatchLog("Edited code.bin with your preferred custom names.");
+            }
+
+            SetProgress(100);
+        }
+
+        private void WriteFirstLastNames(BinaryWriter writer, string firstName, string lastName)
+        {
+            writer.Write(firstName);
+            if (firstName.Length < 14)
+                writer.Write(" ");
+            writer.Write(lastName);
+            writer.Write(new byte[28 - (writer.BaseStream.Position - (startPos + lengthWritten))]);
+            lengthWritten += 28;
+        }
+
+        private void WriteSingleName(BinaryWriter writer, string name)
+        {
+            writer.Write(name);
+            writer.Write(new byte[14 - (writer.BaseStream.Position - (startPos + lengthWritten))]);
+            lengthWritten += 14;
         }
 
         private void FTPCodeBin()

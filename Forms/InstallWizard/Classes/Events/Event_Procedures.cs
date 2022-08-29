@@ -337,6 +337,8 @@ namespace PersonaPatchGen
             btn_Back.Enabled = false;
             rtb_Apply_Log.Clear();
 
+            DateTime startedAt = DateTime.Now;
+
             Thread.Sleep(200);
             new Thread(() =>
             {
@@ -360,8 +362,11 @@ namespace PersonaPatchGen
                 }
                 SetProgress(100);
                 SystemSounds.Exclamation.Play();
-                MessageBox.Show("Done!");
             }).Start();
+
+            DateTime endedAt = DateTime.Now;
+            TimeSpan duration = endedAt - startedAt;
+            PatchLog($"Completed in: {duration}");
 
             btn_Action.Enabled = true;
             btn_Back.Enabled = true;
@@ -416,6 +421,8 @@ namespace PersonaPatchGen
                 if (chk_Permutations.Checked)
                     if (!WinFormsmDialogs.YesNoMsgBox("Generate All Patch Combos?", "You have checked the \"All Combos\" box, which means every possible combination of selected patches will be output. This can take a lot of time and use a lot of resources and disk space, are you sure you'd like to continue?"))
                         return false;
+                if (chkListBox_Patches.CheckedItems.Count < 1)
+                    return false;
                 ApplyPatches();
             }
 
