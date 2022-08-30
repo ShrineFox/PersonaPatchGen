@@ -68,6 +68,9 @@ namespace PersonaPatchGen
                 {
                     if (isPQ2)
                         startPos = 6390016;
+                    else
+                        startPos = 5619776;
+                    lengthWritten = 0;
                     writer.BaseStream.Position = startPos;
                     if (!isPQ2)
                     {
