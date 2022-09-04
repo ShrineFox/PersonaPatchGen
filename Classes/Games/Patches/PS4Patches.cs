@@ -7,6 +7,47 @@ namespace PersonaPatchGen
 {
     public partial class Patches
     {
+        public static List<GamePatch> PS4P5USAPatches = new List<GamePatch>()
+        {
+            new GamePatch() { Name = "Mod Support", ShortName = "mod", Author = "zarroboogs",
+                Description = "File replacement via (from highest to lowest load priority):" +
+                                "<ul><li>/data/p5/mod.cpk</li>" +
+                                "<li>/data/p5/mod1.cpk</li>" +
+                                "<li>/data/p5/mod2.cpk</li>" +
+                                "<li>/data/p5/mod3.cpk</li>" +
+                                "<li>USRDIR/mod.cpk (in pkg)</li></ul>",
+                AlwaysOn = true,
+                OnByDefault = true
+            },
+            new GamePatch() { Name = "Intro Skip", ShortName = "intro_skip", Author = "zarroboogs",
+                Description = "Skips boot logos and intro movie (can still be viewed in Thieves Den)",
+                AlwaysOn = true,
+                OnByDefault = true
+            },
+            new GamePatch() { Name = "Enable Share Button", ShortName = "share_button", Author = "zarroboogs",
+                Description = "Enables video recording and screenshots using share button.",
+                AlwaysOn = true,
+                OnByDefault = true
+            },
+            new GamePatch() { Name = "Global Square Menu", ShortName = "square", Author = "zarroboogs",
+                Description = "Enables the square menu globally (e.g. in Thieves Den and in Velvet Room or during " +
+                                "events or game sections which disable it).",
+                AlwaysOn = true,
+                OnByDefault = true
+            },
+            // Optional Patches
+            new GamePatch() { Name = "Disable Trophies", ShortName = "no_trp", Author = "zarroboogs",
+                Description = "Prevents the game from unlocking trophies.",
+            },
+            new GamePatch() { Name = "Content Enabler", ShortName = "dlc", Author = "zarroboogs",
+                Description = "Enables on-disc content and skips DLC unlock messages. " +
+                                "<b>Important:</b> Saves created while this patch is enabled will be unable to load " +
+                                "if you remove the patch in the future.",
+            }
+        };
+
+        public static List<GamePatch> PS4P5EURPatches = PS4P5USAPatches;
+
         public static List<GamePatch> PS4P5RUSAPatches = new List<GamePatch>()
         {
             new GamePatch() { Name = "Mod Support", ShortName = "mod", Author = "zarroboogs", 

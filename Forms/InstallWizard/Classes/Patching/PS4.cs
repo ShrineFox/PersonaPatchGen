@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibOrbisPkg;
+using LibOrbisPkg.PKG;
+using System.IO.MemoryMappedFiles;
+using LibOrbisPkg.Util;
+using LibOrbisPkg.PFS;
 
 namespace PersonaPatchGen
 {
@@ -70,10 +75,95 @@ namespace PersonaPatchGen
 
         private void ExtractPKG(string tempDir)
         {
-            PatchLog("Extracting PKG. Please wait, this may take a long time. This step only needs to be performed once per game...");
-            Thread.Sleep(200);
-            Exe.Run("Dependencies\\PS4\\orbis-pub-cmd.exe", $"img_extract --passcode 00000000000000000000000000000000 \"{txt_PKGPath.Text}\" \"{tempDir}\"");
-            PatchLog("Successfully extracted files from Base Game FPKG!");
+            PatchLog("Extracting required files from Base Game PKG...");
+            
+            var pkgPath = txt_PKGPath.Text;
+            var passcode = "00000000000000000000000000000000";
+
+            ExtractEntries(pkgPath, tempDir, passcode, new List<string>() { "NPBIND_DAT", "NPTITLE_DAT" });
+            
+            Pkg pkg;
+            var mmf = MemoryMappedFile.CreateFromFile(pkgPath);
+            using (var s = mmf.CreateViewStream(0, 0, MemoryMappedFileAccess.Read))
+            {
+                pkg = new PkgReader(s).ReadPkg();
+            }
+            var ekpfs = Crypto.ComputeKeys(pkg.Header.content_id, passcode, 1);
+            var outerPfsOffset = (long)pkg.Header.pfs_image_offset;
+            using (var acc = mmf.CreateViewAccessor(outerPfsOffset, (long)pkg.Header.pfs_image_size, MemoryMappedFileAccess.Read))
+            {
+                var outerPfs = new PfsReader(acc, pkg.Header.pfs_flags, ekpfs);
+                var inner = new PfsReader(new PFSCReader(outerPfs.GetFile("pfs_image.dat").GetView()));
+                ExtractInParallel(inner, tempDir, new List<string>() { "eboot.bin" });
+            }
+
+            PatchLog("Successfully extracted Base Game files!");
+        }
+
+        private void ExtractEntries(string pkgPath, string outPath, string passcode, List<string> list)
+        {
+            using (var file = File.OpenRead(pkgPath))
+            {
+                var pkg = new PkgReader(file).ReadPkg();
+                Console.WriteLine("Offset      Size      Flags      Index Enc? Name");
+                var i = 0;
+                foreach (var meta in pkg.Metas.Metas.Where(x => list.Any(y => x.id.ToString().Contains(y))))
+                {
+                    uint index = meta.KeyIndex;
+                    ExtractEntry(pkg, file, index, passcode, Path.Combine(outPath, meta.id.ToString().Replace("_",".").ToLower()));
+                }
+            }
+        }
+
+        private void ExtractEntry(Pkg pkg, FileStream pkgFile, uint index, string passcode, string outPath)
+        {
+            using (var outFile = File.Create(outPath))
+            {
+                var meta = pkg.Metas.Metas[Convert.ToInt32(index)];
+                outFile.SetLength(meta.DataSize);
+                var totalEntrySize = meta.Encrypted ? (meta.DataSize + 15) & ~15 : meta.DataSize;
+                if (meta.Encrypted)
+                {
+                    var entry = new SubStream(pkgFile, meta.DataOffset, totalEntrySize);
+                    var tmp = new byte[totalEntrySize];
+                    entry.Read(tmp, 0, tmp.Length);
+                    tmp = meta.KeyIndex == 3 ? Entry.Decrypt(tmp, pkg, meta) : Entry.Decrypt(tmp, pkg.Header.content_id, passcode, meta);
+                    outFile.Write(tmp, 0, (int)meta.DataSize);
+                }
+                new SubStream(pkgFile, meta.DataOffset, totalEntrySize).CopyTo(outFile);
+            }
+            
+        }
+
+        private static void ExtractInParallel(PfsReader inner, string outPath, List<string> fileList)
+        {
+            Parallel.ForEach(
+              inner.GetAllFiles().Where(x => fileList.Any(y => x.FullName.Contains(y))),
+              () => new byte[0x10000],
+              (f, _, buf) =>
+              {
+                  var size = f.size;
+                  long pos = 0;
+                  var view = f.GetView();
+                  var fullName = f.FullName;
+                  var path = Path.Combine(outPath, fullName.Replace('/', Path.DirectorySeparatorChar).Substring(1));
+                  var dir = path.Substring(0, path.LastIndexOf(Path.DirectorySeparatorChar));
+                  Directory.CreateDirectory(dir);
+                  using (var file = File.OpenWrite(path))
+                  {
+                      file.SetLength(size);
+                      while (size > 0)
+                      {
+                          var toRead = (int)Math.Min(size, buf.Length);
+                          view.Read(pos, buf, 0, toRead);
+                          file.Write(buf, 0, toRead);
+                          pos += toRead;
+                          size -= toRead;
+                      }
+                  }
+                  return buf;
+              },
+              x => { });
         }
 
         private void CreateUpdatePKG(List<GamePatch> patchCombo, string tempDir)

@@ -9,6 +9,16 @@ namespace PersonaPatchGen
     {
         public static List<Game> PS4Games = new List<Game>()
         {
+            new Game() { Name = "Persona 5", ShortName = "P5", TitleID = "CUSA05877", Region = "USA",
+                CRC32 = "", MD5 = "", SHA1 = "",
+                Patches = Patches.PS4P5USAPatches,
+                PKGName = "UP2611-CUSA05877_00-PERSONA512345678-A0101-V0100.pkg",
+                ImageUrl = "https://www.mobygames.com/images/covers/l/407242-persona-5-playstation-4-manual.jpg" },
+            new Game() { Name = "Persona 5", ShortName = "P5", TitleID = "CUSA06638", Region = "EUR",
+                CRC32 = "", MD5 = "", SHA1 = "",
+                Patches = Patches.PS4P5EURPatches,
+                PKGName = "EP4062-CUSA06638_00-PERSONA512345678-A0101-V0100.pkg",
+                ImageUrl = "https://www.mobygames.com/images/covers/l/407242-persona-5-playstation-4-manual.jpg" },
             new Game() { Name = "Persona 5 Royal", ShortName = "P5R", TitleID = "CUSA17416", Region = "USA",
                 CRC32 = "E2452B1C", MD5 = "E669D7F9F9AB3989A2ED9D8D615547BD", SHA1 = "25ABE8EFBD0D0CB7307927CD6AE6F1BB5ED506F4",
                 Patches = Patches.PS4P5RUSAPatches,

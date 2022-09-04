@@ -73,17 +73,33 @@
     <Compile Include="Classes\Games\PSVGames.cs" />
     <Compile Include="Classes\Patch.cs" />
     <Compile Include="Classes\Platform.cs" />
-    <Compile Include="Forms\InstallWizard\Classes\Events\Event_Procedures.cs" />
-    <Compile Include="Forms\InstallWizard\Classes\Events\FormControl_Events.cs" />
-    <Compile Include="Forms\InstallWizard\Classes\Patching\3DS.cs" />
-    <Compile Include="Forms\InstallWizard\Classes\Patching\PS2.cs" />
-    <Compile Include="Forms\InstallWizard\Classes\Patching\PS3.cs" />
-    <Compile Include="Forms\InstallWizard\Classes\Patching\PS4.cs" />
-    <Compile Include="Forms\InstallWizard\WizardForm.cs" />
+    <Compile Include="Forms\InstallWizard\Classes\Events\Event_Procedures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstallWizard\Classes\Events\FormControl_Events.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstallWizard\Classes\Patching\3DS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstallWizard\Classes\Patching\PS2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstallWizard\Classes\Patching\PS3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstallWizard\Classes\Patching\PS4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstallWizard\WizardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\InstallWizard\WizardForm.Designer.cs">
       <DependentUpon>WizardForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PQNameForm\PQNameForm.cs" />
+    <Compile Include="Forms\PQNameForm\PQNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\PQNameForm\PQNameForm.Designer.cs">
       <DependentUpon>PQNameForm.cs</DependentUpon>
     </Compile>
@@ -132,7 +148,40 @@
     <None Include="Dependencies\3DS\PQ\ModCpk\exheader.bin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA05877-patch.gp4" />
+    <None Include="Dependencies\PS4\GenGP4\CUSA05877-patch\sce_sys\param.sfo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA05877-patch\USRDIR\mod.cpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA06638-patch.gp4" />
+    <None Include="Dependencies\PS4\GenGP4\CUSA06638-patch\sce_sys\param.sfo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA06638-patch\USRDIR\mod.cpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA12380-patch.gp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA12380-patch\data\mod.cpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA12380-patch\sce_sys\param.sfo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA12636-patch.gp4" />
+    <None Include="Dependencies\PS4\GenGP4\CUSA12636-patch\data\mod.cpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA12636-patch\sce_sys\param.sfo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Dependencies\PS4\GenGP4\CUSA12811-patch.gp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA12811-patch\data\mod.cpk">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Dependencies\PS4\GenGP4\CUSA12811-patch\sce_sys\param.sfo">
@@ -196,6 +245,51 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\trophy\trophy00.trp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch\USRDIR\mod.cpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17419-patch.gp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_module\libc.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_module\libSceAudioLatencyEstimation.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_module\libSceFace.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_module\libSceFaceTracker.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_module\libSceFios2.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_module\libSceHand.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_module\libSceHandTracker.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_module\libSceHeadTracker.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_module\libSceJobManager.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_module\libSceNpToolkit2.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_module\libSceS3DConversion.prx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_sys\param.sfo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA17419-patch\USRDIR\mod.cpk">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Dependencies\PS4\ppp\xdelta\CUSA05877_0100\env.xdelta">
@@ -430,6 +524,18 @@
     <Content Include="Dependencies\PS4\ext\trp_compare_default.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA05877-patch\sce_sys\changeinfo\changeinfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA06638-patch\sce_sys\changeinfo\changeinfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA12380-patch\sce_sys\changeinfo\changeinfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA12636-patch\sce_sys\changeinfo\changeinfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dependencies\PS4\GenGP4\CUSA12811-patch\sce_sys\changeinfo\changeinfo.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -455,6 +561,27 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\playgo-manifest.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_sys\changeinfo\changeinfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_sys\changeinfo\changeinfo_02.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_sys\changeinfo\changeinfo_03.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_sys\changeinfo\changeinfo_04.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_sys\changeinfo\changeinfo_05.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_sys\changeinfo\changeinfo_20.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Dependencies\PS4\GenGP4\CUSA17419-patch\sce_sys\changeinfo\changeinfo_22.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Dependencies\PS4\LibOrbisPkg.dll">
@@ -490,13 +617,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LibOrbisPkg\LibOrbisPkg\LibOrbisPkg.csproj">
+      <Project>{b053f491-ff0f-4cbb-b03b-520591bb0441}</Project>
+      <Name>LibOrbisPkg</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShrineFox.IO\ShrineFox.IO.csproj">
       <Project>{7640412a-7372-4925-b20c-0178d8818a8f}</Project>
       <Name>ShrineFox.IO</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dependencies\PS4\GenGP4\CUSA17416-patch\USRDIR\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
