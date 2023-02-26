@@ -1,4 +1,5 @@
 # PersonaPatchGen
+![](https://i.imgur.com/Fi1VuNo.png)
 Offline patch applicator for the following games:
 - Persona 3 (PS2/PCSX2, PSP)
 - Persona 4 (PS2/PCSX2, Vita)
