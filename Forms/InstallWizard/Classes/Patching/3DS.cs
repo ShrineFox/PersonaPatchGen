@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PersonaGameLib;
 using ShrineFox.IO;
 
 namespace PersonaPatchGen
@@ -26,7 +27,7 @@ namespace PersonaPatchGen
             SetProgress(25);
 
             List<GamePatch> selectedPatches = GetPatchCombos().FirstOrDefault();
-            string dirPath = Path.Combine(Exe.Directory(), $"Dependencies\\3DS\\{selectedGame.ShortName}\\ModCpk");
+            string dirPath = Path.Combine(Exe.Directory(), $"App_Data\\modcpk\\{selectedGame.ShortName}");
             string outputDir = Path.Combine(Exe.Directory(), $"Output\\3DS\\{selectedGame.ShortName}\\{selectedRegion}");
             bool canonNames = selectedPatches.Any(x => x.ShortName.Equals("canonNames"));
             bool useCustomNames = false;
@@ -35,7 +36,7 @@ namespace PersonaPatchGen
 
             if (canonNames)
             {
-                dirPath += "\\CanonNames";
+                dirPath += "\\canonNames";
                 // Get custom character names
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)

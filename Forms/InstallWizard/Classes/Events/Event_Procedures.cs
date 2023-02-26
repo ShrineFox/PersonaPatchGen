@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PersonaGameLib;
 
 namespace PersonaPatchGen
 {
@@ -16,6 +17,7 @@ namespace PersonaPatchGen
     {
         private void SetInitialAppearance()
         {
+            // Hide tabs of tabview and set up tab contents
             tabControl_Main.HideTabs = true;
             CreatePages();
 
@@ -30,28 +32,37 @@ namespace PersonaPatchGen
 #endif
         }
 
+        /// <summary>
+        /// Applies rich text description to each "page" of the tabview.
+        /// </summary>
         private void CreatePages()
         {
             rtb_1_Welcome.LoadFile(@"./Forms/InstallWizard/Documents/Welcome.rtf");
-            ShowLastUpdated();
+            //ShowLastUpdated();
             rtb_3_Platform.LoadFile(@"./Forms/InstallWizard/Documents/Platform.rtf");
             rtb_4_Patches.LoadFile(@"./Forms/InstallWizard/Documents/Patches.rtf");
             rtb_5_Apply.LoadFile(@"./Forms/InstallWizard/Documents/Apply.rtf");
         }
 
+        /// <summary>
+        /// Display date/time when updatable files were last changed.
+        /// </summary>
         private void ShowLastUpdated()
         {
-            rtb_2_Updates.LoadFile(@"./Forms/InstallWizard/Documents/Updates.rtf");
-            rtb_2_Updates.AppendText($"\r\nLast Updated: {File.GetLastWriteTime("./Dependencies/PS3/patch.yml")}");
+            //rtb_2_Updates.LoadFile(@"./Forms/InstallWizard/Documents/Updates.rtf");
+            //rtb_2_Updates.AppendText($"\r\nLast Updated: {File.GetLastWriteTime("./Dependencies/PS3/patch.yml")}");
         }
 
+        /// <summary>
+        /// Update variable for selected platform, and toggle whether user can select region.
+        /// </summary>
         private void UpdateSelectedPlatform()
         {
             selectedPlatform = new Platform();
 
-            if (platforms.Any(x => x.Name.Equals(comboBox_Platform.SelectedItem.ToString())))
+            if (PersonaGames.Platforms.Any(x => x.Name.Equals(comboBox_Platform.SelectedItem.ToString())))
             {
-                selectedPlatform = platforms.Single(x => x.Name.Equals(comboBox_Platform.SelectedItem.ToString()));
+                selectedPlatform = PersonaGames.Platforms.Single(x => x.Name.Equals(comboBox_Platform.SelectedItem.ToString()));
                 comboBox_Region.Visible = true; lbl_Region.Visible = true;
                 SetupTargetPlatformPage();
             }
@@ -63,6 +74,9 @@ namespace PersonaPatchGen
             btn_Next.Enabled = false;
         }
 
+        /// <summary>
+        /// Update selected region variable, and toggle whether user can select game.
+        /// </summary>
         private void UpdateSelectedRegion()
         {
             comboBox_Game.Items.Clear();
@@ -84,6 +98,9 @@ namespace PersonaPatchGen
             btn_Next.Enabled = false;
         }
 
+        /// <summary>
+        /// Update currently selected game, and toggle whether user can proceed to next tab.
+        /// </summary>
         private void UpdateSelectedGame()
         {
             if (selectedPlatform.Games.Any(x => x.Name.Equals(comboBox_Game.SelectedItem.ToString())))
@@ -98,8 +115,29 @@ namespace PersonaPatchGen
                 btn_Next.Enabled = false;
         }
 
+        /// <summary>
+        /// List of paths to updatable files on remote web server, no longer needed.
+        /// </summary>
+        public static List<string> downloads = new List<string>()
+        {
+            /*
+            "./pnach/P3FES_hostFS.txt",
+            "./pnach/P4_hostFS.txt",
+            "./yml/patch.yml",
+            "./yml/p5_ex/patches/patch.yml",
+            "./yml/p5_ex/USRDIR/config.yml",
+            "./yml/p5_ex/USRDIR/mod.sprx",
+            "./yml/p5_ex/hardware/p5ex/conf.yml",
+            "./yml/p5_ex/hardware/p5ex/mod.sprx"
+            */
+        };
+
+        /// <summary>
+        /// Download latest patches from remote web server.
+        /// </summary>
         private void DownloadPatches()
         {
+            /*
             btn_Next.Enabled = false;
             new Thread(() =>
             {
@@ -136,8 +174,12 @@ namespace PersonaPatchGen
 
             ShowLastUpdated();
             btn_Next.Enabled = true;
+            */
         }
 
+        /// <summary>
+        /// Update options on target platform tab depending on user selection.
+        /// </summary>
         private void SetupTargetPlatformPage()
         {
             if (selectedPlatform.EmulatorName == "")
@@ -162,6 +204,9 @@ namespace PersonaPatchGen
             }
         }
 
+        /// <summary>
+        /// Allow user to proceed to next tab if using emulator (and valid EXE is entered).
+        /// </summary>
         private void AdvanceIfEmuValid()
         {
             if (!radio_Console.Checked && File.Exists(txt_ExePath.Text))
@@ -170,6 +215,9 @@ namespace PersonaPatchGen
                 btn_Next.Enabled = false;
         }
 
+        /// <summary>
+        /// Allow user to proceed to next tab if using console (and valid PKG/ISO is entered).
+        /// </summary>
         private void AdvanceIfPKGValid()
         {
             if (radio_Console.Checked && File.Exists(txt_PKGPath.Text))
@@ -178,6 +226,9 @@ namespace PersonaPatchGen
                 btn_Next.Enabled = false;
         }
 
+        /// <summary>
+        /// Depending on target platform, update labels of input paths.
+        /// </summary>
         private void SetInputFileLabels()
         {
             if (selectedPlatform.ShortName != "3DS")
@@ -214,6 +265,9 @@ namespace PersonaPatchGen
                 btn_Next.Enabled = true;
         }
 
+        /// <summary>
+        /// Determine whether user can go back/forth between tabs based on current variable values.
+        /// </summary>
         private void SetupPageButtons()
         {
             // Only show Previous Page button when current page > 0
@@ -272,6 +326,9 @@ namespace PersonaPatchGen
             }
         }
 
+        /// <summary>
+        /// Fill out patches tab based on current selections.
+        /// </summary>
         private void SetupPatches()
         {
             foreach (var patch in selectedGame.Patches)
@@ -294,6 +351,9 @@ namespace PersonaPatchGen
 
         }
 
+        /// <summary>
+        /// Set toggled patches back to their original state.
+        /// </summary>
         private void ResetPatches()
         {
             chkListBox_Patches.Items.Clear();
@@ -319,6 +379,9 @@ namespace PersonaPatchGen
             }
         }
 
+        /// <summary>
+        /// Enable or disable all selectable patches.
+        /// </summary>
         private void ToggleAllPatches()
         {
             for (int i = 0; i < chkListBox_Patches.Items.Count; i++)
@@ -331,6 +394,9 @@ namespace PersonaPatchGen
             selectAll = !selectAll;
         }
 
+        /// <summary>
+        /// Apply patches to game depending on target platform.
+        /// </summary>
         private void ApplyPatches()
         {
             btn_Action.Enabled = false;
@@ -372,6 +438,10 @@ namespace PersonaPatchGen
             btn_Back.Enabled = true;
         }
 
+        /// <summary>
+        /// Generate all permutations of currently enabled patches (for PS4/Vita).
+        /// </summary>
+        /// <returns></returns>
         private List<List<GamePatch>> GetPatchCombos()
         {
             var patchCombos = new List<List<GamePatch>>();
@@ -405,6 +475,10 @@ namespace PersonaPatchGen
             return patchCombos;
         }
 
+        /// <summary>
+        /// Perform the function of the current tabpage.
+        /// </summary>
+        /// <returns></returns>
         private bool PerformAction()
         {
             if (tabControl_Main.SelectedTab.Text == "Updates")
@@ -419,7 +493,10 @@ namespace PersonaPatchGen
             else if (tabControl_Main.SelectedTab.Text == "Apply")
             {
                 if (chk_Permutations.Checked)
-                    if (!WinFormsmDialogs.YesNoMsgBox("Generate All Patch Combos?", "You have checked the \"All Combos\" box, which means every possible combination of selected patches will be output. This can take a lot of time and use a lot of resources and disk space, are you sure you'd like to continue?"))
+                    if (!WinFormsDialogs.YesNoMsgBox("Generate All Patch Combos?", 
+                        "You have checked the \"All Combos\" box, which means every possible combination of selected patches " +
+                        "will be output. This can take a lot of time and use a lot of resources and disk space, are you sure " +
+                        "you would like to continue?"))
                         return false;
                 if (chkListBox_Patches.CheckedItems.Count < 1)
                     return false;
@@ -429,6 +506,10 @@ namespace PersonaPatchGen
             return true;
         }
 
+        /// <summary>
+        /// Check if Python 3+ is installed.
+        /// </summary>
+        /// <returns></returns>
         private bool Python3Installed()
         {
             Python.GetInstalls("3.0.0");
@@ -440,6 +521,9 @@ namespace PersonaPatchGen
             return false;
         }
 
+        /// <summary>
+        /// Prompt user to download and install Python if not found.
+        /// </summary>
         private void DownloadPython3()
         {
             string downloadURL = "https://www.python.org/ftp/python/3.6.8/python-3.6.8-amd64.exe";

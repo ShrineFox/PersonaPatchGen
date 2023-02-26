@@ -13,6 +13,7 @@ using LibOrbisPkg.PKG;
 using System.IO.MemoryMappedFiles;
 using LibOrbisPkg.Util;
 using LibOrbisPkg.PFS;
+using PersonaGameLib;
 
 namespace PersonaPatchGen
 {
@@ -49,7 +50,7 @@ namespace PersonaPatchGen
             }
             else
             {
-                if (WinFormsmDialogs.YesNoMsgBox("Install Python 3?", "An installation of Python 3.0.0 or higher was not detected on the system. " +
+                if (WinFormsDialogs.YesNoMsgBox("Install Python 3?", "An installation of Python 3.0.0 or higher was not detected on the system. " +
                     "It is required to complete the patching operation. Would you like to download and install it now?"))
                     DownloadPython3();
             }
@@ -244,8 +245,8 @@ namespace PersonaPatchGen
             string args = $"img_create --oformat pkg --tmp_path ./temp ./{selectedGame.TitleID}-patch.gp4 ./temp";
             Exe.Run(Path.Combine(Exe.Directory(), $"Dependencies\\PS4\\orbis-pub-cmd.exe"), args, true, Path.GetDirectoryName(buildDir));
 
-            // Copy PKG/EBOOT to Output folder
-            string pkgPath = Path.Combine(tempPKGDir, selectedGame.PKGName);
+            // Move PKG/EBOOT to Output folder
+            string pkgPath = Path.Combine(tempPKGDir, selectedGame.UpdatePKGName);
             using (FileSys.WaitForFile(pkgPath)) { };
             if (File.Exists(pkgPath))
             {
@@ -256,7 +257,7 @@ namespace PersonaPatchGen
                 if (File.Exists(newEbootPath))
                     File.Delete(newEbootPath);
                 File.Move(Path.Combine(buildDir, "eboot.bin"), newEbootPath);
-                string newPKGPath = Path.Combine(outputDir, selectedGame.PKGName);
+                string newPKGPath = Path.Combine(outputDir, selectedGame.UpdatePKGName);
                 PatchLog("Patched EBOOT moved to Output folder");
                 if (File.Exists(newPKGPath))
                     File.Delete(newPKGPath);

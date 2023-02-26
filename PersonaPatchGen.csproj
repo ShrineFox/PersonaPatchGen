@@ -57,22 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Game.cs" />
-    <Compile Include="Classes\Games\3DSGames.cs" />
-    <Compile Include="Classes\Games\Patches\3DSPatches.cs" />
-    <Compile Include="Classes\Games\Patches\PS2Patches.cs" />
-    <Compile Include="Classes\Games\Patches\PS3Patches.cs" />
-    <Compile Include="Classes\Games\Patches\PS4Patches.cs" />
-    <Compile Include="Classes\Games\Patches\PSPPatches.cs" />
-    <Compile Include="Classes\Games\Patches\PSVPatches.cs" />
-    <Compile Include="Classes\Games\PCGames.cs" />
-    <Compile Include="Classes\Games\PS2Games.cs" />
-    <Compile Include="Classes\Games\PS3Games.cs" />
-    <Compile Include="Classes\Games\PS4Games.cs" />
-    <Compile Include="Classes\Games\PSPGames.cs" />
-    <Compile Include="Classes\Games\PSVGames.cs" />
-    <Compile Include="Classes\Patch.cs" />
-    <Compile Include="Classes\Platform.cs" />
     <Compile Include="Forms\InstallWizard\Classes\Events\Event_Procedures.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,33 +105,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Dependencies\3DS\mod.cpk">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\3DS\PQ2\ModCpk\CanonNames\code.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\3DS\PQ2\ModCpk\CanonNames\exheader.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\3DS\PQ2\ModCpk\code.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\3DS\PQ2\ModCpk\exheader.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\3DS\PQ\ModCpk\CanonNames\code.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\3DS\PQ\ModCpk\CanonNames\exheader.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\3DS\PQ\ModCpk\code.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\3DS\PQ\ModCpk\exheader.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Dependencies\PS4\GenGP4\CUSA05877-patch.gp4" />
     <None Include="Dependencies\PS4\GenGP4\CUSA05877-patch\sce_sys\param.sfo">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -482,30 +439,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Dependencies\PS3\lipsum\patch.yml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\PS3\p5_ex\hardware\p5ex\conf.yml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\PS3\p5_ex\hardware\p5ex\mod.sprx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\PS3\p5_ex\hardware\patches\patch.yml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\PS3\p5_ex\patches\patch.yml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\PS3\p5_ex\USRDIR\config.yml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\PS3\p5_ex\USRDIR\mod.sprx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Dependencies\PS3\patch.yml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -609,17 +542,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Forms\InstallWizard\Images\Welcome.png" />
-    <Content Include="Dependencies\PS2\P3FES_hostFS.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Dependencies\PS2\P4_hostFS.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LibOrbisPkg\LibOrbisPkg\LibOrbisPkg.csproj">
       <Project>{b053f491-ff0f-4cbb-b03b-520591bb0441}</Project>
       <Name>LibOrbisPkg</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersonaGameLib\PersonaGameLib.csproj">
+      <Project>{e8ca7f1f-a092-4e78-9a2f-39109b1eb64b}</Project>
+      <Name>PersonaGameLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShrineFox.IO\ShrineFox.IO.csproj">
       <Project>{7640412a-7372-4925-b20c-0178d8818a8f}</Project>

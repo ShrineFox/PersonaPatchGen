@@ -31,11 +31,17 @@ namespace PersonaPatchGen
         private void NextPage()
         {
             tabControl_Main.SelectedIndex += 1;
+            // Skip Updates page
+            if (tabControl_Main.SelectedIndex == 1)
+                tabControl_Main.SelectedIndex = 2;
         }
 
         private void PreviousPage()
         {
             tabControl_Main.SelectedIndex -= 1;
+            // Skip Updates page
+            if (tabControl_Main.SelectedIndex == 1)
+                tabControl_Main.SelectedIndex = 0;
         }
 
         private void Platform_Changed(object sender, EventArgs e)
@@ -70,16 +76,18 @@ namespace PersonaPatchGen
 
         private void ExePath_Browse(object sender, EventArgs e)
         {
-            string path = ShrineFox.IO.WinFormsEvents.FilePath_Click($"Select your emulator's {selectedPlatform.EmulatorName}.exe");
-            txt_ExePath.Text = path;
+            var files = WinFormsEvents.FilePath_Click($"Select {selectedPlatform.EmulatorName}.exe");
+            if (files.Count > 0)
+                txt_ExePath.Text = files.FirstOrDefault();
 
             AdvanceIfEmuValid();
         }
 
         private void PKGPath_Browse(object sender, EventArgs e)
         {
-            string path = ShrineFox.IO.WinFormsEvents.FilePath_Click($"Select game file");
-            txt_PKGPath.Text = path;
+            var files = WinFormsEvents.FilePath_Click($"Select game file");
+            if (files.Count > 0)
+                txt_PKGPath.Text = files.FirstOrDefault();
 
             AdvanceIfPKGValid();
         }

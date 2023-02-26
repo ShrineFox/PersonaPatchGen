@@ -19,7 +19,7 @@ namespace PersonaPatchGen.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,55 +57,6 @@ namespace PersonaPatchGen.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to // Expand executable memory size (default: 0x9ACC80)
-        ///patch=0,EE,0077F494,word,0xAACC80
-        ///
-        ///// Jump to loader entrypoint at 0x009ACC80
-        ///patch=0,EE,00193980,word,0826B320
-        ///patch=0,EE,00193984,word,00000000
-        ///
-        ///// &lt;PnachPatchGen:start&gt;
-        ///patch=0,EE,009ACC80,word,00000000
-        ///patch=0,EE,009ACC84,word,00000000
-        ///patch=0,EE,009ACC88,word,00000000
-        ///patch=0,EE,009ACC8C,word,00000000
-        ///patch=0,EE,009ACC90,word,00000000
-        ///patch=0,EE,009ACC94,word,00000000
-        ///patch=0,EE,009ACC98,word,00000000
-        ///patch=0,EE,009ACC9C,word,00000000        /// [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string P3FES_hostFS {
-            get {
-                return ResourceManager.GetString("P3FES_hostFS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to // Expand executable memory size (default: 0x938A00)
-        ///patch=0,EE,0070C5D4,word,0xA38A00
-        ///
-        ///// Jump to loader entrypoint at 0x938A00
-        ///patch=0,EE,001002C0,word,0824E280
-        ///patch=0,EE,001002C4,word,00000000
-        ///
-        ///// &lt;PnachPatchGen:start&gt;
-        ///patch=0,EE,00938A00,word,27BDFE00
-        ///patch=0,EE,00938A04,word,FFBF0110
-        ///patch=0,EE,00938A08,word,0C24E29F
-        ///patch=0,EE,00938A0C,word,00000000
-        ///patch=0,EE,00938A10,word,3C010094
-        ///patch=0,EE,00938A14,word,24218F00
-        ///patch=0,EE,00938A18,word,FC3C0000
-        ///patch=0,EE,00938A1C,word,3C1C0095
-        ///p [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string P4_hostFS {
-            get {
-                return ResourceManager.GetString("P4_hostFS", resourceCulture);
             }
         }
         
