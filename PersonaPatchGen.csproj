@@ -135,9 +135,15 @@
     <None Include="Dependencies\PS4\GenGP4\CUSA12636-patch\sce_sys\param.sfo">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Dependencies\PS4\GenGP4\CUSA12810-patch.gp4" />
-    <None Include="Dependencies\PS4\GenGP4\CUSA12810-patch\data\mod.cpk" />
-    <None Include="Dependencies\PS4\GenGP4\CUSA12810-patch\sce_sys\param.sfo" />
+    <None Include="Dependencies\PS4\GenGP4\CUSA12810-patch.gp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA12810-patch\data\mod.cpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA12810-patch\sce_sys\param.sfo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Dependencies\PS4\GenGP4\CUSA12811-patch.gp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -147,9 +153,15 @@
     <None Include="Dependencies\PS4\GenGP4\CUSA12811-patch\sce_sys\param.sfo">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Dependencies\PS4\GenGP4\CUSA12813-patch.gp4" />
-    <None Include="Dependencies\PS4\GenGP4\CUSA12813-patch\data\mod.cpk" />
-    <None Include="Dependencies\PS4\GenGP4\CUSA12813-patch\sce_sys\param.sfo" />
+    <None Include="Dependencies\PS4\GenGP4\CUSA12813-patch.gp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA12813-patch\data\mod.cpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dependencies\PS4\GenGP4\CUSA12813-patch\sce_sys\param.sfo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Dependencies\PS4\GenGP4\CUSA17416-patch.gp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -475,11 +487,15 @@
     <Content Include="Dependencies\PS4\GenGP4\CUSA12636-patch\sce_sys\changeinfo\changeinfo.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dependencies\PS4\GenGP4\CUSA12810-patch\sce_sys\changeinfo\changeinfo.xml" />
+    <Content Include="Dependencies\PS4\GenGP4\CUSA12810-patch\sce_sys\changeinfo\changeinfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dependencies\PS4\GenGP4\CUSA12811-patch\sce_sys\changeinfo\changeinfo.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dependencies\PS4\GenGP4\CUSA12813-patch\sce_sys\changeinfo\changeinfo.xml" />
+    <Content Include="Dependencies\PS4\GenGP4\CUSA12813-patch\sce_sys\changeinfo\changeinfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\changeinfo\changeinfo.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
