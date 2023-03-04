@@ -77,11 +77,14 @@ namespace PersonaPatchGen
             this.chk_Permutations = new System.Windows.Forms.CheckBox();
             this.tabPage_5_Apply = new System.Windows.Forms.TabPage();
             this.tlp_5_Apply = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_ConsoleIP = new DarkUI.Controls.DarkTextBox();
             this.progressBar_Apply = new System.Windows.Forms.ProgressBar();
             this.rtb_Apply_Log = new System.Windows.Forms.RichTextBox();
             this.rtb_5_Apply = new ShrineFox.IO.SFRichTextBox();
             this.chk_Unfakesign = new DarkUI.Controls.DarkCheckBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
+            this.txt_OutputDir = new DarkUI.Controls.DarkTextBox();
+            this.btn_OutputDir = new DarkUI.Controls.DarkButton();
             this.tlp_Main.SuspendLayout();
             this.pnl_Main_Inner.SuspendLayout();
             this.tlp_Main_Inner.SuspendLayout();
@@ -100,6 +103,7 @@ namespace PersonaPatchGen
             this.tlp_4_Patches_Inner.SuspendLayout();
             this.tabPage_5_Apply.SuspendLayout();
             this.tlp_5_Apply.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlp_Main
@@ -617,7 +621,7 @@ namespace PersonaPatchGen
             this.tlp_3_Platform_ExePath.Name = "tlp_3_Platform_ExePath";
             this.tlp_3_Platform_ExePath.RowCount = 1;
             this.tlp_3_Platform_ExePath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_3_Platform_ExePath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.tlp_3_Platform_ExePath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tlp_3_Platform_ExePath.Size = new System.Drawing.Size(445, 60);
             this.tlp_3_Platform_ExePath.TabIndex = 11;
             this.tlp_3_Platform_ExePath.Visible = false;
@@ -804,11 +808,11 @@ namespace PersonaPatchGen
             this.tlp_5_Apply.ColumnCount = 2;
             this.tlp_5_Apply.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tlp_5_Apply.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tlp_5_Apply.Controls.Add(this.txt_ConsoleIP, 1, 1);
             this.tlp_5_Apply.Controls.Add(this.progressBar_Apply, 0, 3);
             this.tlp_5_Apply.Controls.Add(this.rtb_Apply_Log, 0, 2);
             this.tlp_5_Apply.Controls.Add(this.rtb_5_Apply, 1, 0);
             this.tlp_5_Apply.Controls.Add(this.chk_Unfakesign, 0, 1);
+            this.tlp_5_Apply.Controls.Add(this.tableLayoutPanel1, 1, 1);
             this.tlp_5_Apply.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_5_Apply.Location = new System.Drawing.Point(0, 0);
             this.tlp_5_Apply.Margin = new System.Windows.Forms.Padding(0);
@@ -820,19 +824,6 @@ namespace PersonaPatchGen
             this.tlp_5_Apply.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tlp_5_Apply.Size = new System.Drawing.Size(556, 405);
             this.tlp_5_Apply.TabIndex = 5;
-            // 
-            // txt_ConsoleIP
-            // 
-            this.txt_ConsoleIP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_ConsoleIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.txt_ConsoleIP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_ConsoleIP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.txt_ConsoleIP.Location = new System.Drawing.Point(126, 130);
-            this.txt_ConsoleIP.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
-            this.txt_ConsoleIP.Name = "txt_ConsoleIP";
-            this.txt_ConsoleIP.Size = new System.Drawing.Size(415, 22);
-            this.txt_ConsoleIP.TabIndex = 13;
-            this.txt_ConsoleIP.Visible = false;
             // 
             // progressBar_Apply
             // 
@@ -893,6 +884,63 @@ namespace PersonaPatchGen
             this.chk_Unfakesign.TabIndex = 14;
             this.chk_Unfakesign.Text = "Un-fakesign the EBOOT";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel1.Controls.Add(this.darkLabel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txt_OutputDir, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btn_OutputDir, 1, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(111, 101);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(445, 78);
+            this.tableLayoutPanel1.TabIndex = 15;
+            // 
+            // darkLabel1
+            // 
+            this.darkLabel1.AutoSize = true;
+            this.darkLabel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.darkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel1.Location = new System.Drawing.Point(3, 0);
+            this.darkLabel1.Name = "darkLabel1";
+            this.darkLabel1.Size = new System.Drawing.Size(150, 39);
+            this.darkLabel1.TabIndex = 14;
+            this.darkLabel1.Text = "Output Directory:";
+            this.darkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txt_OutputDir
+            // 
+            this.txt_OutputDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_OutputDir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.txt_OutputDir.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_OutputDir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.txt_OutputDir.Location = new System.Drawing.Point(15, 47);
+            this.txt_OutputDir.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
+            this.txt_OutputDir.Name = "txt_OutputDir";
+            this.txt_OutputDir.Size = new System.Drawing.Size(353, 22);
+            this.txt_OutputDir.TabIndex = 12;
+            this.txt_OutputDir.Text = ".\\Output";
+            // 
+            // btn_OutputDir
+            // 
+            this.btn_OutputDir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_OutputDir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.btn_OutputDir.Location = new System.Drawing.Point(383, 47);
+            this.btn_OutputDir.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
+            this.btn_OutputDir.Name = "btn_OutputDir";
+            this.btn_OutputDir.Padding = new System.Windows.Forms.Padding(5);
+            this.btn_OutputDir.Size = new System.Drawing.Size(62, 23);
+            this.btn_OutputDir.TabIndex = 13;
+            this.btn_OutputDir.Text = "...";
+            this.btn_OutputDir.Click += new System.EventHandler(this.OutputDir_Click);
+            // 
             // WizardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -930,6 +978,8 @@ namespace PersonaPatchGen
             this.tabPage_5_Apply.ResumeLayout(false);
             this.tlp_5_Apply.ResumeLayout(false);
             this.tlp_5_Apply.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -980,13 +1030,16 @@ namespace PersonaPatchGen
         private ProgressBar progressBar_Apply;
         private RichTextBox rtb_Apply_Log;
         private ShrineFox.IO.SFRichTextBox rtb_5_Apply;
-        private DarkUI.Controls.DarkTextBox txt_ConsoleIP;
         private DarkUI.Controls.DarkLabel lbl_PKGPath;
         private TableLayoutPanel tlp_3_Platform_PKGPath;
         private DarkUI.Controls.DarkButton btn_PKGPath;
         private DarkUI.Controls.DarkTextBox txt_PKGPath;
         private CheckBox chk_Permutations;
         private DarkUI.Controls.DarkCheckBox chk_Unfakesign;
+        private TableLayoutPanel tableLayoutPanel1;
+        private DarkUI.Controls.DarkButton btn_OutputDir;
+        private DarkUI.Controls.DarkTextBox txt_OutputDir;
+        private DarkUI.Controls.DarkLabel darkLabel1;
     }
 }
 

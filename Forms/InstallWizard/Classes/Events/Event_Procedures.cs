@@ -336,19 +336,6 @@ namespace PersonaPatchGen
                 chkListBox_Patches.Items.Add(patch.Name, patch.OnByDefault);
             }
             patchesInitialized = true;
-
-            if (radio_Console.Checked)
-            {
-                //lbl_ConsoleIP.Visible = true;
-                //txt_ConsoleIP.Visible = true;
-                lbl_ExePath.Visible = false;
-            }
-            else
-            {
-                //lbl_ConsoleIP.Visible = false;
-                txt_ConsoleIP.Visible = false;
-            }
-
         }
 
         /// <summary>

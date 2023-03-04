@@ -248,11 +248,9 @@ namespace PersonaPatchGen
 
         private bool BuildPKG(List<string> patchShortNames, string tempGp4Path)
         {
-            // (Re)create temp dir
+            // Create temp dir
             string tempPKGDir = Path.Combine(Path.GetDirectoryName(tempGp4Path), "temp");
             string buildDir = Path.Combine(Path.GetDirectoryName(tempGp4Path), $"{selectedGame.TitleID}-patch");
-            if (Directory.Exists(tempPKGDir))
-                Directory.Delete(tempPKGDir, true);
             Directory.CreateDirectory(tempPKGDir);
 
             // Generate new PKG file
@@ -266,7 +264,7 @@ namespace PersonaPatchGen
             using (FileSys.WaitForFile(pkgPath)) { };
             if (File.Exists(pkgPath))
             {
-                string outputDir = $"{Exe.Directory()}\\Output\\{selectedPlatform.ShortName}\\{selectedGame.ShortName}\\{selectedRegion}\\{string.Join("\\", patchShortNames)}";
+                string outputDir = $"{txt_OutputDir.Text}\\{selectedPlatform.ShortName}\\{selectedGame.ShortName}\\{selectedRegion}\\{string.Join("\\", patchShortNames)}";
                 Directory.CreateDirectory(Path.Combine(outputDir));
 
                 string newEbootPath = Path.Combine(outputDir, "eboot.bin");

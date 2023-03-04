@@ -119,5 +119,12 @@ namespace PersonaPatchGen
                     $"{selectedPatch.Description}");
             }
         }
+
+        private void OutputDir_Click(object sender, EventArgs e)
+        {
+            string folder = WinFormsEvents.FolderPath_Click($"Select output directory");
+            if (folder != "")
+                txt_OutputDir.Text = folder;
+        }
     }
 }
