@@ -45,7 +45,7 @@
     <file targ_path="sce_module/libSceNpToolkit2.prx" orig_path="CUSA17416-patch\sce_module\libSceNpToolkit2.prx"/>
     <file targ_path="sce_module/libSceS3DConversion.prx" orig_path="CUSA17416-patch\sce_module\libSceS3DConversion.prx"/>
     <file targ_path="eboot.bin" orig_path="CUSA17416-patch\eboot.bin"/>
-	<file targ_path="USRDIR/mod.cpk" orig_path="patch0102\USRDIR\mod.cpk" pfs_compression="enable" chunks="0-2"/>
+	<file targ_path="USRDIR/mod.cpk" orig_path="CUSA17416-patch\USRDIR\mod.cpk" pfs_compression="enable" chunks="0-2"/>
 	<file targ_path="USRDIR/patch2R.cpk" orig_path="CUSA17416-patch\USRDIR\patch2R.cpk" pfs_compression="enable" chunks="0-2"/>
     <file targ_path="USRDIR/patch2R_F.cpk" orig_path="CUSA17416-patch\USRDIR\patch2R_F.cpk" pfs_compression="enable" chunks="0-2"/>
     <file targ_path="USRDIR/patch2R_G.cpk" orig_path="CUSA17416-patch\USRDIR\patch2R_G.cpk" pfs_compression="enable" chunks="0-2"/>

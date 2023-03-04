@@ -56,6 +56,10 @@ namespace PersonaPatchGen
         private void Game_Changed(object sender, EventArgs e)
         {
             UpdateSelectedGame();
+
+            // Deselect unfakesign for P5R by default
+            if (selectedGame.ShortName == "P5R")
+                chk_Unfakesign.Checked = false;
         }
 
         private void DownloadLog(string msg)

@@ -345,7 +345,7 @@ namespace PersonaPatchGen
             }
             else
             {
-                lbl_ConsoleIP.Visible = false;
+                //lbl_ConsoleIP.Visible = false;
                 txt_ConsoleIP.Visible = false;
             }
 

@@ -27,7 +27,7 @@
     <file targ_path="sce_sys/nptitle.dat" orig_path="CUSA05877-patch\sce_sys\nptitle.dat"/>
     <file targ_path="sce_sys/param.sfo" orig_path="CUSA05877-patch\sce_sys\param.sfo"/>
     <file targ_path="eboot.bin" orig_path="CUSA05877-patch\eboot.bin"/>
-	<file targ_path="USRDIR/mod.cpk" orig_path="patch0101\USRDIR\mod.cpk" pfs_compression="enable" chunks="0-1"/>
+	<file targ_path="USRDIR/mod.cpk" orig_path="CUSA05877-patch\USRDIR\mod.cpk" pfs_compression="enable" chunks="0-1"/>
   </files>
   <rootdir>
     <dir targ_name="sce_sys">

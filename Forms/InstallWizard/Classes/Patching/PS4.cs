@@ -23,30 +23,33 @@ namespace PersonaPatchGen
         {
             SetProgress(0);
 
+            // Proceed if Python 3 is installed
             if (Python3Installed())
             {
                 SetProgress(1);
                 PatchLog($"Beginning patching process, please wait...");
 
-                if (selectedGame.ShortName != "P5R" || (selectedGame.ShortName == "P5R" && CheckP5RUpdateFiles()))
+                // Create temp directory for extracted files if one doesn't exist
+                string tempDir = Path.Combine(Exe.Directory(), $"Temp\\{selectedGame.TitleID}");
+                if (!Directory.Exists($"{tempDir}\\base_extracted"))
+                    Directory.CreateDirectory($"{tempDir}\\base_extracted");
+
+                // Extract required files from PKG to temp directory
+                if (!File.Exists($"{tempDir}\\base_extracted\\Sc0\\nptitle.dat") || !File.Exists($"{tempDir}\\base_extracted\\Sc0\\npbind.dat")
+                    || !File.Exists($"{tempDir}\\base_extracted\\Image0\\eboot.bin"))
+                    ExtractPKG(tempDir + "\\base_extracted");
+
+                // Get list of combination sets of patches to generate
+                List<List<GamePatch>> patchCombos = GetPatchCombos();
+
+                // Create new PKG for each set of combinations
+                for (int i = 0; i < patchCombos.Count; i++)
                 {
-                    string tempDir = Path.Combine(Exe.Directory(), $"Temp\\{selectedGame.TitleID}");
-                    if (!Directory.Exists($"{tempDir}\\base_extracted"))
-                        Directory.CreateDirectory($"{tempDir}\\base_extracted");
-
-                    if (!File.Exists($"{tempDir}\\base_extracted\\Sc0\\nptitle.dat") || !File.Exists($"{tempDir}\\base_extracted\\Sc0\\npbind.dat")
-                        || !File.Exists($"{tempDir}\\base_extracted\\Image0\\eboot.bin"))
-                        ExtractPKG(tempDir + "\\base_extracted");
-
-                    List<List<GamePatch>> patchCombos = GetPatchCombos();
-
-                    for (int i = 0; i < patchCombos.Count; i++)
-                    {
-                        PatchLog($"Creating Fake Update PKG ({i + 1}/{patchCombos.Count()})");
-                        Thread.Sleep(200);
-                        CreateUpdatePKG(patchCombos[i], tempDir);
-                    }
+                    PatchLog($"Creating Fake Update PKG ({i + 1}/{patchCombos.Count()})");
+                    Thread.Sleep(200);
+                    CreateUpdatePKG(patchCombos[i], tempDir);
                 }
+                
             }
             else
             {
@@ -59,18 +62,19 @@ namespace PersonaPatchGen
         private bool CheckP5RUpdateFiles()
         {
             bool fileMissing = false;
-            string updateFilesDir = Path.Combine(Exe.Directory(), $"Dependencies\\PS4\\GenGP4\\{selectedGame.TitleID}-patch\\USRDIR");
+            string updateFilesDir = Path.Combine(Exe.Directory(), $"Temp\\{selectedGame.TitleID}\\{selectedGame.TitleID}-patch\\USRDIR");
 
-            foreach (var file in new string[] { "patch2R.cpk", "patch2R_F.cpk", "patch2R_G.cpk", "patch2R_I.cpk", "patch2R_S.cpk" })
+            foreach (var file in new string[] { "patch2R.cpk", "patch2R_F.cpk", "patch2R_G.cpk", "patch2R_I.cpk", "patch2R_S.cpk", "eboot.bin" })
             {
                 if (!File.Exists(Path.Combine(updateFilesDir, file)))
                     fileMissing = true;
             }
             if (fileMissing)
             {
-                MessageBox.Show($"Please place the extracted CPKs from the P5R v1.02 update in the following directory and try again: {updateFilesDir}");
+                MessageBox.Show($"Please place the extracted CPKs (and unfakesigned eboot.bin) from the P5R v1.02 update in the following directory and try again: {updateFilesDir}");
                 return false;
             }
+
             return true;
         }
 
@@ -82,7 +86,7 @@ namespace PersonaPatchGen
             var passcode = "00000000000000000000000000000000";
 
             // Extract required files from PKG Meta
-            ExtractEntries(pkgPath, tempDir, passcode, new List<string>() { "NPBIND_DAT", "NPTITLE_DAT" });
+            ExtractEntries(pkgPath, Path.Combine(tempDir, "Sc0"), passcode, new List<string>() { "NPBIND_DAT", "NPTITLE_DAT" });
 
             // Extract EBOOT.BIN from PKG inner image
             Pkg pkg;
@@ -116,6 +120,7 @@ namespace PersonaPatchGen
 
         private void ExtractEntry(Pkg pkg, FileStream pkgFile, MetaEntry meta, string passcode, string outPath)
         {
+            Directory.CreateDirectory(Path.GetDirectoryName(outPath));
             using (var outFile = File.Create(outPath))
             {
                 outFile.SetLength(meta.DataSize);
@@ -144,7 +149,7 @@ namespace PersonaPatchGen
                   long pos = 0;
                   var view = f.GetView();
                   var fullName = f.FullName;
-                  var path = Path.Combine(outPath, fullName.Replace('/', Path.DirectorySeparatorChar).Substring(1));
+                  var path = Path.Combine(outPath, fullName.Replace('/', Path.DirectorySeparatorChar).Substring(1)).Replace("uroot", "Image0");
                   var dir = path.Substring(0, path.LastIndexOf(Path.DirectorySeparatorChar));
                   Directory.CreateDirectory(dir);
                   using (var file = File.OpenWrite(path))
@@ -200,6 +205,19 @@ namespace PersonaPatchGen
             if (File.Exists($"{tempDir}\\base_extracted\\Image0\\eboot.bin"))
                 File.Copy($"{tempDir}\\base_extracted\\Image0\\eboot.bin", Path.Combine(patchDir, "eboot.bin"), true);
 
+            // Overwrite eboot with v1.02 update in patch folder before patching (if P5R)
+            string updateFilesDir = Path.Combine(Exe.Directory(), $"Temp\\{selectedGame.TitleID}\\{selectedGame.TitleID}-patch\\USRDIR");
+            if (selectedGame.ShortName == "P5R")
+            {
+                if (CheckP5RUpdateFiles())
+                    File.Copy(Path.Combine(updateFilesDir, "eboot.bin"), Path.Combine(patchDir, "eboot.bin"), true);
+                else
+                {
+                    SetProgress(100);
+                    return;
+                }
+            }
+
             string tempGp4Path = Path.Combine(Path.GetDirectoryName(patchDir), $"{selectedGame.TitleID}-patch.gp4");
             File.Copy(gp4Path, tempGp4Path, true);
 
@@ -240,8 +258,9 @@ namespace PersonaPatchGen
             // Generate new PKG file
             Exe.CloseProcess("orbis-pub-cmd", true);
             string args = $"img_create --oformat pkg --tmp_path ./temp ./{selectedGame.TitleID}-patch.gp4 ./temp";
-            Exe.Run(Path.Combine(Exe.Directory(), $"Dependencies\\PS4\\orbis-pub-cmd.exe"), args, true, Path.GetDirectoryName(buildDir));
 
+            Exe.Run(Path.Combine(Exe.Directory(), $"Dependencies\\PS4\\orbis-pub-cmd.exe"), args, true, Path.GetDirectoryName(buildDir));
+            
             // Move PKG/EBOOT to Output folder
             string pkgPath = Path.Combine(tempPKGDir, selectedGame.UpdatePKGName);
             using (FileSys.WaitForFile(pkgPath)) { };
@@ -278,20 +297,24 @@ namespace PersonaPatchGen
                 PatchLog("Added xdelta.exe to user PATH variable");
             }
 
-            // Un-fakesign EBOOT.BIN
-            string elfPath = ebootPath.Replace(".bin", ".elf");
-            if (File.Exists(elfPath))
-                File.Delete(elfPath);
-            using (FileSys.WaitForFile(ebootPath)) { };
-            Exe.Run(pythonPath, $"\"{Path.Combine(Exe.Directory(), @"Dependencies\PS4\ppp\unfself.py")}\" \"{ebootPath}\"", false, Path.GetDirectoryName(ebootPath));
-            using (FileSys.WaitForFile(elfPath)) { };
-            if (!File.Exists(elfPath))
+            // Un-fakesign EBOOT.BIN before patching if option is checked
+            string elfPath = ebootPath;
+            if (chk_Unfakesign.Checked)
             {
-                PatchLog("Failed to un-fakesign eboot.bin");
-                return false;
+                elfPath = elfPath.Replace(".bin", ".elf");
+                if (File.Exists(elfPath))
+                    File.Delete(elfPath);
+                using (FileSys.WaitForFile(ebootPath)) { };
+                Exe.Run(pythonPath, $"\"{Path.Combine(Exe.Directory(), @"Dependencies\PS4\ppp\unfself.py")}\" \"{ebootPath}\"", false, Path.GetDirectoryName(ebootPath));
+                using (FileSys.WaitForFile(elfPath)) { };
+                if (!File.Exists(elfPath))
+                {
+                    PatchLog("Failed to un-fakesign eboot.bin");
+                    return false;
+                }
+                PatchLog("Un-fakesigned eboot.bin");
+                File.Delete(ebootPath);
             }
-            PatchLog("Un-fakesigned eboot.bin");
-            File.Delete(ebootPath);
 
             // Patch EBOOT.ELF with selected patches
             string patchedEbootPath = elfPath + "--patched.bin";
@@ -303,6 +326,9 @@ namespace PersonaPatchGen
             using (FileSys.WaitForFile(patchedEbootPath)) { };
             if (File.Exists(patchedEbootPath))
             {
+                if (File.Exists(ebootPath))
+                    File.Delete(ebootPath);
+                using (FileSys.WaitForFile(ebootPath)) { };
                 File.Move(patchedEbootPath, ebootPath);
 
                 return true;
