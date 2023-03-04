@@ -81,14 +81,17 @@ namespace PersonaPatchGen
             var pkgPath = txt_PKGPath.Text;
             var passcode = "00000000000000000000000000000000";
 
+            // Extract required files from PKG Meta
             ExtractEntries(pkgPath, tempDir, passcode, new List<string>() { "NPBIND_DAT", "NPTITLE_DAT" });
-            
+
+            // Extract EBOOT.BIN from PKG inner image
             Pkg pkg;
             var mmf = MemoryMappedFile.CreateFromFile(pkgPath);
             using (var s = mmf.CreateViewStream(0, 0, MemoryMappedFileAccess.Read))
             {
                 pkg = new PkgReader(s).ReadPkg();
             }
+
             var ekpfs = Crypto.ComputeKeys(pkg.Header.content_id, passcode, 1);
             var outerPfsOffset = (long)pkg.Header.pfs_image_offset;
             using (var acc = mmf.CreateViewAccessor(outerPfsOffset, (long)pkg.Header.pfs_image_size, MemoryMappedFileAccess.Read))
@@ -106,21 +109,15 @@ namespace PersonaPatchGen
             using (var file = File.OpenRead(pkgPath))
             {
                 var pkg = new PkgReader(file).ReadPkg();
-                Console.WriteLine("Offset      Size      Flags      Index Enc? Name");
-                var i = 0;
-                foreach (var meta in pkg.Metas.Metas.Where(x => list.Any(y => x.id.ToString().Contains(y))))
-                {
-                    uint index = meta.KeyIndex;
-                    ExtractEntry(pkg, file, index, passcode, Path.Combine(outPath, meta.id.ToString().Replace("_",".").ToLower()));
-                }
+                foreach (var meta in pkg.Metas.Metas.Where(x => list.Any(y => y.Equals(x.id.ToString()))))
+                    ExtractEntry(pkg, file, meta, passcode, Path.Combine(outPath, meta.id.ToString().Replace("_",".").ToLower()));
             }
         }
 
-        private void ExtractEntry(Pkg pkg, FileStream pkgFile, uint index, string passcode, string outPath)
+        private void ExtractEntry(Pkg pkg, FileStream pkgFile, MetaEntry meta, string passcode, string outPath)
         {
             using (var outFile = File.Create(outPath))
             {
-                var meta = pkg.Metas.Metas[Convert.ToInt32(index)];
                 outFile.SetLength(meta.DataSize);
                 var totalEntrySize = meta.Encrypted ? (meta.DataSize + 15) & ~15 : meta.DataSize;
                 if (meta.Encrypted)
@@ -131,7 +128,7 @@ namespace PersonaPatchGen
                     tmp = meta.KeyIndex == 3 ? Entry.Decrypt(tmp, pkg, meta) : Entry.Decrypt(tmp, pkg.Header.content_id, passcode, meta);
                     outFile.Write(tmp, 0, (int)meta.DataSize);
                 }
-                new SubStream(pkgFile, meta.DataOffset, totalEntrySize).CopyTo(outFile);
+                //new SubStream(pkgFile, meta.DataOffset, totalEntrySize).CopyTo(outFile);
             }
             
         }

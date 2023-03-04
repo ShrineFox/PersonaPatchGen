@@ -25,9 +25,9 @@ namespace PersonaPatchGen
             Output.VerboseLogging = true;
             Output.LogControl = rtb_Patches_Log;
             comboBox_Platform.SelectedIndex = comboBox_Platform.Items.IndexOf("PlayStation 4");
-            comboBox_Region.SelectedIndex = comboBox_Region.Items.IndexOf("EUR");
-            comboBox_Game.SelectedIndex = comboBox_Game.Items.IndexOf("Persona 4 Dancing");
-            txt_PKGPath.Text = @"C:\Users\Ryan\Documents\GitHub\EP2475-CUSA12811_00-PERSONA4DEU00000-A0100-V0100.pkg";
+            comboBox_Region.SelectedIndex = comboBox_Region.Items.IndexOf("USA");
+            comboBox_Game.SelectedIndex = comboBox_Game.Items.IndexOf("Persona 5 Royal");
+            txt_PKGPath.Text = @"F:\Persona\Backups\PS4\Persona 5 Royal\USA\UP0177-CUSA17416_00-PERSONA5R0000000-A0100-V0100.pkg";
             btn_Next.Enabled = true;
 #endif
         }
@@ -339,8 +339,8 @@ namespace PersonaPatchGen
 
             if (radio_Console.Checked)
             {
-                lbl_ConsoleIP.Visible = true;
-                txt_ConsoleIP.Visible = true;
+                //lbl_ConsoleIP.Visible = true;
+                //txt_ConsoleIP.Visible = true;
                 lbl_ExePath.Visible = false;
             }
             else
