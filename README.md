@@ -1,4 +1,4 @@
-# PersonaPatchGen
+# PersonaPatcher
 ![](https://i.imgur.com/Fi1VuNo.png)
 Offline patch applicator for the following games:
 - Persona 3 (PS2/PCSX2, PSP)
@@ -9,8 +9,8 @@ Offline patch applicator for the following games:
 - Persona Q(2) (3DS)
 
 ## Status
-Currently, PS4 stuff is working. Need to add PS2 support and test Vita/PSP/3DS support.  
-**Requires Python 3.0 or higher** installed on your system to generate patched EBOOTs/PKGs.
+WIP. Currently, only PS4 stuff is working.  
+Still need to add PS2 support, and test Vita/PSP/3DS support.  
 
 ## Credits
 - [Zarroboogs](https://github.com/zarroboogs) for PS4 patches
@@ -18,5 +18,5 @@ Currently, PS4 stuff is working. Need to add PS2 support and test Vita/PSP/3DS s
 
 ## Build Dependencies
 - [ppp](https://github.com/zarroboogs/ppp)
-- [LibOrbisPKG](https://github.com/maxton/LibOrbisPkg)  
+- [LibOrbisPkg](https://github.com/OpenOrbis/LibOrbisPkg)
 - [ShrineFox.IO](https://github.com/ShrineFox/ShrineFox.IO)
