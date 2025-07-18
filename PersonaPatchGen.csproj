@@ -12,7 +12,6 @@
     </Reference>
     <PackageReference Include="DarkModeUI" Version="3.1.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="pythonnet" Version="3.0.5" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +115,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\app\playgo-chunk.dat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\param.sfo">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Dependencies\PS4\GenGP4\CUSA17416-patch\sce_sys\playgo-chunk.dat">
