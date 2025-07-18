@@ -21,11 +21,13 @@ namespace PersonaPatchGen
             tabControl_Main.HideTabs = true;
             CreatePages();
 
-#if DEBUG
+            this.AutoScaleMode = AutoScaleMode.Dpi;
+
+
             Output.VerboseLogging = true;
             Output.LogControl = rtb_Apply_Log;
             Output.Logging = true;
-            
+#if DEBUG
             comboBox_Platform.SelectedIndex = comboBox_Platform.Items.IndexOf("PlayStation 4");
             comboBox_Region.SelectedIndex = comboBox_Region.Items.IndexOf("USA");
             comboBox_Game.SelectedIndex = comboBox_Game.Items.IndexOf("Persona 5 Royal");

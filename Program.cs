@@ -18,6 +18,7 @@ namespace PersonaPatchGen
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             SyncUIHelper.Initialize();
+            Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
             Application.Run(new WizardForm());
         }
     }
