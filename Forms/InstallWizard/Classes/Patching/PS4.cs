@@ -40,7 +40,12 @@ namespace PersonaPatchGen
                     ExtractPKG(tempDir + "\\base_extracted");
 
                 // Get list of combination sets of patches to generate
-                List<List<GamePatch>> patchCombos = GetPatchCombos();
+                List<GamePatch> selectedPatches = new List<GamePatch>();
+                foreach (var patch in chkListBox_Patches.CheckedItems)
+                    selectedPatches.Add(selectedGame.Patches.First(x => x.Name.Equals(patch.ToString())));
+
+                //List<List<GamePatch>> patchCombos = GetPatchCombos();
+                List<List<GamePatch>> patchCombos = new() { selectedPatches };
 
                 // Create new PKG for each set of combinations
                 for (int i = 0; i < patchCombos.Count; i++)
@@ -53,8 +58,8 @@ namespace PersonaPatchGen
             }
             else
             {
-                if (WinFormsDialogs.YesNoMsgBox("Install Python 3?", "An installation of Python 3.0.0 or higher was not detected on the system. " +
-                    "It is required to complete the patching operation. Would you like to download and install it now?"))
+                if (WinFormsDialogs.ShowMessageBox("Install Python 3?", "An installation of Python 3.0.0 or higher was not detected on the system. " +
+                    "It is required to complete the patching operation. Would you like to download and install it now?", MessageBoxButtons.YesNo))
                     DownloadPython3();
             }
         }
@@ -257,7 +262,10 @@ namespace PersonaPatchGen
             Exe.CloseProcess("orbis-pub-cmd", true);
             string args = $"img_create --oformat pkg --tmp_path ./temp ./{selectedGame.TitleID}-patch.gp4 ./temp";
 
-            Exe.Run(Path.Combine(Exe.Directory(), $"Dependencies\\PS4\\orbis-pub-cmd.exe"), args, true, Path.GetDirectoryName(buildDir));
+            Exe.Run(Path.Combine(Exe.Directory(), 
+                $"Dependencies\\PS4\\orbis-pub-cmd.exe"), args, true, 
+                Path.GetDirectoryName(buildDir), 
+                redirectStdOut: true, unicodeEncoding: false);
             
             // Move PKG/EBOOT to Output folder
             string pkgPath = Path.Combine(tempPKGDir, selectedGame.UpdatePKGName);
@@ -318,9 +326,12 @@ namespace PersonaPatchGen
             string patchedEbootPath = elfPath + "--patched.bin";
             if (File.Exists(patchedEbootPath))
                 File.Delete(patchedEbootPath);
-            string pyPath = Path.Combine(Exe.Directory(), @"Dependencies\PS4\ppp\patch.py");
-            string args = $"\"{pyPath}\" \"{elfPath}\" --patch {string.Join(" ", patchShortNames)}";
-            Exe.Run(pythonPath, args, true, Path.GetDirectoryName(pyPath));
+
+            List<string> args = new() { elfPath, "--patch" };
+            foreach (var patch in patchShortNames)
+                args.Add(patch);
+            ApplyPersonaPS4Patches(args.ToArray());
+
             using (FileSys.WaitForFile(patchedEbootPath)) { };
             if (File.Exists(patchedEbootPath))
             {

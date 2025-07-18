@@ -23,11 +23,13 @@ namespace PersonaPatchGen
 
 #if DEBUG
             Output.VerboseLogging = true;
-            Output.LogControl = rtb_Patches_Log;
+            Output.LogControl = rtb_Apply_Log;
+            Output.Logging = true;
+            
             comboBox_Platform.SelectedIndex = comboBox_Platform.Items.IndexOf("PlayStation 4");
             comboBox_Region.SelectedIndex = comboBox_Region.Items.IndexOf("USA");
             comboBox_Game.SelectedIndex = comboBox_Game.Items.IndexOf("Persona 5 Royal");
-            txt_PKGPath.Text = @"F:\Persona\Backups\PS4\Persona 5 Royal\USA\UP0177-CUSA17416_00-PERSONA5R0000000-A0100-V0100.pkg";
+            txt_PKGPath.Text = @"Z:\Games\Persona\Backups\PS4\Persona 5 Royal\USA\UP0177-CUSA17416_00-PERSONA5R0000000-A0100-V0100.pkg";
             btn_Next.Enabled = true;
 #endif
         }
@@ -333,7 +335,7 @@ namespace PersonaPatchGen
         {
             foreach (var patch in selectedGame.Patches)
             {
-                chkListBox_Patches.Items.Add(patch.Name, patch.OnByDefault);
+                chkListBox_Patches.Items.Add(patch.Name, patch.Enabled);
             }
             patchesInitialized = true;
         }
@@ -480,10 +482,10 @@ namespace PersonaPatchGen
             else if (tabControl_Main.SelectedTab.Text == "Apply")
             {
                 if (chk_Permutations.Checked)
-                    if (!WinFormsDialogs.YesNoMsgBox("Generate All Patch Combos?", 
+                    if (!WinFormsDialogs.ShowMessageBox("Generate All Patch Combos?", 
                         "You have checked the \"All Combos\" box, which means every possible combination of selected patches " +
                         "will be output. This can take a lot of time and use a lot of resources and disk space, are you sure " +
-                        "you would like to continue?"))
+                        "you would like to continue?", MessageBoxButtons.YesNo))
                         return false;
                 if (chkListBox_Patches.CheckedItems.Count < 1)
                     return false;
@@ -499,10 +501,10 @@ namespace PersonaPatchGen
         /// <returns></returns>
         private bool Python3Installed()
         {
-            Python.GetInstalls("3.0.0");
-            if (Python.FoundLocations.Count() > 0)
+            ShrineFox.IO.Python.GetInstalls("3.0.0");
+            if (ShrineFox.IO.Python.FoundLocations.Count() > 0)
             {
-                pythonPath = Python.FoundLocations.First().Value;
+                pythonPath = ShrineFox.IO.Python.FoundLocations.First().Value;
                 return true;
             }
             return false;

@@ -80,7 +80,7 @@ namespace PersonaPatchGen
 
         private void ExePath_Browse(object sender, EventArgs e)
         {
-            var files = WinFormsEvents.FilePath_Click($"Select {selectedPlatform.EmulatorName}.exe");
+            var files = WinFormsDialogs.SelectFile($"Select {selectedPlatform.EmulatorName}.exe");
             if (files.Count > 0)
                 txt_ExePath.Text = files.FirstOrDefault();
 
@@ -89,7 +89,7 @@ namespace PersonaPatchGen
 
         private void PKGPath_Browse(object sender, EventArgs e)
         {
-            var files = WinFormsEvents.FilePath_Click($"Select game file");
+            var files = WinFormsDialogs.SelectFile($"Select game file");
             if (files.Count > 0)
                 txt_PKGPath.Text = files.FirstOrDefault();
 
@@ -122,7 +122,7 @@ namespace PersonaPatchGen
 
         private void OutputDir_Click(object sender, EventArgs e)
         {
-            string folder = WinFormsEvents.FolderPath_Click($"Select output directory");
+            string folder = WinFormsDialogs.SelectFolder($"Select output directory");
             if (folder != "")
                 txt_OutputDir.Text = folder;
         }
