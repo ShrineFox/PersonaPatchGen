@@ -1,5 +1,4 @@
-﻿using DarkUI.Forms;
-using ShrineFox.IO;
+﻿using ShrineFox.IO;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

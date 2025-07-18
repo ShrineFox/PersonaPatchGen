@@ -31,956 +31,1179 @@ namespace PersonaPatchGen
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WizardForm));
-            this.tlp_Main = new System.Windows.Forms.TableLayoutPanel();
-            this.pnl_SideImage = new System.Windows.Forms.Panel();
-            this.pnl_Main_Inner = new System.Windows.Forms.Panel();
-            this.tlp_Main_Inner = new System.Windows.Forms.TableLayoutPanel();
-            this.tlp_Main_Buttons = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_Back = new DarkUI.Controls.DarkButton();
-            this.btn_Action = new DarkUI.Controls.DarkButton();
-            this.btn_Next = new DarkUI.Controls.DarkButton();
-            this.tabControl_Main = new ShrineFox.IO.TabControl();
-            this.tabPage_1_Welcome = new System.Windows.Forms.TabPage();
-            this.tlp_1_Welcome_Inner = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_Platform = new DarkUI.Controls.DarkLabel();
-            this.lbl_Region = new DarkUI.Controls.DarkLabel();
-            this.lbl_Game = new DarkUI.Controls.DarkLabel();
-            this.comboBox_Game = new DarkUI.Controls.DarkComboBox();
-            this.comboBox_Region = new DarkUI.Controls.DarkComboBox();
-            this.comboBox_Platform = new DarkUI.Controls.DarkComboBox();
-            this.rtb_1_Welcome = new RichTextBox();
-            this.tabPage_2_Updates = new System.Windows.Forms.TabPage();
-            this.tlp_2_Updates_Inner = new System.Windows.Forms.TableLayoutPanel();
-            this.progressBar_Updates = new System.Windows.Forms.ProgressBar();
-            this.rtb_Updates_Log = new System.Windows.Forms.RichTextBox();
-            this.rtb_2_Updates = new RichTextBox();
-            this.tabPage_3_Platform = new System.Windows.Forms.TabPage();
-            this.tlp_3_Platform_Inner = new System.Windows.Forms.TableLayoutPanel();
-            this.tlp_3_Platform_PKGPath = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_PKGPath = new DarkUI.Controls.DarkButton();
-            this.txt_PKGPath = new DarkUI.Controls.DarkTextBox();
-            this.lbl_PKGPath = new DarkUI.Controls.DarkLabel();
-            this.lbl_TargetPlatform = new DarkUI.Controls.DarkLabel();
-            this.rtb_3_Platform = new RichTextBox();
-            this.lbl_ExePath = new DarkUI.Controls.DarkLabel();
-            this.tlp_3_Platform_ExePath = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_ExePath = new DarkUI.Controls.DarkButton();
-            this.txt_ExePath = new DarkUI.Controls.DarkTextBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.radio_Emu = new DarkUI.Controls.DarkRadioButton();
-            this.radio_Console = new DarkUI.Controls.DarkRadioButton();
-            this.tabPage_4_Patches = new System.Windows.Forms.TabPage();
-            this.tlp_4_Patches_Inner = new System.Windows.Forms.TableLayoutPanel();
-            this.rtb_Patches_Log = new RichTextBox();
-            this.rtb_4_Patches = new RichTextBox();
-            this.chkListBox_Patches = new System.Windows.Forms.CheckedListBox();
-            this.chk_Permutations = new System.Windows.Forms.CheckBox();
-            this.tabPage_5_Apply = new System.Windows.Forms.TabPage();
-            this.tlp_5_Apply = new System.Windows.Forms.TableLayoutPanel();
-            this.progressBar_Apply = new System.Windows.Forms.ProgressBar();
-            this.rtb_Apply_Log = new System.Windows.Forms.RichTextBox();
-            this.rtb_5_Apply = new RichTextBox();
-            this.chk_Unfakesign = new DarkUI.Controls.DarkCheckBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
-            this.txt_OutputDir = new DarkUI.Controls.DarkTextBox();
-            this.btn_OutputDir = new DarkUI.Controls.DarkButton();
-            this.tlp_Main.SuspendLayout();
-            this.pnl_Main_Inner.SuspendLayout();
-            this.tlp_Main_Inner.SuspendLayout();
-            this.tlp_Main_Buttons.SuspendLayout();
-            this.tabControl_Main.SuspendLayout();
-            this.tabPage_1_Welcome.SuspendLayout();
-            this.tlp_1_Welcome_Inner.SuspendLayout();
-            this.tabPage_2_Updates.SuspendLayout();
-            this.tlp_2_Updates_Inner.SuspendLayout();
-            this.tabPage_3_Platform.SuspendLayout();
-            this.tlp_3_Platform_Inner.SuspendLayout();
-            this.tlp_3_Platform_PKGPath.SuspendLayout();
-            this.tlp_3_Platform_ExePath.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tabPage_4_Patches.SuspendLayout();
-            this.tlp_4_Patches_Inner.SuspendLayout();
-            this.tabPage_5_Apply.SuspendLayout();
-            this.tlp_5_Apply.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.SuspendLayout();
+            tlp_Main = new TableLayoutPanel();
+            pnl_SideImage = new Panel();
+            pnl_Main_Inner = new Panel();
+            tlp_Main_Inner = new TableLayoutPanel();
+            tlp_Main_Buttons = new TableLayoutPanel();
+            btn_Back = new MetroSet_UI.Controls.MetroSetButton();
+            btn_Action = new MetroSet_UI.Controls.MetroSetButton();
+            btn_Next = new MetroSet_UI.Controls.MetroSetButton();
+            tabControl_Main = new ShrineFox.IO.TabControl();
+            tabPage_1_Welcome = new TabPage();
+            tlp_1_Welcome_Inner = new TableLayoutPanel();
+            lbl_Platform = new MetroSet_UI.Controls.MetroSetLabel();
+            lbl_Region = new MetroSet_UI.Controls.MetroSetLabel();
+            lbl_Game = new MetroSet_UI.Controls.MetroSetLabel();
+            comboBox_Game = new MetroSet_UI.Controls.MetroSetComboBox();
+            comboBox_Region = new MetroSet_UI.Controls.MetroSetComboBox();
+            comboBox_Platform = new MetroSet_UI.Controls.MetroSetComboBox();
+            rtb_1_Welcome = new RichTextBox();
+            tabPage_2_Updates = new TabPage();
+            tlp_2_Updates_Inner = new TableLayoutPanel();
+            progressBar_Updates = new ProgressBar();
+            rtb_Updates_Log = new RichTextBox();
+            rtb_2_Updates = new RichTextBox();
+            tabPage_3_Platform = new TabPage();
+            tlp_3_Platform_Inner = new TableLayoutPanel();
+            tlp_3_Platform_PKGPath = new TableLayoutPanel();
+            btn_PKGPath = new MetroSet_UI.Controls.MetroSetButton();
+            txt_PKGPath = new MetroSet_UI.Controls.MetroSetTextBox();
+            lbl_PKGPath = new MetroSet_UI.Controls.MetroSetLabel();
+            lbl_TargetPlatform = new MetroSet_UI.Controls.MetroSetLabel();
+            rtb_3_Platform = new RichTextBox();
+            lbl_ExePath = new MetroSet_UI.Controls.MetroSetLabel();
+            tlp_3_Platform_ExePath = new TableLayoutPanel();
+            btn_ExePath = new MetroSet_UI.Controls.MetroSetButton();
+            txt_ExePath = new MetroSet_UI.Controls.MetroSetTextBox();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            radio_Emu = new RadioButton();
+            radio_Console = new RadioButton();
+            tabPage_4_Patches = new TabPage();
+            tlp_4_Patches_Inner = new TableLayoutPanel();
+            rtb_Patches_Log = new RichTextBox();
+            rtb_4_Patches = new RichTextBox();
+            chkListBox_Patches = new CheckedListBox();
+            chk_Permutations = new CheckBox();
+            tabPage_5_Apply = new TabPage();
+            tlp_5_Apply = new TableLayoutPanel();
+            darkLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
+            progressBar_Apply = new ProgressBar();
+            rtb_Apply_Log = new RichTextBox();
+            rtb_5_Apply = new RichTextBox();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            txt_OutputDir = new MetroSet_UI.Controls.MetroSetTextBox();
+            chk_Unfakesign = new CheckBox();
+            btn_OutputDir = new MetroSet_UI.Controls.MetroSetButton();
+            tlp_Main.SuspendLayout();
+            pnl_Main_Inner.SuspendLayout();
+            tlp_Main_Inner.SuspendLayout();
+            tlp_Main_Buttons.SuspendLayout();
+            tabControl_Main.SuspendLayout();
+            tabPage_1_Welcome.SuspendLayout();
+            tlp_1_Welcome_Inner.SuspendLayout();
+            tabPage_2_Updates.SuspendLayout();
+            tlp_2_Updates_Inner.SuspendLayout();
+            tabPage_3_Platform.SuspendLayout();
+            tlp_3_Platform_Inner.SuspendLayout();
+            tlp_3_Platform_PKGPath.SuspendLayout();
+            tlp_3_Platform_ExePath.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            tabPage_4_Patches.SuspendLayout();
+            tlp_4_Patches_Inner.SuspendLayout();
+            tabPage_5_Apply.SuspendLayout();
+            tlp_5_Apply.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            SuspendLayout();
             // 
             // tlp_Main
             // 
-            this.tlp_Main.ColumnCount = 2;
-            this.tlp_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.59647F));
-            this.tlp_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.40353F));
-            this.tlp_Main.Controls.Add(this.pnl_SideImage, 0, 0);
-            this.tlp_Main.Controls.Add(this.pnl_Main_Inner, 1, 0);
-            this.tlp_Main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_Main.Location = new System.Drawing.Point(0, 0);
-            this.tlp_Main.Margin = new System.Windows.Forms.Padding(0);
-            this.tlp_Main.Name = "tlp_Main";
-            this.tlp_Main.RowCount = 1;
-            this.tlp_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.79263F));
-            this.tlp_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.20737F));
-            this.tlp_Main.Size = new System.Drawing.Size(912, 491);
-            this.tlp_Main.TabIndex = 3;
+            tlp_Main.ColumnCount = 2;
+            tlp_Main.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 37.59647F));
+            tlp_Main.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 62.40353F));
+            tlp_Main.Controls.Add(pnl_SideImage, 0, 0);
+            tlp_Main.Controls.Add(pnl_Main_Inner, 1, 0);
+            tlp_Main.Dock = DockStyle.Fill;
+            tlp_Main.Location = new System.Drawing.Point(2, 0);
+            tlp_Main.Margin = new Padding(0);
+            tlp_Main.Name = "tlp_Main";
+            tlp_Main.RowCount = 1;
+            tlp_Main.RowStyles.Add(new RowStyle(SizeType.Percent, 84.79263F));
+            tlp_Main.RowStyles.Add(new RowStyle(SizeType.Percent, 15.20737F));
+            tlp_Main.Size = new System.Drawing.Size(908, 489);
+            tlp_Main.TabIndex = 3;
             // 
             // pnl_SideImage
             // 
-            this.pnl_SideImage.BackgroundImage = global::PersonaPatchGen.Properties.Resources.Welcome;
-            this.pnl_SideImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnl_SideImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_SideImage.Location = new System.Drawing.Point(3, 3);
-            this.pnl_SideImage.Name = "pnl_SideImage";
-            this.pnl_SideImage.Size = new System.Drawing.Size(336, 485);
-            this.pnl_SideImage.TabIndex = 0;
+            pnl_SideImage.BackgroundImage = (System.Drawing.Image)resources.GetObject("pnl_SideImage.BackgroundImage");
+            pnl_SideImage.BackgroundImageLayout = ImageLayout.Stretch;
+            pnl_SideImage.Dock = DockStyle.Fill;
+            pnl_SideImage.Location = new System.Drawing.Point(0, 0);
+            pnl_SideImage.Margin = new Padding(0);
+            pnl_SideImage.Name = "pnl_SideImage";
+            pnl_SideImage.Size = new System.Drawing.Size(341, 489);
+            pnl_SideImage.TabIndex = 0;
             // 
             // pnl_Main_Inner
             // 
-            this.pnl_Main_Inner.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnl_Main_Inner.Controls.Add(this.tlp_Main_Inner);
-            this.pnl_Main_Inner.Location = new System.Drawing.Point(345, 3);
-            this.pnl_Main_Inner.Name = "pnl_Main_Inner";
-            this.pnl_Main_Inner.Size = new System.Drawing.Size(564, 485);
-            this.pnl_Main_Inner.TabIndex = 1;
+            pnl_Main_Inner.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnl_Main_Inner.Controls.Add(tlp_Main_Inner);
+            pnl_Main_Inner.Location = new System.Drawing.Point(344, 3);
+            pnl_Main_Inner.Name = "pnl_Main_Inner";
+            pnl_Main_Inner.Size = new System.Drawing.Size(561, 483);
+            pnl_Main_Inner.TabIndex = 1;
             // 
             // tlp_Main_Inner
             // 
-            this.tlp_Main_Inner.AutoScroll = true;
-            this.tlp_Main_Inner.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlp_Main_Inner.ColumnCount = 1;
-            this.tlp_Main_Inner.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlp_Main_Inner.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tlp_Main_Inner.Controls.Add(this.tlp_Main_Buttons, 0, 1);
-            this.tlp_Main_Inner.Controls.Add(this.tabControl_Main, 0, 0);
-            this.tlp_Main_Inner.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_Main_Inner.Location = new System.Drawing.Point(0, 0);
-            this.tlp_Main_Inner.Margin = new System.Windows.Forms.Padding(0);
-            this.tlp_Main_Inner.Name = "tlp_Main_Inner";
-            this.tlp_Main_Inner.RowCount = 2;
-            this.tlp_Main_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tlp_Main_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_Main_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlp_Main_Inner.Size = new System.Drawing.Size(564, 485);
-            this.tlp_Main_Inner.TabIndex = 3;
+            tlp_Main_Inner.AutoScroll = true;
+            tlp_Main_Inner.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tlp_Main_Inner.ColumnCount = 1;
+            tlp_Main_Inner.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tlp_Main_Inner.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            tlp_Main_Inner.Controls.Add(tlp_Main_Buttons, 0, 1);
+            tlp_Main_Inner.Controls.Add(tabControl_Main, 0, 0);
+            tlp_Main_Inner.Dock = DockStyle.Fill;
+            tlp_Main_Inner.Location = new System.Drawing.Point(0, 0);
+            tlp_Main_Inner.Margin = new Padding(0);
+            tlp_Main_Inner.Name = "tlp_Main_Inner";
+            tlp_Main_Inner.RowCount = 2;
+            tlp_Main_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
+            tlp_Main_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tlp_Main_Inner.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tlp_Main_Inner.Size = new System.Drawing.Size(561, 483);
+            tlp_Main_Inner.TabIndex = 3;
             // 
             // tlp_Main_Buttons
             // 
-            this.tlp_Main_Buttons.ColumnCount = 3;
-            this.tlp_Main_Buttons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_Main_Buttons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_Main_Buttons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
-            this.tlp_Main_Buttons.Controls.Add(this.btn_Back, 0, 0);
-            this.tlp_Main_Buttons.Controls.Add(this.btn_Action, 1, 0);
-            this.tlp_Main_Buttons.Controls.Add(this.btn_Next, 2, 0);
-            this.tlp_Main_Buttons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_Main_Buttons.Location = new System.Drawing.Point(0, 436);
-            this.tlp_Main_Buttons.Margin = new System.Windows.Forms.Padding(0);
-            this.tlp_Main_Buttons.Name = "tlp_Main_Buttons";
-            this.tlp_Main_Buttons.RowCount = 1;
-            this.tlp_Main_Buttons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_Main_Buttons.Size = new System.Drawing.Size(564, 49);
-            this.tlp_Main_Buttons.TabIndex = 3;
+            tlp_Main_Buttons.ColumnCount = 3;
+            tlp_Main_Buttons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlp_Main_Buttons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlp_Main_Buttons.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 148F));
+            tlp_Main_Buttons.Controls.Add(btn_Back, 0, 0);
+            tlp_Main_Buttons.Controls.Add(btn_Action, 1, 0);
+            tlp_Main_Buttons.Controls.Add(btn_Next, 2, 0);
+            tlp_Main_Buttons.Dock = DockStyle.Fill;
+            tlp_Main_Buttons.Location = new System.Drawing.Point(0, 434);
+            tlp_Main_Buttons.Margin = new Padding(0);
+            tlp_Main_Buttons.Name = "tlp_Main_Buttons";
+            tlp_Main_Buttons.RowCount = 1;
+            tlp_Main_Buttons.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tlp_Main_Buttons.Size = new System.Drawing.Size(561, 49);
+            tlp_Main_Buttons.TabIndex = 3;
             // 
             // btn_Back
             // 
-            this.btn_Back.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Back.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btn_Back.Location = new System.Drawing.Point(3, 3);
-            this.btn_Back.Name = "btn_Back";
-            this.btn_Back.Padding = new System.Windows.Forms.Padding(3);
-            this.btn_Back.Size = new System.Drawing.Size(202, 43);
-            this.btn_Back.TabIndex = 5;
-            this.btn_Back.Text = "< Back";
-            this.btn_Back.Visible = false;
-            this.btn_Back.Click += new System.EventHandler(this.Back_Clicked);
+            btn_Back.DisabledBackColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
+            btn_Back.DisabledBorderColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
+            btn_Back.DisabledForeColor = System.Drawing.Color.Gray;
+            btn_Back.Dock = DockStyle.Fill;
+            btn_Back.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            btn_Back.HoverBorderColor = System.Drawing.Color.FromArgb(95, 207, 255);
+            btn_Back.HoverColor = System.Drawing.Color.FromArgb(95, 207, 255);
+            btn_Back.HoverTextColor = System.Drawing.Color.White;
+            btn_Back.IsDerivedStyle = true;
+            btn_Back.Location = new System.Drawing.Point(3, 3);
+            btn_Back.Name = "btn_Back";
+            btn_Back.NormalBorderColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            btn_Back.NormalColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            btn_Back.NormalTextColor = System.Drawing.Color.White;
+            btn_Back.Padding = new Padding(3);
+            btn_Back.PressBorderColor = System.Drawing.Color.FromArgb(35, 147, 195);
+            btn_Back.PressColor = System.Drawing.Color.FromArgb(35, 147, 195);
+            btn_Back.PressTextColor = System.Drawing.Color.White;
+            btn_Back.Size = new System.Drawing.Size(200, 43);
+            btn_Back.Style = MetroSet_UI.Enums.Style.Light;
+            btn_Back.StyleManager = null;
+            btn_Back.TabIndex = 5;
+            btn_Back.Text = "< Back";
+            btn_Back.ThemeAuthor = "Narwin";
+            btn_Back.ThemeName = "MetroLite";
+            btn_Back.Visible = false;
+            btn_Back.Click += Back_Clicked;
             // 
             // btn_Action
             // 
-            this.btn_Action.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Action.Enabled = false;
-            this.btn_Action.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btn_Action.Location = new System.Drawing.Point(211, 3);
-            this.btn_Action.Name = "btn_Action";
-            this.btn_Action.Padding = new System.Windows.Forms.Padding(3);
-            this.btn_Action.Size = new System.Drawing.Size(202, 43);
-            this.btn_Action.TabIndex = 4;
-            this.btn_Action.Text = "Download";
-            this.btn_Action.Visible = false;
-            this.btn_Action.Click += new System.EventHandler(this.Action_Clicked);
+            btn_Action.DisabledBackColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
+            btn_Action.DisabledBorderColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
+            btn_Action.DisabledForeColor = System.Drawing.Color.Gray;
+            btn_Action.Dock = DockStyle.Fill;
+            btn_Action.Enabled = false;
+            btn_Action.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            btn_Action.HoverBorderColor = System.Drawing.Color.FromArgb(95, 207, 255);
+            btn_Action.HoverColor = System.Drawing.Color.FromArgb(95, 207, 255);
+            btn_Action.HoverTextColor = System.Drawing.Color.White;
+            btn_Action.IsDerivedStyle = true;
+            btn_Action.Location = new System.Drawing.Point(209, 3);
+            btn_Action.Name = "btn_Action";
+            btn_Action.NormalBorderColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            btn_Action.NormalColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            btn_Action.NormalTextColor = System.Drawing.Color.White;
+            btn_Action.Padding = new Padding(3);
+            btn_Action.PressBorderColor = System.Drawing.Color.FromArgb(35, 147, 195);
+            btn_Action.PressColor = System.Drawing.Color.FromArgb(35, 147, 195);
+            btn_Action.PressTextColor = System.Drawing.Color.White;
+            btn_Action.Size = new System.Drawing.Size(200, 43);
+            btn_Action.Style = MetroSet_UI.Enums.Style.Light;
+            btn_Action.StyleManager = null;
+            btn_Action.TabIndex = 4;
+            btn_Action.Text = "Download";
+            btn_Action.ThemeAuthor = "Narwin";
+            btn_Action.ThemeName = "MetroLite";
+            btn_Action.Visible = false;
+            btn_Action.Click += Action_Clicked;
             // 
             // btn_Next
             // 
-            this.btn_Next.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Next.Enabled = false;
-            this.btn_Next.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btn_Next.Location = new System.Drawing.Point(419, 3);
-            this.btn_Next.Name = "btn_Next";
-            this.btn_Next.Padding = new System.Windows.Forms.Padding(3);
-            this.btn_Next.Size = new System.Drawing.Size(142, 43);
-            this.btn_Next.TabIndex = 3;
-            this.btn_Next.Text = "Next >";
-            this.btn_Next.Click += new System.EventHandler(this.Next_Clicked);
+            btn_Next.DisabledBackColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
+            btn_Next.DisabledBorderColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
+            btn_Next.DisabledForeColor = System.Drawing.Color.Gray;
+            btn_Next.Dock = DockStyle.Fill;
+            btn_Next.Enabled = false;
+            btn_Next.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            btn_Next.HoverBorderColor = System.Drawing.Color.FromArgb(95, 207, 255);
+            btn_Next.HoverColor = System.Drawing.Color.FromArgb(95, 207, 255);
+            btn_Next.HoverTextColor = System.Drawing.Color.White;
+            btn_Next.IsDerivedStyle = true;
+            btn_Next.Location = new System.Drawing.Point(415, 3);
+            btn_Next.Name = "btn_Next";
+            btn_Next.NormalBorderColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            btn_Next.NormalColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            btn_Next.NormalTextColor = System.Drawing.Color.White;
+            btn_Next.Padding = new Padding(3);
+            btn_Next.PressBorderColor = System.Drawing.Color.FromArgb(35, 147, 195);
+            btn_Next.PressColor = System.Drawing.Color.FromArgb(35, 147, 195);
+            btn_Next.PressTextColor = System.Drawing.Color.White;
+            btn_Next.Size = new System.Drawing.Size(143, 43);
+            btn_Next.Style = MetroSet_UI.Enums.Style.Light;
+            btn_Next.StyleManager = null;
+            btn_Next.TabIndex = 3;
+            btn_Next.Text = "Next >";
+            btn_Next.ThemeAuthor = "Narwin";
+            btn_Next.ThemeName = "MetroLite";
+            btn_Next.Click += Next_Clicked;
             // 
             // tabControl_Main
             // 
-            this.tabControl_Main.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl_Main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabControl_Main.Controls.Add(this.tabPage_1_Welcome);
-            this.tabControl_Main.Controls.Add(this.tabPage_2_Updates);
-            this.tabControl_Main.Controls.Add(this.tabPage_3_Platform);
-            this.tabControl_Main.Controls.Add(this.tabPage_4_Patches);
-            this.tabControl_Main.Controls.Add(this.tabPage_5_Apply);
-            this.tabControl_Main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl_Main.ForeColor = System.Drawing.Color.Silver;
-            this.tabControl_Main.Location = new System.Drawing.Point(0, 0);
-            this.tabControl_Main.Margin = new System.Windows.Forms.Padding(0);
-            this.tabControl_Main.Name = "tabControl_Main";
-            this.tabControl_Main.SelectedIndex = 0;
-            this.tabControl_Main.SelectedTabColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabControl_Main.Size = new System.Drawing.Size(564, 436);
-            this.tabControl_Main.TabColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabControl_Main.TabIndex = 4;
-            this.tabControl_Main.SelectedIndexChanged += new System.EventHandler(this.MainTab_Changed);
+            tabControl_Main.Appearance = TabAppearance.FlatButtons;
+            tabControl_Main.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+            tabControl_Main.Controls.Add(tabPage_1_Welcome);
+            tabControl_Main.Controls.Add(tabPage_2_Updates);
+            tabControl_Main.Controls.Add(tabPage_3_Platform);
+            tabControl_Main.Controls.Add(tabPage_4_Patches);
+            tabControl_Main.Controls.Add(tabPage_5_Apply);
+            tabControl_Main.Dock = DockStyle.Fill;
+            tabControl_Main.ForeColor = System.Drawing.Color.Silver;
+            tabControl_Main.Location = new System.Drawing.Point(0, 0);
+            tabControl_Main.Margin = new Padding(0);
+            tabControl_Main.Name = "tabControl_Main";
+            tabControl_Main.SelectedIndex = 0;
+            tabControl_Main.SelectedTabColor = System.Drawing.Color.FromArgb(60, 63, 65);
+            tabControl_Main.Size = new System.Drawing.Size(561, 434);
+            tabControl_Main.TabColor = System.Drawing.Color.FromArgb(60, 63, 65);
+            tabControl_Main.TabIndex = 4;
+            tabControl_Main.SelectedIndexChanged += MainTab_Changed;
             // 
             // tabPage_1_Welcome
             // 
-            this.tabPage_1_Welcome.Controls.Add(this.tlp_1_Welcome_Inner);
-            this.tabPage_1_Welcome.Location = new System.Drawing.Point(4, 27);
-            this.tabPage_1_Welcome.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPage_1_Welcome.Name = "tabPage_1_Welcome";
-            this.tabPage_1_Welcome.Size = new System.Drawing.Size(556, 405);
-            this.tabPage_1_Welcome.TabIndex = 0;
-            this.tabPage_1_Welcome.Text = "Welcome";
-            this.tabPage_1_Welcome.UseVisualStyleBackColor = true;
+            tabPage_1_Welcome.Controls.Add(tlp_1_Welcome_Inner);
+            tabPage_1_Welcome.Location = new System.Drawing.Point(4, 37);
+            tabPage_1_Welcome.Margin = new Padding(0);
+            tabPage_1_Welcome.Name = "tabPage_1_Welcome";
+            tabPage_1_Welcome.Size = new System.Drawing.Size(553, 393);
+            tabPage_1_Welcome.TabIndex = 0;
+            tabPage_1_Welcome.Text = "Welcome";
+            tabPage_1_Welcome.UseVisualStyleBackColor = true;
             // 
             // tlp_1_Welcome_Inner
             // 
-            this.tlp_1_Welcome_Inner.AutoScroll = true;
-            this.tlp_1_Welcome_Inner.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlp_1_Welcome_Inner.ColumnCount = 2;
-            this.tlp_1_Welcome_Inner.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlp_1_Welcome_Inner.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tlp_1_Welcome_Inner.Controls.Add(this.lbl_Platform, 0, 1);
-            this.tlp_1_Welcome_Inner.Controls.Add(this.lbl_Region, 0, 2);
-            this.tlp_1_Welcome_Inner.Controls.Add(this.lbl_Game, 0, 3);
-            this.tlp_1_Welcome_Inner.Controls.Add(this.comboBox_Game, 1, 3);
-            this.tlp_1_Welcome_Inner.Controls.Add(this.comboBox_Region, 1, 2);
-            this.tlp_1_Welcome_Inner.Controls.Add(this.comboBox_Platform, 1, 1);
-            this.tlp_1_Welcome_Inner.Controls.Add(this.rtb_1_Welcome, 1, 0);
-            this.tlp_1_Welcome_Inner.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_1_Welcome_Inner.Location = new System.Drawing.Point(0, 0);
-            this.tlp_1_Welcome_Inner.Margin = new System.Windows.Forms.Padding(0);
-            this.tlp_1_Welcome_Inner.Name = "tlp_1_Welcome_Inner";
-            this.tlp_1_Welcome_Inner.RowCount = 4;
-            this.tlp_1_Welcome_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_1_Welcome_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_1_Welcome_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_1_Welcome_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_1_Welcome_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlp_1_Welcome_Inner.Size = new System.Drawing.Size(556, 405);
-            this.tlp_1_Welcome_Inner.TabIndex = 3;
+            tlp_1_Welcome_Inner.AutoScroll = true;
+            tlp_1_Welcome_Inner.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tlp_1_Welcome_Inner.ColumnCount = 2;
+            tlp_1_Welcome_Inner.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tlp_1_Welcome_Inner.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            tlp_1_Welcome_Inner.Controls.Add(lbl_Platform, 0, 1);
+            tlp_1_Welcome_Inner.Controls.Add(lbl_Region, 0, 2);
+            tlp_1_Welcome_Inner.Controls.Add(lbl_Game, 0, 3);
+            tlp_1_Welcome_Inner.Controls.Add(comboBox_Game, 1, 3);
+            tlp_1_Welcome_Inner.Controls.Add(comboBox_Region, 1, 2);
+            tlp_1_Welcome_Inner.Controls.Add(comboBox_Platform, 1, 1);
+            tlp_1_Welcome_Inner.Controls.Add(rtb_1_Welcome, 1, 0);
+            tlp_1_Welcome_Inner.Dock = DockStyle.Fill;
+            tlp_1_Welcome_Inner.Location = new System.Drawing.Point(0, 0);
+            tlp_1_Welcome_Inner.Margin = new Padding(0);
+            tlp_1_Welcome_Inner.Name = "tlp_1_Welcome_Inner";
+            tlp_1_Welcome_Inner.RowCount = 4;
+            tlp_1_Welcome_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tlp_1_Welcome_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tlp_1_Welcome_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tlp_1_Welcome_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tlp_1_Welcome_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tlp_1_Welcome_Inner.Size = new System.Drawing.Size(553, 393);
+            tlp_1_Welcome_Inner.TabIndex = 3;
             // 
             // lbl_Platform
             // 
-            this.lbl_Platform.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_Platform.AutoSize = true;
-            this.lbl_Platform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lbl_Platform.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.lbl_Platform.Location = new System.Drawing.Point(26, 266);
-            this.lbl_Platform.Name = "lbl_Platform";
-            this.lbl_Platform.Size = new System.Drawing.Size(82, 24);
-            this.lbl_Platform.TabIndex = 3;
-            this.lbl_Platform.Text = "Platform:";
+            lbl_Platform.Anchor = AnchorStyles.Right;
+            lbl_Platform.AutoSize = true;
+            lbl_Platform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            lbl_Platform.IsDerivedStyle = true;
+            lbl_Platform.Location = new System.Drawing.Point(25, 257);
+            lbl_Platform.Name = "lbl_Platform";
+            lbl_Platform.Size = new System.Drawing.Size(82, 24);
+            lbl_Platform.Style = MetroSet_UI.Enums.Style.Light;
+            lbl_Platform.StyleManager = null;
+            lbl_Platform.TabIndex = 3;
+            lbl_Platform.Text = "Platform:";
+            lbl_Platform.ThemeAuthor = "Narwin";
+            lbl_Platform.ThemeName = "MetroLite";
             // 
             // lbl_Region
             // 
-            this.lbl_Region.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_Region.AutoSize = true;
-            this.lbl_Region.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lbl_Region.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.lbl_Region.Location = new System.Drawing.Point(32, 316);
-            this.lbl_Region.Name = "lbl_Region";
-            this.lbl_Region.Size = new System.Drawing.Size(76, 24);
-            this.lbl_Region.TabIndex = 4;
-            this.lbl_Region.Text = "Region:";
-            this.lbl_Region.Visible = false;
+            lbl_Region.Anchor = AnchorStyles.Right;
+            lbl_Region.AutoSize = true;
+            lbl_Region.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            lbl_Region.IsDerivedStyle = true;
+            lbl_Region.Location = new System.Drawing.Point(31, 306);
+            lbl_Region.Name = "lbl_Region";
+            lbl_Region.Size = new System.Drawing.Size(76, 24);
+            lbl_Region.Style = MetroSet_UI.Enums.Style.Light;
+            lbl_Region.StyleManager = null;
+            lbl_Region.TabIndex = 4;
+            lbl_Region.Text = "Region:";
+            lbl_Region.ThemeAuthor = "Narwin";
+            lbl_Region.ThemeName = "MetroLite";
+            lbl_Region.Visible = false;
             // 
             // lbl_Game
             // 
-            this.lbl_Game.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_Game.AutoSize = true;
-            this.lbl_Game.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lbl_Game.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.lbl_Game.Location = new System.Drawing.Point(42, 367);
-            this.lbl_Game.Name = "lbl_Game";
-            this.lbl_Game.Size = new System.Drawing.Size(66, 24);
-            this.lbl_Game.TabIndex = 5;
-            this.lbl_Game.Text = "Game:";
-            this.lbl_Game.Visible = false;
+            lbl_Game.Anchor = AnchorStyles.Right;
+            lbl_Game.AutoSize = true;
+            lbl_Game.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            lbl_Game.IsDerivedStyle = true;
+            lbl_Game.Location = new System.Drawing.Point(41, 356);
+            lbl_Game.Name = "lbl_Game";
+            lbl_Game.Size = new System.Drawing.Size(66, 24);
+            lbl_Game.Style = MetroSet_UI.Enums.Style.Light;
+            lbl_Game.StyleManager = null;
+            lbl_Game.TabIndex = 5;
+            lbl_Game.Text = "Game:";
+            lbl_Game.ThemeAuthor = "Narwin";
+            lbl_Game.ThemeName = "MetroLite";
+            lbl_Game.Visible = false;
             // 
             // comboBox_Game
             // 
-            this.comboBox_Game.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox_Game.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.comboBox_Game.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.comboBox_Game.FormattingEnabled = true;
-            this.comboBox_Game.Location = new System.Drawing.Point(126, 364);
-            this.comboBox_Game.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
-            this.comboBox_Game.Name = "comboBox_Game";
-            this.comboBox_Game.Size = new System.Drawing.Size(415, 29);
-            this.comboBox_Game.TabIndex = 6;
-            this.comboBox_Game.Visible = false;
-            this.comboBox_Game.SelectedIndexChanged += new System.EventHandler(this.Game_Changed);
+            comboBox_Game.AllowDrop = true;
+            comboBox_Game.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_Game.ArrowColor = System.Drawing.Color.FromArgb(150, 150, 150);
+            comboBox_Game.BackColor = System.Drawing.Color.Transparent;
+            comboBox_Game.BackgroundColor = System.Drawing.Color.FromArgb(238, 238, 238);
+            comboBox_Game.BorderColor = System.Drawing.Color.FromArgb(150, 150, 150);
+            comboBox_Game.CausesValidation = false;
+            comboBox_Game.DisabledBackColor = System.Drawing.Color.FromArgb(204, 204, 204);
+            comboBox_Game.DisabledBorderColor = System.Drawing.Color.FromArgb(155, 155, 155);
+            comboBox_Game.DisabledForeColor = System.Drawing.Color.FromArgb(136, 136, 136);
+            comboBox_Game.DrawMode = DrawMode.OwnerDrawVariable;
+            comboBox_Game.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_Game.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            comboBox_Game.FormattingEnabled = true;
+            comboBox_Game.IsDerivedStyle = true;
+            comboBox_Game.ItemHeight = 20;
+            comboBox_Game.Location = new System.Drawing.Point(125, 355);
+            comboBox_Game.Margin = new Padding(15, 0, 15, 0);
+            comboBox_Game.Name = "comboBox_Game";
+            comboBox_Game.SelectedItemBackColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            comboBox_Game.SelectedItemForeColor = System.Drawing.Color.White;
+            comboBox_Game.Size = new System.Drawing.Size(413, 26);
+            comboBox_Game.Style = MetroSet_UI.Enums.Style.Light;
+            comboBox_Game.StyleManager = null;
+            comboBox_Game.TabIndex = 6;
+            comboBox_Game.ThemeAuthor = "Narwin";
+            comboBox_Game.ThemeName = "MetroLite";
+            comboBox_Game.Visible = false;
+            comboBox_Game.SelectedIndexChanged += Game_Changed;
             // 
             // comboBox_Region
             // 
-            this.comboBox_Region.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox_Region.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.comboBox_Region.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.comboBox_Region.FormattingEnabled = true;
-            this.comboBox_Region.Items.AddRange(new object[] {
-            "",
-            "USA",
-            "EUR"});
-            this.comboBox_Region.Location = new System.Drawing.Point(126, 313);
-            this.comboBox_Region.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
-            this.comboBox_Region.Name = "comboBox_Region";
-            this.comboBox_Region.Size = new System.Drawing.Size(415, 29);
-            this.comboBox_Region.TabIndex = 7;
-            this.comboBox_Region.Visible = false;
-            this.comboBox_Region.SelectedIndexChanged += new System.EventHandler(this.Region_Changed);
+            comboBox_Region.AllowDrop = true;
+            comboBox_Region.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_Region.ArrowColor = System.Drawing.Color.FromArgb(150, 150, 150);
+            comboBox_Region.BackColor = System.Drawing.Color.Transparent;
+            comboBox_Region.BackgroundColor = System.Drawing.Color.FromArgb(238, 238, 238);
+            comboBox_Region.BorderColor = System.Drawing.Color.FromArgb(150, 150, 150);
+            comboBox_Region.CausesValidation = false;
+            comboBox_Region.DisabledBackColor = System.Drawing.Color.FromArgb(204, 204, 204);
+            comboBox_Region.DisabledBorderColor = System.Drawing.Color.FromArgb(155, 155, 155);
+            comboBox_Region.DisabledForeColor = System.Drawing.Color.FromArgb(136, 136, 136);
+            comboBox_Region.DrawMode = DrawMode.OwnerDrawVariable;
+            comboBox_Region.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_Region.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            comboBox_Region.FormattingEnabled = true;
+            comboBox_Region.IsDerivedStyle = true;
+            comboBox_Region.ItemHeight = 20;
+            comboBox_Region.Items.AddRange(new object[] { "", "USA", "EUR" });
+            comboBox_Region.Location = new System.Drawing.Point(125, 305);
+            comboBox_Region.Margin = new Padding(15, 0, 15, 0);
+            comboBox_Region.Name = "comboBox_Region";
+            comboBox_Region.SelectedItemBackColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            comboBox_Region.SelectedItemForeColor = System.Drawing.Color.White;
+            comboBox_Region.Size = new System.Drawing.Size(413, 26);
+            comboBox_Region.Style = MetroSet_UI.Enums.Style.Light;
+            comboBox_Region.StyleManager = null;
+            comboBox_Region.TabIndex = 7;
+            comboBox_Region.ThemeAuthor = "Narwin";
+            comboBox_Region.ThemeName = "MetroLite";
+            comboBox_Region.Visible = false;
+            comboBox_Region.SelectedIndexChanged += Region_Changed;
             // 
             // comboBox_Platform
             // 
-            this.comboBox_Platform.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox_Platform.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.comboBox_Platform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.comboBox_Platform.FormattingEnabled = true;
-            this.comboBox_Platform.Items.AddRange(new object[] {
-            "",
-            "PlayStation 4",
-            "PlayStation 3",
-            "PlayStation 2",
-            "PlayStation Vita",
-            "PlayStation Portable",
-            "Nintendo 3DS"});
-            this.comboBox_Platform.Location = new System.Drawing.Point(126, 263);
-            this.comboBox_Platform.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
-            this.comboBox_Platform.Name = "comboBox_Platform";
-            this.comboBox_Platform.Size = new System.Drawing.Size(415, 29);
-            this.comboBox_Platform.TabIndex = 8;
-            this.comboBox_Platform.SelectedIndexChanged += new System.EventHandler(this.Platform_Changed);
+            comboBox_Platform.AllowDrop = true;
+            comboBox_Platform.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_Platform.ArrowColor = System.Drawing.Color.FromArgb(150, 150, 150);
+            comboBox_Platform.BackColor = System.Drawing.Color.Transparent;
+            comboBox_Platform.BackgroundColor = System.Drawing.Color.FromArgb(238, 238, 238);
+            comboBox_Platform.BorderColor = System.Drawing.Color.FromArgb(150, 150, 150);
+            comboBox_Platform.CausesValidation = false;
+            comboBox_Platform.DisabledBackColor = System.Drawing.Color.FromArgb(204, 204, 204);
+            comboBox_Platform.DisabledBorderColor = System.Drawing.Color.FromArgb(155, 155, 155);
+            comboBox_Platform.DisabledForeColor = System.Drawing.Color.FromArgb(136, 136, 136);
+            comboBox_Platform.DrawMode = DrawMode.OwnerDrawVariable;
+            comboBox_Platform.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_Platform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            comboBox_Platform.FormattingEnabled = true;
+            comboBox_Platform.IsDerivedStyle = true;
+            comboBox_Platform.ItemHeight = 20;
+            comboBox_Platform.Items.AddRange(new object[] { "", "PlayStation 4", "PlayStation 3", "PlayStation 2", "PlayStation Vita", "PlayStation Portable", "Nintendo 3DS" });
+            comboBox_Platform.Location = new System.Drawing.Point(125, 256);
+            comboBox_Platform.Margin = new Padding(15, 0, 15, 0);
+            comboBox_Platform.Name = "comboBox_Platform";
+            comboBox_Platform.SelectedItemBackColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            comboBox_Platform.SelectedItemForeColor = System.Drawing.Color.White;
+            comboBox_Platform.Size = new System.Drawing.Size(413, 26);
+            comboBox_Platform.Style = MetroSet_UI.Enums.Style.Light;
+            comboBox_Platform.StyleManager = null;
+            comboBox_Platform.TabIndex = 8;
+            comboBox_Platform.ThemeAuthor = "Narwin";
+            comboBox_Platform.ThemeName = "MetroLite";
+            comboBox_Platform.SelectedIndexChanged += Platform_Changed;
             // 
             // rtb_1_Welcome
             // 
-            this.rtb_1_Welcome.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtb_1_Welcome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.rtb_1_Welcome.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_1_Welcome.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.rtb_1_Welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.rtb_1_Welcome.ForeColor = System.Drawing.Color.LightGray;
-            this.rtb_1_Welcome.Location = new System.Drawing.Point(111, 0);
-            this.rtb_1_Welcome.Margin = new System.Windows.Forms.Padding(0);
-            this.rtb_1_Welcome.Name = "rtb_1_Welcome";
-            this.rtb_1_Welcome.ReadOnly = true;
-            this.rtb_1_Welcome.Size = new System.Drawing.Size(445, 253);
-            this.rtb_1_Welcome.TabIndex = 1;
-            this.rtb_1_Welcome.Text = "";
+            rtb_1_Welcome.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            rtb_1_Welcome.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+            rtb_1_Welcome.BorderStyle = BorderStyle.None;
+            rtb_1_Welcome.Cursor = Cursors.IBeam;
+            rtb_1_Welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            rtb_1_Welcome.ForeColor = System.Drawing.Color.LightGray;
+            rtb_1_Welcome.Location = new System.Drawing.Point(110, 0);
+            rtb_1_Welcome.Margin = new Padding(0);
+            rtb_1_Welcome.Name = "rtb_1_Welcome";
+            rtb_1_Welcome.ReadOnly = true;
+            rtb_1_Welcome.Size = new System.Drawing.Size(443, 245);
+            rtb_1_Welcome.TabIndex = 1;
+            rtb_1_Welcome.Text = "";
             // 
             // tabPage_2_Updates
             // 
-            this.tabPage_2_Updates.Controls.Add(this.tlp_2_Updates_Inner);
-            this.tabPage_2_Updates.Location = new System.Drawing.Point(4, 27);
-            this.tabPage_2_Updates.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPage_2_Updates.Name = "tabPage_2_Updates";
-            this.tabPage_2_Updates.Size = new System.Drawing.Size(556, 405);
-            this.tabPage_2_Updates.TabIndex = 1;
-            this.tabPage_2_Updates.Text = "Updates";
-            this.tabPage_2_Updates.UseVisualStyleBackColor = true;
+            tabPage_2_Updates.Controls.Add(tlp_2_Updates_Inner);
+            tabPage_2_Updates.Location = new System.Drawing.Point(4, 31);
+            tabPage_2_Updates.Margin = new Padding(0);
+            tabPage_2_Updates.Name = "tabPage_2_Updates";
+            tabPage_2_Updates.Size = new System.Drawing.Size(553, 399);
+            tabPage_2_Updates.TabIndex = 1;
+            tabPage_2_Updates.Text = "Updates";
+            tabPage_2_Updates.UseVisualStyleBackColor = true;
             // 
             // tlp_2_Updates_Inner
             // 
-            this.tlp_2_Updates_Inner.AutoScroll = true;
-            this.tlp_2_Updates_Inner.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlp_2_Updates_Inner.ColumnCount = 2;
-            this.tlp_2_Updates_Inner.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlp_2_Updates_Inner.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tlp_2_Updates_Inner.Controls.Add(this.progressBar_Updates, 0, 2);
-            this.tlp_2_Updates_Inner.Controls.Add(this.rtb_Updates_Log, 0, 1);
-            this.tlp_2_Updates_Inner.Controls.Add(this.rtb_2_Updates, 1, 0);
-            this.tlp_2_Updates_Inner.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_2_Updates_Inner.Location = new System.Drawing.Point(0, 0);
-            this.tlp_2_Updates_Inner.Margin = new System.Windows.Forms.Padding(0);
-            this.tlp_2_Updates_Inner.Name = "tlp_2_Updates_Inner";
-            this.tlp_2_Updates_Inner.RowCount = 3;
-            this.tlp_2_Updates_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_2_Updates_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tlp_2_Updates_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_2_Updates_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlp_2_Updates_Inner.Size = new System.Drawing.Size(556, 405);
-            this.tlp_2_Updates_Inner.TabIndex = 4;
+            tlp_2_Updates_Inner.AutoScroll = true;
+            tlp_2_Updates_Inner.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tlp_2_Updates_Inner.ColumnCount = 2;
+            tlp_2_Updates_Inner.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tlp_2_Updates_Inner.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            tlp_2_Updates_Inner.Controls.Add(progressBar_Updates, 0, 2);
+            tlp_2_Updates_Inner.Controls.Add(rtb_Updates_Log, 0, 1);
+            tlp_2_Updates_Inner.Controls.Add(rtb_2_Updates, 1, 0);
+            tlp_2_Updates_Inner.Dock = DockStyle.Fill;
+            tlp_2_Updates_Inner.Location = new System.Drawing.Point(0, 0);
+            tlp_2_Updates_Inner.Margin = new Padding(0);
+            tlp_2_Updates_Inner.Name = "tlp_2_Updates_Inner";
+            tlp_2_Updates_Inner.RowCount = 3;
+            tlp_2_Updates_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tlp_2_Updates_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            tlp_2_Updates_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tlp_2_Updates_Inner.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tlp_2_Updates_Inner.Size = new System.Drawing.Size(553, 399);
+            tlp_2_Updates_Inner.TabIndex = 4;
             // 
             // progressBar_Updates
             // 
-            this.tlp_2_Updates_Inner.SetColumnSpan(this.progressBar_Updates, 2);
-            this.progressBar_Updates.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar_Updates.Location = new System.Drawing.Point(3, 367);
-            this.progressBar_Updates.Name = "progressBar_Updates";
-            this.progressBar_Updates.Size = new System.Drawing.Size(550, 35);
-            this.progressBar_Updates.TabIndex = 2;
+            tlp_2_Updates_Inner.SetColumnSpan(progressBar_Updates, 2);
+            progressBar_Updates.Dock = DockStyle.Fill;
+            progressBar_Updates.Location = new System.Drawing.Point(3, 361);
+            progressBar_Updates.Name = "progressBar_Updates";
+            progressBar_Updates.Size = new System.Drawing.Size(547, 35);
+            progressBar_Updates.TabIndex = 2;
             // 
             // rtb_Updates_Log
             // 
-            this.rtb_Updates_Log.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtb_Updates_Log.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.rtb_Updates_Log.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tlp_2_Updates_Inner.SetColumnSpan(this.rtb_Updates_Log, 2);
-            this.rtb_Updates_Log.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.rtb_Updates_Log.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.rtb_Updates_Log.ForeColor = System.Drawing.Color.LightGray;
-            this.rtb_Updates_Log.HideSelection = false;
-            this.rtb_Updates_Log.Location = new System.Drawing.Point(0, 202);
-            this.rtb_Updates_Log.Margin = new System.Windows.Forms.Padding(0);
-            this.rtb_Updates_Log.Name = "rtb_Updates_Log";
-            this.rtb_Updates_Log.ReadOnly = true;
-            this.rtb_Updates_Log.Size = new System.Drawing.Size(556, 162);
-            this.rtb_Updates_Log.TabIndex = 3;
-            this.rtb_Updates_Log.Text = "";
+            rtb_Updates_Log.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            rtb_Updates_Log.BackColor = System.Drawing.Color.FromArgb(40, 40, 40);
+            rtb_Updates_Log.BorderStyle = BorderStyle.None;
+            tlp_2_Updates_Inner.SetColumnSpan(rtb_Updates_Log, 2);
+            rtb_Updates_Log.Cursor = Cursors.IBeam;
+            rtb_Updates_Log.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            rtb_Updates_Log.ForeColor = System.Drawing.Color.LightGray;
+            rtb_Updates_Log.HideSelection = false;
+            rtb_Updates_Log.Location = new System.Drawing.Point(0, 199);
+            rtb_Updates_Log.Margin = new Padding(0);
+            rtb_Updates_Log.Name = "rtb_Updates_Log";
+            rtb_Updates_Log.ReadOnly = true;
+            rtb_Updates_Log.Size = new System.Drawing.Size(553, 159);
+            rtb_Updates_Log.TabIndex = 3;
+            rtb_Updates_Log.Text = "";
             // 
             // rtb_2_Updates
             // 
-            this.rtb_2_Updates.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtb_2_Updates.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.rtb_2_Updates.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_2_Updates.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.rtb_2_Updates.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.rtb_2_Updates.ForeColor = System.Drawing.Color.LightGray;
-            this.rtb_2_Updates.Location = new System.Drawing.Point(111, 0);
-            this.rtb_2_Updates.Margin = new System.Windows.Forms.Padding(0);
-            this.rtb_2_Updates.Name = "rtb_2_Updates";
-            this.rtb_2_Updates.ReadOnly = true;
-            this.rtb_2_Updates.Size = new System.Drawing.Size(445, 202);
-            this.rtb_2_Updates.TabIndex = 1;
-            this.rtb_2_Updates.Text = "";
+            rtb_2_Updates.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            rtb_2_Updates.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+            rtb_2_Updates.BorderStyle = BorderStyle.None;
+            rtb_2_Updates.Cursor = Cursors.IBeam;
+            rtb_2_Updates.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            rtb_2_Updates.ForeColor = System.Drawing.Color.LightGray;
+            rtb_2_Updates.Location = new System.Drawing.Point(110, 0);
+            rtb_2_Updates.Margin = new Padding(0);
+            rtb_2_Updates.Name = "rtb_2_Updates";
+            rtb_2_Updates.ReadOnly = true;
+            rtb_2_Updates.Size = new System.Drawing.Size(443, 199);
+            rtb_2_Updates.TabIndex = 1;
+            rtb_2_Updates.Text = "";
             // 
             // tabPage_3_Platform
             // 
-            this.tabPage_3_Platform.Controls.Add(this.tlp_3_Platform_Inner);
-            this.tabPage_3_Platform.Location = new System.Drawing.Point(4, 27);
-            this.tabPage_3_Platform.Name = "tabPage_3_Platform";
-            this.tabPage_3_Platform.Size = new System.Drawing.Size(556, 405);
-            this.tabPage_3_Platform.TabIndex = 2;
-            this.tabPage_3_Platform.Text = "Platform";
-            this.tabPage_3_Platform.UseVisualStyleBackColor = true;
+            tabPage_3_Platform.Controls.Add(tlp_3_Platform_Inner);
+            tabPage_3_Platform.Location = new System.Drawing.Point(4, 37);
+            tabPage_3_Platform.Margin = new Padding(0);
+            tabPage_3_Platform.Name = "tabPage_3_Platform";
+            tabPage_3_Platform.Size = new System.Drawing.Size(553, 393);
+            tabPage_3_Platform.TabIndex = 2;
+            tabPage_3_Platform.Text = "Platform";
+            tabPage_3_Platform.UseVisualStyleBackColor = true;
             // 
             // tlp_3_Platform_Inner
             // 
-            this.tlp_3_Platform_Inner.AutoScroll = true;
-            this.tlp_3_Platform_Inner.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlp_3_Platform_Inner.ColumnCount = 2;
-            this.tlp_3_Platform_Inner.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlp_3_Platform_Inner.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tlp_3_Platform_Inner.Controls.Add(this.tlp_3_Platform_PKGPath, 1, 3);
-            this.tlp_3_Platform_Inner.Controls.Add(this.lbl_PKGPath, 0, 3);
-            this.tlp_3_Platform_Inner.Controls.Add(this.lbl_TargetPlatform, 0, 1);
-            this.tlp_3_Platform_Inner.Controls.Add(this.rtb_3_Platform, 1, 0);
-            this.tlp_3_Platform_Inner.Controls.Add(this.lbl_ExePath, 0, 2);
-            this.tlp_3_Platform_Inner.Controls.Add(this.tlp_3_Platform_ExePath, 1, 2);
-            this.tlp_3_Platform_Inner.Controls.Add(this.tableLayoutPanel2, 1, 1);
-            this.tlp_3_Platform_Inner.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_3_Platform_Inner.Location = new System.Drawing.Point(0, 0);
-            this.tlp_3_Platform_Inner.Margin = new System.Windows.Forms.Padding(0);
-            this.tlp_3_Platform_Inner.Name = "tlp_3_Platform_Inner";
-            this.tlp_3_Platform_Inner.RowCount = 4;
-            this.tlp_3_Platform_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_3_Platform_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlp_3_Platform_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlp_3_Platform_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlp_3_Platform_Inner.Size = new System.Drawing.Size(556, 405);
-            this.tlp_3_Platform_Inner.TabIndex = 3;
+            tlp_3_Platform_Inner.AutoScroll = true;
+            tlp_3_Platform_Inner.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tlp_3_Platform_Inner.ColumnCount = 2;
+            tlp_3_Platform_Inner.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tlp_3_Platform_Inner.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            tlp_3_Platform_Inner.Controls.Add(tlp_3_Platform_PKGPath, 1, 3);
+            tlp_3_Platform_Inner.Controls.Add(lbl_PKGPath, 0, 3);
+            tlp_3_Platform_Inner.Controls.Add(lbl_TargetPlatform, 0, 1);
+            tlp_3_Platform_Inner.Controls.Add(rtb_3_Platform, 1, 0);
+            tlp_3_Platform_Inner.Controls.Add(lbl_ExePath, 0, 2);
+            tlp_3_Platform_Inner.Controls.Add(tlp_3_Platform_ExePath, 1, 2);
+            tlp_3_Platform_Inner.Controls.Add(tableLayoutPanel2, 1, 1);
+            tlp_3_Platform_Inner.Dock = DockStyle.Fill;
+            tlp_3_Platform_Inner.Location = new System.Drawing.Point(0, 0);
+            tlp_3_Platform_Inner.Margin = new Padding(0);
+            tlp_3_Platform_Inner.Name = "tlp_3_Platform_Inner";
+            tlp_3_Platform_Inner.RowCount = 4;
+            tlp_3_Platform_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tlp_3_Platform_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            tlp_3_Platform_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            tlp_3_Platform_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tlp_3_Platform_Inner.Size = new System.Drawing.Size(553, 393);
+            tlp_3_Platform_Inner.TabIndex = 3;
             // 
             // tlp_3_Platform_PKGPath
             // 
-            this.tlp_3_Platform_PKGPath.ColumnCount = 2;
-            this.tlp_3_Platform_PKGPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_3_Platform_PKGPath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
-            this.tlp_3_Platform_PKGPath.Controls.Add(this.btn_PKGPath, 0, 0);
-            this.tlp_3_Platform_PKGPath.Controls.Add(this.txt_PKGPath, 0, 0);
-            this.tlp_3_Platform_PKGPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_3_Platform_PKGPath.Location = new System.Drawing.Point(111, 322);
-            this.tlp_3_Platform_PKGPath.Margin = new System.Windows.Forms.Padding(0);
-            this.tlp_3_Platform_PKGPath.Name = "tlp_3_Platform_PKGPath";
-            this.tlp_3_Platform_PKGPath.RowCount = 1;
-            this.tlp_3_Platform_PKGPath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_3_Platform_PKGPath.Size = new System.Drawing.Size(445, 83);
-            this.tlp_3_Platform_PKGPath.TabIndex = 14;
-            this.tlp_3_Platform_PKGPath.Visible = false;
+            tlp_3_Platform_PKGPath.ColumnCount = 2;
+            tlp_3_Platform_PKGPath.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlp_3_Platform_PKGPath.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 88F));
+            tlp_3_Platform_PKGPath.Controls.Add(btn_PKGPath, 0, 0);
+            tlp_3_Platform_PKGPath.Controls.Add(txt_PKGPath, 0, 0);
+            tlp_3_Platform_PKGPath.Dock = DockStyle.Fill;
+            tlp_3_Platform_PKGPath.Location = new System.Drawing.Point(110, 312);
+            tlp_3_Platform_PKGPath.Margin = new Padding(0);
+            tlp_3_Platform_PKGPath.Name = "tlp_3_Platform_PKGPath";
+            tlp_3_Platform_PKGPath.RowCount = 1;
+            tlp_3_Platform_PKGPath.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tlp_3_Platform_PKGPath.Size = new System.Drawing.Size(443, 81);
+            tlp_3_Platform_PKGPath.TabIndex = 14;
+            tlp_3_Platform_PKGPath.Visible = false;
             // 
             // btn_PKGPath
             // 
-            this.btn_PKGPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_PKGPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btn_PKGPath.Location = new System.Drawing.Point(367, 26);
-            this.btn_PKGPath.Margin = new System.Windows.Forms.Padding(10, 26, 10, 26);
-            this.btn_PKGPath.Name = "btn_PKGPath";
-            this.btn_PKGPath.Padding = new System.Windows.Forms.Padding(5);
-            this.btn_PKGPath.Size = new System.Drawing.Size(68, 31);
-            this.btn_PKGPath.TabIndex = 13;
-            this.btn_PKGPath.Text = "...";
-            this.btn_PKGPath.Click += new System.EventHandler(this.PKGPath_Browse);
+            btn_PKGPath.DisabledBackColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
+            btn_PKGPath.DisabledBorderColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
+            btn_PKGPath.DisabledForeColor = System.Drawing.Color.Gray;
+            btn_PKGPath.Dock = DockStyle.Fill;
+            btn_PKGPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            btn_PKGPath.HoverBorderColor = System.Drawing.Color.FromArgb(95, 207, 255);
+            btn_PKGPath.HoverColor = System.Drawing.Color.FromArgb(95, 207, 255);
+            btn_PKGPath.HoverTextColor = System.Drawing.Color.White;
+            btn_PKGPath.IsDerivedStyle = true;
+            btn_PKGPath.Location = new System.Drawing.Point(365, 26);
+            btn_PKGPath.Margin = new Padding(10, 26, 10, 26);
+            btn_PKGPath.Name = "btn_PKGPath";
+            btn_PKGPath.NormalBorderColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            btn_PKGPath.NormalColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            btn_PKGPath.NormalTextColor = System.Drawing.Color.White;
+            btn_PKGPath.Padding = new Padding(5);
+            btn_PKGPath.PressBorderColor = System.Drawing.Color.FromArgb(35, 147, 195);
+            btn_PKGPath.PressColor = System.Drawing.Color.FromArgb(35, 147, 195);
+            btn_PKGPath.PressTextColor = System.Drawing.Color.White;
+            btn_PKGPath.Size = new System.Drawing.Size(68, 29);
+            btn_PKGPath.Style = MetroSet_UI.Enums.Style.Light;
+            btn_PKGPath.StyleManager = null;
+            btn_PKGPath.TabIndex = 13;
+            btn_PKGPath.Text = "...";
+            btn_PKGPath.ThemeAuthor = "Narwin";
+            btn_PKGPath.ThemeName = "MetroLite";
+            btn_PKGPath.Click += PKGPath_Browse;
             // 
             // txt_PKGPath
             // 
-            this.txt_PKGPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_PKGPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.txt_PKGPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_PKGPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.txt_PKGPath.Location = new System.Drawing.Point(15, 30);
-            this.txt_PKGPath.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
-            this.txt_PKGPath.Name = "txt_PKGPath";
-            this.txt_PKGPath.Size = new System.Drawing.Size(327, 22);
-            this.txt_PKGPath.TabIndex = 12;
-            this.txt_PKGPath.TextChanged += new System.EventHandler(this.Path_TextChanged);
+            txt_PKGPath.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txt_PKGPath.AutoCompleteCustomSource = null;
+            txt_PKGPath.AutoCompleteMode = AutoCompleteMode.None;
+            txt_PKGPath.AutoCompleteSource = AutoCompleteSource.None;
+            txt_PKGPath.BorderColor = System.Drawing.Color.FromArgb(155, 155, 155);
+            txt_PKGPath.DisabledBackColor = System.Drawing.Color.FromArgb(204, 204, 204);
+            txt_PKGPath.DisabledBorderColor = System.Drawing.Color.FromArgb(155, 155, 155);
+            txt_PKGPath.DisabledForeColor = System.Drawing.Color.FromArgb(136, 136, 136);
+            txt_PKGPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            txt_PKGPath.HoverColor = System.Drawing.Color.FromArgb(102, 102, 102);
+            txt_PKGPath.Image = null;
+            txt_PKGPath.IsDerivedStyle = true;
+            txt_PKGPath.Lines = null;
+            txt_PKGPath.Location = new System.Drawing.Point(15, 29);
+            txt_PKGPath.Margin = new Padding(15, 0, 15, 0);
+            txt_PKGPath.MaxLength = 32767;
+            txt_PKGPath.Multiline = false;
+            txt_PKGPath.Name = "txt_PKGPath";
+            txt_PKGPath.ReadOnly = false;
+            txt_PKGPath.Size = new System.Drawing.Size(325, 22);
+            txt_PKGPath.Style = MetroSet_UI.Enums.Style.Light;
+            txt_PKGPath.StyleManager = null;
+            txt_PKGPath.TabIndex = 12;
+            txt_PKGPath.TextAlign = HorizontalAlignment.Left;
+            txt_PKGPath.ThemeAuthor = "Narwin";
+            txt_PKGPath.ThemeName = "MetroLite";
+            txt_PKGPath.UseSystemPasswordChar = false;
+            txt_PKGPath.WatermarkText = "";
+            txt_PKGPath.TextChanged += Path_TextChanged;
             // 
             // lbl_PKGPath
             // 
-            this.lbl_PKGPath.AutoSize = true;
-            this.lbl_PKGPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_PKGPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lbl_PKGPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.lbl_PKGPath.Location = new System.Drawing.Point(3, 322);
-            this.lbl_PKGPath.Name = "lbl_PKGPath";
-            this.lbl_PKGPath.Size = new System.Drawing.Size(105, 83);
-            this.lbl_PKGPath.TabIndex = 13;
-            this.lbl_PKGPath.Text = "Base Game FPKG Path:";
-            this.lbl_PKGPath.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_PKGPath.Visible = false;
+            lbl_PKGPath.AutoSize = true;
+            lbl_PKGPath.Dock = DockStyle.Fill;
+            lbl_PKGPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            lbl_PKGPath.IsDerivedStyle = true;
+            lbl_PKGPath.Location = new System.Drawing.Point(3, 312);
+            lbl_PKGPath.Name = "lbl_PKGPath";
+            lbl_PKGPath.Size = new System.Drawing.Size(104, 81);
+            lbl_PKGPath.Style = MetroSet_UI.Enums.Style.Light;
+            lbl_PKGPath.StyleManager = null;
+            lbl_PKGPath.TabIndex = 13;
+            lbl_PKGPath.Text = "Base Game FPKG Path:";
+            lbl_PKGPath.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lbl_PKGPath.ThemeAuthor = "Narwin";
+            lbl_PKGPath.ThemeName = "MetroLite";
+            lbl_PKGPath.Visible = false;
             // 
             // lbl_TargetPlatform
             // 
-            this.lbl_TargetPlatform.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_TargetPlatform.AutoSize = true;
-            this.lbl_TargetPlatform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lbl_TargetPlatform.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.lbl_TargetPlatform.Location = new System.Drawing.Point(26, 208);
-            this.lbl_TargetPlatform.Name = "lbl_TargetPlatform";
-            this.lbl_TargetPlatform.Size = new System.Drawing.Size(82, 48);
-            this.lbl_TargetPlatform.TabIndex = 3;
-            this.lbl_TargetPlatform.Text = "Target Platform:";
-            this.lbl_TargetPlatform.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            lbl_TargetPlatform.Anchor = AnchorStyles.Right;
+            lbl_TargetPlatform.AutoSize = true;
+            lbl_TargetPlatform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            lbl_TargetPlatform.IsDerivedStyle = true;
+            lbl_TargetPlatform.Location = new System.Drawing.Point(25, 201);
+            lbl_TargetPlatform.Name = "lbl_TargetPlatform";
+            lbl_TargetPlatform.Size = new System.Drawing.Size(82, 48);
+            lbl_TargetPlatform.Style = MetroSet_UI.Enums.Style.Light;
+            lbl_TargetPlatform.StyleManager = null;
+            lbl_TargetPlatform.TabIndex = 3;
+            lbl_TargetPlatform.Text = "Target Platform:";
+            lbl_TargetPlatform.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            lbl_TargetPlatform.ThemeAuthor = "Narwin";
+            lbl_TargetPlatform.ThemeName = "MetroLite";
             // 
             // rtb_3_Platform
             // 
-            this.rtb_3_Platform.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtb_3_Platform.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.rtb_3_Platform.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_3_Platform.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.rtb_3_Platform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.rtb_3_Platform.ForeColor = System.Drawing.Color.LightGray;
-            this.rtb_3_Platform.Location = new System.Drawing.Point(111, 0);
-            this.rtb_3_Platform.Margin = new System.Windows.Forms.Padding(0);
-            this.rtb_3_Platform.Name = "rtb_3_Platform";
-            this.rtb_3_Platform.ReadOnly = true;
-            this.rtb_3_Platform.Size = new System.Drawing.Size(445, 202);
-            this.rtb_3_Platform.TabIndex = 1;
-            this.rtb_3_Platform.Text = "";
+            rtb_3_Platform.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            rtb_3_Platform.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+            rtb_3_Platform.BorderStyle = BorderStyle.None;
+            rtb_3_Platform.Cursor = Cursors.IBeam;
+            rtb_3_Platform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            rtb_3_Platform.ForeColor = System.Drawing.Color.LightGray;
+            rtb_3_Platform.Location = new System.Drawing.Point(110, 0);
+            rtb_3_Platform.Margin = new Padding(0);
+            rtb_3_Platform.Name = "rtb_3_Platform";
+            rtb_3_Platform.ReadOnly = true;
+            rtb_3_Platform.Size = new System.Drawing.Size(443, 196);
+            rtb_3_Platform.TabIndex = 1;
+            rtb_3_Platform.Text = "";
             // 
             // lbl_ExePath
             // 
-            this.lbl_ExePath.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_ExePath.AutoSize = true;
-            this.lbl_ExePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lbl_ExePath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.lbl_ExePath.Location = new System.Drawing.Point(17, 268);
-            this.lbl_ExePath.Name = "lbl_ExePath";
-            this.lbl_ExePath.Size = new System.Drawing.Size(91, 48);
-            this.lbl_ExePath.TabIndex = 10;
-            this.lbl_ExePath.Text = "Emulator Exe Path:";
-            this.lbl_ExePath.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.lbl_ExePath.Visible = false;
+            lbl_ExePath.Anchor = AnchorStyles.Right;
+            lbl_ExePath.AutoSize = true;
+            lbl_ExePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            lbl_ExePath.IsDerivedStyle = true;
+            lbl_ExePath.Location = new System.Drawing.Point(16, 259);
+            lbl_ExePath.Name = "lbl_ExePath";
+            lbl_ExePath.Size = new System.Drawing.Size(91, 48);
+            lbl_ExePath.Style = MetroSet_UI.Enums.Style.Light;
+            lbl_ExePath.StyleManager = null;
+            lbl_ExePath.TabIndex = 10;
+            lbl_ExePath.Text = "Emulator Exe Path:";
+            lbl_ExePath.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            lbl_ExePath.ThemeAuthor = "Narwin";
+            lbl_ExePath.ThemeName = "MetroLite";
+            lbl_ExePath.Visible = false;
             // 
             // tlp_3_Platform_ExePath
             // 
-            this.tlp_3_Platform_ExePath.ColumnCount = 2;
-            this.tlp_3_Platform_ExePath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_3_Platform_ExePath.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
-            this.tlp_3_Platform_ExePath.Controls.Add(this.btn_ExePath, 0, 0);
-            this.tlp_3_Platform_ExePath.Controls.Add(this.txt_ExePath, 0, 0);
-            this.tlp_3_Platform_ExePath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_3_Platform_ExePath.Location = new System.Drawing.Point(111, 262);
-            this.tlp_3_Platform_ExePath.Margin = new System.Windows.Forms.Padding(0);
-            this.tlp_3_Platform_ExePath.Name = "tlp_3_Platform_ExePath";
-            this.tlp_3_Platform_ExePath.RowCount = 1;
-            this.tlp_3_Platform_ExePath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_3_Platform_ExePath.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tlp_3_Platform_ExePath.Size = new System.Drawing.Size(445, 60);
-            this.tlp_3_Platform_ExePath.TabIndex = 11;
-            this.tlp_3_Platform_ExePath.Visible = false;
+            tlp_3_Platform_ExePath.ColumnCount = 2;
+            tlp_3_Platform_ExePath.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlp_3_Platform_ExePath.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 88F));
+            tlp_3_Platform_ExePath.Controls.Add(btn_ExePath, 0, 0);
+            tlp_3_Platform_ExePath.Controls.Add(txt_ExePath, 0, 0);
+            tlp_3_Platform_ExePath.Dock = DockStyle.Fill;
+            tlp_3_Platform_ExePath.Location = new System.Drawing.Point(110, 254);
+            tlp_3_Platform_ExePath.Margin = new Padding(0);
+            tlp_3_Platform_ExePath.Name = "tlp_3_Platform_ExePath";
+            tlp_3_Platform_ExePath.RowCount = 1;
+            tlp_3_Platform_ExePath.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tlp_3_Platform_ExePath.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
+            tlp_3_Platform_ExePath.Size = new System.Drawing.Size(443, 58);
+            tlp_3_Platform_ExePath.TabIndex = 11;
+            tlp_3_Platform_ExePath.Visible = false;
             // 
             // btn_ExePath
             // 
-            this.btn_ExePath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_ExePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btn_ExePath.Location = new System.Drawing.Point(367, 16);
-            this.btn_ExePath.Margin = new System.Windows.Forms.Padding(10, 16, 10, 16);
-            this.btn_ExePath.Name = "btn_ExePath";
-            this.btn_ExePath.Padding = new System.Windows.Forms.Padding(5);
-            this.btn_ExePath.Size = new System.Drawing.Size(68, 28);
-            this.btn_ExePath.TabIndex = 13;
-            this.btn_ExePath.Text = "...";
-            this.btn_ExePath.Click += new System.EventHandler(this.ExePath_Browse);
+            btn_ExePath.DisabledBackColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
+            btn_ExePath.DisabledBorderColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
+            btn_ExePath.DisabledForeColor = System.Drawing.Color.Gray;
+            btn_ExePath.Dock = DockStyle.Fill;
+            btn_ExePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            btn_ExePath.HoverBorderColor = System.Drawing.Color.FromArgb(95, 207, 255);
+            btn_ExePath.HoverColor = System.Drawing.Color.FromArgb(95, 207, 255);
+            btn_ExePath.HoverTextColor = System.Drawing.Color.White;
+            btn_ExePath.IsDerivedStyle = true;
+            btn_ExePath.Location = new System.Drawing.Point(365, 16);
+            btn_ExePath.Margin = new Padding(10, 16, 10, 16);
+            btn_ExePath.Name = "btn_ExePath";
+            btn_ExePath.NormalBorderColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            btn_ExePath.NormalColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            btn_ExePath.NormalTextColor = System.Drawing.Color.White;
+            btn_ExePath.Padding = new Padding(5);
+            btn_ExePath.PressBorderColor = System.Drawing.Color.FromArgb(35, 147, 195);
+            btn_ExePath.PressColor = System.Drawing.Color.FromArgb(35, 147, 195);
+            btn_ExePath.PressTextColor = System.Drawing.Color.White;
+            btn_ExePath.Size = new System.Drawing.Size(68, 26);
+            btn_ExePath.Style = MetroSet_UI.Enums.Style.Light;
+            btn_ExePath.StyleManager = null;
+            btn_ExePath.TabIndex = 13;
+            btn_ExePath.Text = "...";
+            btn_ExePath.ThemeAuthor = "Narwin";
+            btn_ExePath.ThemeName = "MetroLite";
+            btn_ExePath.Click += ExePath_Browse;
             // 
             // txt_ExePath
             // 
-            this.txt_ExePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_ExePath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.txt_ExePath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_ExePath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.txt_ExePath.Location = new System.Drawing.Point(15, 19);
-            this.txt_ExePath.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
-            this.txt_ExePath.Name = "txt_ExePath";
-            this.txt_ExePath.Size = new System.Drawing.Size(327, 22);
-            this.txt_ExePath.TabIndex = 12;
-            this.txt_ExePath.TextChanged += new System.EventHandler(this.Path_TextChanged);
+            txt_ExePath.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txt_ExePath.AutoCompleteCustomSource = null;
+            txt_ExePath.AutoCompleteMode = AutoCompleteMode.None;
+            txt_ExePath.AutoCompleteSource = AutoCompleteSource.None;
+            txt_ExePath.BorderColor = System.Drawing.Color.FromArgb(155, 155, 155);
+            txt_ExePath.DisabledBackColor = System.Drawing.Color.FromArgb(204, 204, 204);
+            txt_ExePath.DisabledBorderColor = System.Drawing.Color.FromArgb(155, 155, 155);
+            txt_ExePath.DisabledForeColor = System.Drawing.Color.FromArgb(136, 136, 136);
+            txt_ExePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            txt_ExePath.HoverColor = System.Drawing.Color.FromArgb(102, 102, 102);
+            txt_ExePath.Image = null;
+            txt_ExePath.IsDerivedStyle = true;
+            txt_ExePath.Lines = null;
+            txt_ExePath.Location = new System.Drawing.Point(15, 18);
+            txt_ExePath.Margin = new Padding(15, 0, 15, 0);
+            txt_ExePath.MaxLength = 32767;
+            txt_ExePath.Multiline = false;
+            txt_ExePath.Name = "txt_ExePath";
+            txt_ExePath.ReadOnly = false;
+            txt_ExePath.Size = new System.Drawing.Size(325, 22);
+            txt_ExePath.Style = MetroSet_UI.Enums.Style.Light;
+            txt_ExePath.StyleManager = null;
+            txt_ExePath.TabIndex = 12;
+            txt_ExePath.TextAlign = HorizontalAlignment.Left;
+            txt_ExePath.ThemeAuthor = "Narwin";
+            txt_ExePath.ThemeName = "MetroLite";
+            txt_ExePath.UseSystemPasswordChar = false;
+            txt_ExePath.WatermarkText = "";
+            txt_ExePath.TextChanged += Path_TextChanged;
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.4382F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.5618F));
-            this.tableLayoutPanel2.Controls.Add(this.radio_Emu, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.radio_Console, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(111, 202);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(445, 60);
-            this.tableLayoutPanel2.TabIndex = 12;
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.4382F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70.5618F));
+            tableLayoutPanel2.Controls.Add(radio_Emu, 1, 0);
+            tableLayoutPanel2.Controls.Add(radio_Console, 0, 0);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new System.Drawing.Point(110, 196);
+            tableLayoutPanel2.Margin = new Padding(0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new System.Drawing.Size(443, 58);
+            tableLayoutPanel2.TabIndex = 12;
             // 
             // radio_Emu
             // 
-            this.radio_Emu.AutoSize = true;
-            this.radio_Emu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.radio_Emu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.radio_Emu.Location = new System.Drawing.Point(133, 3);
-            this.radio_Emu.Name = "radio_Emu";
-            this.radio_Emu.Size = new System.Drawing.Size(110, 54);
-            this.radio_Emu.TabIndex = 1;
-            this.radio_Emu.Text = "Emulator";
-            this.radio_Emu.CheckedChanged += new System.EventHandler(this.Checked_Changed);
+            radio_Emu.AutoSize = true;
+            radio_Emu.Dock = DockStyle.Left;
+            radio_Emu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            radio_Emu.Location = new System.Drawing.Point(133, 3);
+            radio_Emu.Name = "radio_Emu";
+            radio_Emu.Size = new System.Drawing.Size(110, 52);
+            radio_Emu.TabIndex = 1;
+            radio_Emu.Text = "Emulator";
+            radio_Emu.CheckedChanged += Checked_Changed;
             // 
             // radio_Console
             // 
-            this.radio_Console.AutoSize = true;
-            this.radio_Console.Checked = true;
-            this.radio_Console.Dock = System.Windows.Forms.DockStyle.Right;
-            this.radio_Console.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.radio_Console.Location = new System.Drawing.Point(21, 3);
-            this.radio_Console.Name = "radio_Console";
-            this.radio_Console.Size = new System.Drawing.Size(106, 54);
-            this.radio_Console.TabIndex = 0;
-            this.radio_Console.TabStop = true;
-            this.radio_Console.Text = "Console";
-            this.radio_Console.CheckedChanged += new System.EventHandler(this.Checked_Changed);
+            radio_Console.AutoSize = true;
+            radio_Console.Checked = true;
+            radio_Console.Dock = DockStyle.Right;
+            radio_Console.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            radio_Console.Location = new System.Drawing.Point(21, 3);
+            radio_Console.Name = "radio_Console";
+            radio_Console.Size = new System.Drawing.Size(106, 52);
+            radio_Console.TabIndex = 0;
+            radio_Console.TabStop = true;
+            radio_Console.Text = "Console";
+            radio_Console.CheckedChanged += Checked_Changed;
             // 
             // tabPage_4_Patches
             // 
-            this.tabPage_4_Patches.Controls.Add(this.tlp_4_Patches_Inner);
-            this.tabPage_4_Patches.Location = new System.Drawing.Point(4, 27);
-            this.tabPage_4_Patches.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPage_4_Patches.Name = "tabPage_4_Patches";
-            this.tabPage_4_Patches.Size = new System.Drawing.Size(556, 405);
-            this.tabPage_4_Patches.TabIndex = 3;
-            this.tabPage_4_Patches.Text = "Patches";
-            this.tabPage_4_Patches.UseVisualStyleBackColor = true;
+            tabPage_4_Patches.Controls.Add(tlp_4_Patches_Inner);
+            tabPage_4_Patches.Location = new System.Drawing.Point(4, 37);
+            tabPage_4_Patches.Margin = new Padding(0);
+            tabPage_4_Patches.Name = "tabPage_4_Patches";
+            tabPage_4_Patches.Size = new System.Drawing.Size(553, 393);
+            tabPage_4_Patches.TabIndex = 3;
+            tabPage_4_Patches.Text = "Patches";
+            tabPage_4_Patches.UseVisualStyleBackColor = true;
             // 
             // tlp_4_Patches_Inner
             // 
-            this.tlp_4_Patches_Inner.AutoScroll = true;
-            this.tlp_4_Patches_Inner.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlp_4_Patches_Inner.ColumnCount = 2;
-            this.tlp_4_Patches_Inner.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlp_4_Patches_Inner.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tlp_4_Patches_Inner.Controls.Add(this.rtb_Patches_Log, 0, 2);
-            this.tlp_4_Patches_Inner.Controls.Add(this.rtb_4_Patches, 1, 0);
-            this.tlp_4_Patches_Inner.Controls.Add(this.chkListBox_Patches, 1, 1);
-            this.tlp_4_Patches_Inner.Controls.Add(this.chk_Permutations, 0, 1);
-            this.tlp_4_Patches_Inner.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_4_Patches_Inner.Location = new System.Drawing.Point(0, 0);
-            this.tlp_4_Patches_Inner.Margin = new System.Windows.Forms.Padding(0);
-            this.tlp_4_Patches_Inner.Name = "tlp_4_Patches_Inner";
-            this.tlp_4_Patches_Inner.RowCount = 3;
-            this.tlp_4_Patches_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlp_4_Patches_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_4_Patches_Inner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlp_4_Patches_Inner.Size = new System.Drawing.Size(556, 405);
-            this.tlp_4_Patches_Inner.TabIndex = 4;
+            tlp_4_Patches_Inner.AutoScroll = true;
+            tlp_4_Patches_Inner.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tlp_4_Patches_Inner.ColumnCount = 2;
+            tlp_4_Patches_Inner.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tlp_4_Patches_Inner.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            tlp_4_Patches_Inner.Controls.Add(rtb_Patches_Log, 0, 2);
+            tlp_4_Patches_Inner.Controls.Add(rtb_4_Patches, 1, 0);
+            tlp_4_Patches_Inner.Controls.Add(chkListBox_Patches, 1, 1);
+            tlp_4_Patches_Inner.Controls.Add(chk_Permutations, 0, 1);
+            tlp_4_Patches_Inner.Dock = DockStyle.Fill;
+            tlp_4_Patches_Inner.Location = new System.Drawing.Point(0, 0);
+            tlp_4_Patches_Inner.Margin = new Padding(0);
+            tlp_4_Patches_Inner.Name = "tlp_4_Patches_Inner";
+            tlp_4_Patches_Inner.RowCount = 3;
+            tlp_4_Patches_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tlp_4_Patches_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tlp_4_Patches_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tlp_4_Patches_Inner.Size = new System.Drawing.Size(553, 393);
+            tlp_4_Patches_Inner.TabIndex = 4;
             // 
             // rtb_Patches_Log
             // 
-            this.rtb_Patches_Log.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtb_Patches_Log.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.rtb_Patches_Log.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tlp_4_Patches_Inner.SetColumnSpan(this.rtb_Patches_Log, 2);
-            this.rtb_Patches_Log.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.rtb_Patches_Log.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.rtb_Patches_Log.ForeColor = System.Drawing.Color.LightGray;
-            this.rtb_Patches_Log.Location = new System.Drawing.Point(0, 303);
-            this.rtb_Patches_Log.Margin = new System.Windows.Forms.Padding(0);
-            this.rtb_Patches_Log.Name = "rtb_Patches_Log";
-            this.rtb_Patches_Log.ReadOnly = true;
-            this.rtb_Patches_Log.Size = new System.Drawing.Size(556, 102);
-            this.rtb_Patches_Log.TabIndex = 4;
-            this.rtb_Patches_Log.Text = "";
+            rtb_Patches_Log.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            rtb_Patches_Log.BackColor = System.Drawing.Color.FromArgb(40, 40, 40);
+            rtb_Patches_Log.BorderStyle = BorderStyle.None;
+            tlp_4_Patches_Inner.SetColumnSpan(rtb_Patches_Log, 2);
+            rtb_Patches_Log.Cursor = Cursors.IBeam;
+            rtb_Patches_Log.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            rtb_Patches_Log.ForeColor = System.Drawing.Color.LightGray;
+            rtb_Patches_Log.Location = new System.Drawing.Point(0, 294);
+            rtb_Patches_Log.Margin = new Padding(0);
+            rtb_Patches_Log.Name = "rtb_Patches_Log";
+            rtb_Patches_Log.ReadOnly = true;
+            rtb_Patches_Log.Size = new System.Drawing.Size(553, 99);
+            rtb_Patches_Log.TabIndex = 4;
+            rtb_Patches_Log.Text = "";
             // 
             // rtb_4_Patches
             // 
-            this.rtb_4_Patches.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtb_4_Patches.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.rtb_4_Patches.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_4_Patches.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.rtb_4_Patches.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.rtb_4_Patches.ForeColor = System.Drawing.Color.LightGray;
-            this.rtb_4_Patches.Location = new System.Drawing.Point(111, 0);
-            this.rtb_4_Patches.Margin = new System.Windows.Forms.Padding(0);
-            this.rtb_4_Patches.Name = "rtb_4_Patches";
-            this.rtb_4_Patches.ReadOnly = true;
-            this.rtb_4_Patches.Size = new System.Drawing.Size(445, 101);
-            this.rtb_4_Patches.TabIndex = 1;
-            this.rtb_4_Patches.Text = "";
+            rtb_4_Patches.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            rtb_4_Patches.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+            rtb_4_Patches.BorderStyle = BorderStyle.None;
+            rtb_4_Patches.Cursor = Cursors.IBeam;
+            rtb_4_Patches.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            rtb_4_Patches.ForeColor = System.Drawing.Color.LightGray;
+            rtb_4_Patches.Location = new System.Drawing.Point(110, 0);
+            rtb_4_Patches.Margin = new Padding(0);
+            rtb_4_Patches.Name = "rtb_4_Patches";
+            rtb_4_Patches.ReadOnly = true;
+            rtb_4_Patches.Size = new System.Drawing.Size(443, 98);
+            rtb_4_Patches.TabIndex = 1;
+            rtb_4_Patches.Text = "";
             // 
             // chkListBox_Patches
             // 
-            this.chkListBox_Patches.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.chkListBox_Patches.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkListBox_Patches.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkListBox_Patches.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.chkListBox_Patches.ForeColor = System.Drawing.Color.Silver;
-            this.chkListBox_Patches.FormattingEnabled = true;
-            this.chkListBox_Patches.Location = new System.Drawing.Point(114, 104);
-            this.chkListBox_Patches.Name = "chkListBox_Patches";
-            this.chkListBox_Patches.Size = new System.Drawing.Size(439, 196);
-            this.chkListBox_Patches.TabIndex = 5;
-            this.chkListBox_Patches.SelectedIndexChanged += new System.EventHandler(this.SelectedPatch_Changed);
+            chkListBox_Patches.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+            chkListBox_Patches.BorderStyle = BorderStyle.None;
+            chkListBox_Patches.Dock = DockStyle.Fill;
+            chkListBox_Patches.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            chkListBox_Patches.ForeColor = System.Drawing.Color.Silver;
+            chkListBox_Patches.FormattingEnabled = true;
+            chkListBox_Patches.Location = new System.Drawing.Point(113, 101);
+            chkListBox_Patches.Name = "chkListBox_Patches";
+            chkListBox_Patches.Size = new System.Drawing.Size(437, 190);
+            chkListBox_Patches.TabIndex = 5;
+            chkListBox_Patches.SelectedIndexChanged += SelectedPatch_Changed;
             // 
             // chk_Permutations
             // 
-            this.chk_Permutations.AutoSize = true;
-            this.chk_Permutations.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.chk_Permutations.Location = new System.Drawing.Point(3, 280);
-            this.chk_Permutations.Name = "chk_Permutations";
-            this.chk_Permutations.Size = new System.Drawing.Size(105, 20);
-            this.chk_Permutations.TabIndex = 6;
-            this.chk_Permutations.Text = "All Combos";
-            this.chk_Permutations.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chk_Permutations.UseVisualStyleBackColor = true;
-            this.chk_Permutations.Visible = false;
+            chk_Permutations.Anchor = AnchorStyles.Bottom;
+            chk_Permutations.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            chk_Permutations.Location = new System.Drawing.Point(0, 244);
+            chk_Permutations.Margin = new Padding(0);
+            chk_Permutations.Name = "chk_Permutations";
+            chk_Permutations.Size = new System.Drawing.Size(110, 50);
+            chk_Permutations.TabIndex = 6;
+            chk_Permutations.Text = "Generate All Combinations";
+            chk_Permutations.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            chk_Permutations.UseVisualStyleBackColor = true;
+            chk_Permutations.Visible = false;
             // 
             // tabPage_5_Apply
             // 
-            this.tabPage_5_Apply.Controls.Add(this.tlp_5_Apply);
-            this.tabPage_5_Apply.Location = new System.Drawing.Point(4, 27);
-            this.tabPage_5_Apply.Name = "tabPage_5_Apply";
-            this.tabPage_5_Apply.Size = new System.Drawing.Size(556, 405);
-            this.tabPage_5_Apply.TabIndex = 4;
-            this.tabPage_5_Apply.Text = "Apply";
-            this.tabPage_5_Apply.UseVisualStyleBackColor = true;
+            tabPage_5_Apply.Controls.Add(tlp_5_Apply);
+            tabPage_5_Apply.Location = new System.Drawing.Point(4, 37);
+            tabPage_5_Apply.Margin = new Padding(0);
+            tabPage_5_Apply.Name = "tabPage_5_Apply";
+            tabPage_5_Apply.Size = new System.Drawing.Size(553, 393);
+            tabPage_5_Apply.TabIndex = 4;
+            tabPage_5_Apply.Text = "Apply";
+            tabPage_5_Apply.UseVisualStyleBackColor = true;
             // 
             // tlp_5_Apply
             // 
-            this.tlp_5_Apply.AutoScroll = true;
-            this.tlp_5_Apply.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlp_5_Apply.ColumnCount = 2;
-            this.tlp_5_Apply.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlp_5_Apply.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tlp_5_Apply.Controls.Add(this.progressBar_Apply, 0, 3);
-            this.tlp_5_Apply.Controls.Add(this.rtb_Apply_Log, 0, 2);
-            this.tlp_5_Apply.Controls.Add(this.rtb_5_Apply, 1, 0);
-            this.tlp_5_Apply.Controls.Add(this.chk_Unfakesign, 0, 1);
-            this.tlp_5_Apply.Controls.Add(this.tableLayoutPanel1, 1, 1);
-            this.tlp_5_Apply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_5_Apply.Location = new System.Drawing.Point(0, 0);
-            this.tlp_5_Apply.Margin = new System.Windows.Forms.Padding(0);
-            this.tlp_5_Apply.Name = "tlp_5_Apply";
-            this.tlp_5_Apply.RowCount = 4;
-            this.tlp_5_Apply.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlp_5_Apply.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlp_5_Apply.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tlp_5_Apply.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tlp_5_Apply.Size = new System.Drawing.Size(556, 405);
-            this.tlp_5_Apply.TabIndex = 5;
-            // 
-            // progressBar_Apply
-            // 
-            this.tlp_5_Apply.SetColumnSpan(this.progressBar_Apply, 2);
-            this.progressBar_Apply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar_Apply.Location = new System.Drawing.Point(3, 367);
-            this.progressBar_Apply.Name = "progressBar_Apply";
-            this.progressBar_Apply.Size = new System.Drawing.Size(550, 35);
-            this.progressBar_Apply.TabIndex = 2;
-            // 
-            // rtb_Apply_Log
-            // 
-            this.rtb_Apply_Log.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtb_Apply_Log.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.rtb_Apply_Log.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tlp_5_Apply.SetColumnSpan(this.rtb_Apply_Log, 2);
-            this.rtb_Apply_Log.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.rtb_Apply_Log.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.rtb_Apply_Log.ForeColor = System.Drawing.Color.LightGray;
-            this.rtb_Apply_Log.Location = new System.Drawing.Point(0, 182);
-            this.rtb_Apply_Log.Margin = new System.Windows.Forms.Padding(0);
-            this.rtb_Apply_Log.Name = "rtb_Apply_Log";
-            this.rtb_Apply_Log.ReadOnly = true;
-            this.rtb_Apply_Log.Size = new System.Drawing.Size(556, 182);
-            this.rtb_Apply_Log.TabIndex = 3;
-            this.rtb_Apply_Log.Text = "";
-            // 
-            // rtb_5_Apply
-            // 
-            this.rtb_5_Apply.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtb_5_Apply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.rtb_5_Apply.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_5_Apply.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.rtb_5_Apply.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.rtb_5_Apply.ForeColor = System.Drawing.Color.LightGray;
-            this.rtb_5_Apply.Location = new System.Drawing.Point(111, 0);
-            this.rtb_5_Apply.Margin = new System.Windows.Forms.Padding(0);
-            this.rtb_5_Apply.Name = "rtb_5_Apply";
-            this.rtb_5_Apply.ReadOnly = true;
-            this.rtb_5_Apply.Size = new System.Drawing.Size(445, 101);
-            this.rtb_5_Apply.TabIndex = 1;
-            this.rtb_5_Apply.Text = "";
-            // 
-            // chk_Unfakesign
-            // 
-            this.chk_Unfakesign.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.chk_Unfakesign.AutoSize = true;
-            this.chk_Unfakesign.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.chk_Unfakesign.Checked = true;
-            this.chk_Unfakesign.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_Unfakesign.Location = new System.Drawing.Point(3, 104);
-            this.chk_Unfakesign.Name = "chk_Unfakesign";
-            this.chk_Unfakesign.Size = new System.Drawing.Size(105, 75);
-            this.chk_Unfakesign.TabIndex = 14;
-            this.chk_Unfakesign.Text = "Un-fakesign the EBOOT";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
-            this.tableLayoutPanel1.Controls.Add(this.darkLabel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txt_OutputDir, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btn_OutputDir, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(111, 101);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(445, 78);
-            this.tableLayoutPanel1.TabIndex = 15;
+            tlp_5_Apply.AutoScroll = true;
+            tlp_5_Apply.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tlp_5_Apply.ColumnCount = 2;
+            tlp_5_Apply.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tlp_5_Apply.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            tlp_5_Apply.Controls.Add(darkLabel1, 0, 1);
+            tlp_5_Apply.Controls.Add(progressBar_Apply, 0, 3);
+            tlp_5_Apply.Controls.Add(rtb_Apply_Log, 0, 2);
+            tlp_5_Apply.Controls.Add(rtb_5_Apply, 1, 0);
+            tlp_5_Apply.Controls.Add(tableLayoutPanel1, 1, 1);
+            tlp_5_Apply.Dock = DockStyle.Fill;
+            tlp_5_Apply.Location = new System.Drawing.Point(0, 0);
+            tlp_5_Apply.Margin = new Padding(0);
+            tlp_5_Apply.Name = "tlp_5_Apply";
+            tlp_5_Apply.RowCount = 4;
+            tlp_5_Apply.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tlp_5_Apply.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tlp_5_Apply.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
+            tlp_5_Apply.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tlp_5_Apply.Size = new System.Drawing.Size(553, 393);
+            tlp_5_Apply.TabIndex = 5;
             // 
             // darkLabel1
             // 
-            this.darkLabel1.AutoSize = true;
-            this.darkLabel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.darkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(3, 0);
-            this.darkLabel1.Name = "darkLabel1";
-            this.darkLabel1.Size = new System.Drawing.Size(150, 39);
-            this.darkLabel1.TabIndex = 14;
-            this.darkLabel1.Text = "Output Directory:";
-            this.darkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            darkLabel1.Dock = DockStyle.Fill;
+            darkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            darkLabel1.IsDerivedStyle = true;
+            darkLabel1.Location = new System.Drawing.Point(3, 98);
+            darkLabel1.Name = "darkLabel1";
+            darkLabel1.Size = new System.Drawing.Size(104, 78);
+            darkLabel1.Style = MetroSet_UI.Enums.Style.Light;
+            darkLabel1.StyleManager = null;
+            darkLabel1.TabIndex = 14;
+            darkLabel1.Text = "Output Folder:";
+            darkLabel1.ThemeAuthor = "Narwin";
+            darkLabel1.ThemeName = "MetroLite";
+            // 
+            // progressBar_Apply
+            // 
+            tlp_5_Apply.SetColumnSpan(progressBar_Apply, 2);
+            progressBar_Apply.Dock = DockStyle.Fill;
+            progressBar_Apply.Location = new System.Drawing.Point(3, 355);
+            progressBar_Apply.Name = "progressBar_Apply";
+            progressBar_Apply.Size = new System.Drawing.Size(547, 35);
+            progressBar_Apply.TabIndex = 2;
+            // 
+            // rtb_Apply_Log
+            // 
+            rtb_Apply_Log.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            rtb_Apply_Log.BackColor = System.Drawing.Color.FromArgb(40, 40, 40);
+            rtb_Apply_Log.BorderStyle = BorderStyle.None;
+            tlp_5_Apply.SetColumnSpan(rtb_Apply_Log, 2);
+            rtb_Apply_Log.Cursor = Cursors.IBeam;
+            rtb_Apply_Log.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            rtb_Apply_Log.ForeColor = System.Drawing.Color.LightGray;
+            rtb_Apply_Log.Location = new System.Drawing.Point(0, 176);
+            rtb_Apply_Log.Margin = new Padding(0);
+            rtb_Apply_Log.Name = "rtb_Apply_Log";
+            rtb_Apply_Log.ReadOnly = true;
+            rtb_Apply_Log.Size = new System.Drawing.Size(553, 176);
+            rtb_Apply_Log.TabIndex = 3;
+            rtb_Apply_Log.Text = "";
+            // 
+            // rtb_5_Apply
+            // 
+            rtb_5_Apply.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            rtb_5_Apply.BackColor = System.Drawing.Color.FromArgb(60, 63, 65);
+            rtb_5_Apply.BorderStyle = BorderStyle.None;
+            rtb_5_Apply.Cursor = Cursors.IBeam;
+            rtb_5_Apply.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            rtb_5_Apply.ForeColor = System.Drawing.Color.LightGray;
+            rtb_5_Apply.Location = new System.Drawing.Point(110, 0);
+            rtb_5_Apply.Margin = new Padding(0);
+            rtb_5_Apply.Name = "rtb_5_Apply";
+            rtb_5_Apply.ReadOnly = true;
+            rtb_5_Apply.Size = new System.Drawing.Size(443, 98);
+            rtb_5_Apply.TabIndex = 1;
+            rtb_5_Apply.Text = "";
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 62F));
+            tableLayoutPanel1.Controls.Add(txt_OutputDir, 0, 0);
+            tableLayoutPanel1.Controls.Add(chk_Unfakesign, 0, 1);
+            tableLayoutPanel1.Controls.Add(btn_OutputDir, 1, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new System.Drawing.Point(110, 98);
+            tableLayoutPanel1.Margin = new Padding(0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+            tableLayoutPanel1.Size = new System.Drawing.Size(443, 78);
+            tableLayoutPanel1.TabIndex = 15;
             // 
             // txt_OutputDir
             // 
-            this.txt_OutputDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_OutputDir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.txt_OutputDir.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_OutputDir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.txt_OutputDir.Location = new System.Drawing.Point(15, 47);
-            this.txt_OutputDir.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
-            this.txt_OutputDir.Name = "txt_OutputDir";
-            this.txt_OutputDir.Size = new System.Drawing.Size(353, 22);
-            this.txt_OutputDir.TabIndex = 12;
-            this.txt_OutputDir.Text = ".\\Output";
+            txt_OutputDir.AutoCompleteCustomSource = null;
+            txt_OutputDir.AutoCompleteMode = AutoCompleteMode.None;
+            txt_OutputDir.AutoCompleteSource = AutoCompleteSource.None;
+            txt_OutputDir.BorderColor = System.Drawing.Color.FromArgb(155, 155, 155);
+            txt_OutputDir.DisabledBackColor = System.Drawing.Color.FromArgb(204, 204, 204);
+            txt_OutputDir.DisabledBorderColor = System.Drawing.Color.FromArgb(155, 155, 155);
+            txt_OutputDir.DisabledForeColor = System.Drawing.Color.FromArgb(136, 136, 136);
+            txt_OutputDir.Dock = DockStyle.Fill;
+            txt_OutputDir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            txt_OutputDir.HoverColor = System.Drawing.Color.FromArgb(102, 102, 102);
+            txt_OutputDir.Image = null;
+            txt_OutputDir.IsDerivedStyle = true;
+            txt_OutputDir.Lines = null;
+            txt_OutputDir.Location = new System.Drawing.Point(15, 0);
+            txt_OutputDir.Margin = new Padding(15, 0, 15, 0);
+            txt_OutputDir.MaxLength = 32767;
+            txt_OutputDir.Multiline = false;
+            txt_OutputDir.Name = "txt_OutputDir";
+            txt_OutputDir.ReadOnly = false;
+            txt_OutputDir.Size = new System.Drawing.Size(351, 39);
+            txt_OutputDir.Style = MetroSet_UI.Enums.Style.Light;
+            txt_OutputDir.StyleManager = null;
+            txt_OutputDir.TabIndex = 12;
+            txt_OutputDir.Text = ".\\Output";
+            txt_OutputDir.TextAlign = HorizontalAlignment.Left;
+            txt_OutputDir.ThemeAuthor = "Narwin";
+            txt_OutputDir.ThemeName = "MetroLite";
+            txt_OutputDir.UseSystemPasswordChar = false;
+            txt_OutputDir.WatermarkText = "";
+            // 
+            // chk_Unfakesign
+            // 
+            chk_Unfakesign.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            chk_Unfakesign.AutoSize = true;
+            chk_Unfakesign.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            chk_Unfakesign.Checked = true;
+            chk_Unfakesign.CheckState = CheckState.Checked;
+            chk_Unfakesign.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            chk_Unfakesign.Location = new System.Drawing.Point(216, 39);
+            chk_Unfakesign.Margin = new Padding(0);
+            chk_Unfakesign.Name = "chk_Unfakesign";
+            chk_Unfakesign.Size = new System.Drawing.Size(165, 38);
+            chk_Unfakesign.TabIndex = 14;
+            chk_Unfakesign.Text = "Un-fakesign the EBOOT";
             // 
             // btn_OutputDir
             // 
-            this.btn_OutputDir.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_OutputDir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btn_OutputDir.Location = new System.Drawing.Point(383, 47);
-            this.btn_OutputDir.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
-            this.btn_OutputDir.Name = "btn_OutputDir";
-            this.btn_OutputDir.Padding = new System.Windows.Forms.Padding(5);
-            this.btn_OutputDir.Size = new System.Drawing.Size(62, 23);
-            this.btn_OutputDir.TabIndex = 13;
-            this.btn_OutputDir.Text = "...";
-            this.btn_OutputDir.Click += new System.EventHandler(this.OutputDir_Click);
+            btn_OutputDir.DisabledBackColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
+            btn_OutputDir.DisabledBorderColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
+            btn_OutputDir.DisabledForeColor = System.Drawing.Color.Gray;
+            btn_OutputDir.Dock = DockStyle.Fill;
+            btn_OutputDir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            btn_OutputDir.HoverBorderColor = System.Drawing.Color.FromArgb(95, 207, 255);
+            btn_OutputDir.HoverColor = System.Drawing.Color.FromArgb(95, 207, 255);
+            btn_OutputDir.HoverTextColor = System.Drawing.Color.White;
+            btn_OutputDir.IsDerivedStyle = true;
+            btn_OutputDir.Location = new System.Drawing.Point(381, 8);
+            btn_OutputDir.Margin = new Padding(0, 8, 0, 8);
+            btn_OutputDir.Name = "btn_OutputDir";
+            btn_OutputDir.NormalBorderColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            btn_OutputDir.NormalColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            btn_OutputDir.NormalTextColor = System.Drawing.Color.White;
+            btn_OutputDir.Padding = new Padding(5);
+            btn_OutputDir.PressBorderColor = System.Drawing.Color.FromArgb(35, 147, 195);
+            btn_OutputDir.PressColor = System.Drawing.Color.FromArgb(35, 147, 195);
+            btn_OutputDir.PressTextColor = System.Drawing.Color.White;
+            btn_OutputDir.Size = new System.Drawing.Size(62, 23);
+            btn_OutputDir.Style = MetroSet_UI.Enums.Style.Light;
+            btn_OutputDir.StyleManager = null;
+            btn_OutputDir.TabIndex = 13;
+            btn_OutputDir.Text = "...";
+            btn_OutputDir.ThemeAuthor = "Narwin";
+            btn_OutputDir.ThemeName = "MetroLite";
+            btn_OutputDir.Click += OutputDir_Click;
             // 
             // WizardForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 491);
-            this.Controls.Add(this.tlp_Main);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(930, 538);
-            this.MinimumSize = new System.Drawing.Size(930, 538);
-            this.Name = "WizardForm";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "PersonaPatchGen";
-            this.tlp_Main.ResumeLayout(false);
-            this.pnl_Main_Inner.ResumeLayout(false);
-            this.tlp_Main_Inner.ResumeLayout(false);
-            this.tlp_Main_Buttons.ResumeLayout(false);
-            this.tabControl_Main.ResumeLayout(false);
-            this.tabPage_1_Welcome.ResumeLayout(false);
-            this.tlp_1_Welcome_Inner.ResumeLayout(false);
-            this.tlp_1_Welcome_Inner.PerformLayout();
-            this.tabPage_2_Updates.ResumeLayout(false);
-            this.tlp_2_Updates_Inner.ResumeLayout(false);
-            this.tabPage_3_Platform.ResumeLayout(false);
-            this.tlp_3_Platform_Inner.ResumeLayout(false);
-            this.tlp_3_Platform_Inner.PerformLayout();
-            this.tlp_3_Platform_PKGPath.ResumeLayout(false);
-            this.tlp_3_Platform_PKGPath.PerformLayout();
-            this.tlp_3_Platform_ExePath.ResumeLayout(false);
-            this.tlp_3_Platform_ExePath.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            this.tabPage_4_Patches.ResumeLayout(false);
-            this.tlp_4_Patches_Inner.ResumeLayout(false);
-            this.tlp_4_Patches_Inner.PerformLayout();
-            this.tabPage_5_Apply.ResumeLayout(false);
-            this.tlp_5_Apply.ResumeLayout(false);
-            this.tlp_5_Apply.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundColor = System.Drawing.Color.FromArgb(30, 30, 30);
+            ClientSize = new System.Drawing.Size(912, 491);
+            Controls.Add(tlp_Main);
+            DropShadowEffect = false;
+            FormBorderStyle = FormBorderStyle.Sizable;
+            HeaderHeight = -40;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new System.Drawing.Size(930, 538);
+            Name = "WizardForm";
+            Opacity = 0.99D;
+            Padding = new Padding(2, 0, 2, 2);
+            ShowHeader = true;
+            ShowLeftRect = false;
+            SizeGripStyle = SizeGripStyle.Hide;
+            Style = MetroSet_UI.Enums.Style.Dark;
+            Text = "PersonaPatcher";
+            ThemeName = "MetroDark";
+            tlp_Main.ResumeLayout(false);
+            pnl_Main_Inner.ResumeLayout(false);
+            tlp_Main_Inner.ResumeLayout(false);
+            tlp_Main_Buttons.ResumeLayout(false);
+            tabControl_Main.ResumeLayout(false);
+            tabPage_1_Welcome.ResumeLayout(false);
+            tlp_1_Welcome_Inner.ResumeLayout(false);
+            tlp_1_Welcome_Inner.PerformLayout();
+            tabPage_2_Updates.ResumeLayout(false);
+            tlp_2_Updates_Inner.ResumeLayout(false);
+            tabPage_3_Platform.ResumeLayout(false);
+            tlp_3_Platform_Inner.ResumeLayout(false);
+            tlp_3_Platform_Inner.PerformLayout();
+            tlp_3_Platform_PKGPath.ResumeLayout(false);
+            tlp_3_Platform_ExePath.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
+            tabPage_4_Patches.ResumeLayout(false);
+            tlp_4_Patches_Inner.ResumeLayout(false);
+            tabPage_5_Apply.ResumeLayout(false);
+            tlp_5_Apply.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            ResumeLayout(false);
 
         }
 
@@ -991,32 +1214,32 @@ namespace PersonaPatchGen
         private Panel pnl_Main_Inner;
         private TableLayoutPanel tlp_Main_Inner;
         private TableLayoutPanel tlp_Main_Buttons;
-        private DarkUI.Controls.DarkButton btn_Back;
-        private DarkUI.Controls.DarkButton btn_Action;
-        private DarkUI.Controls.DarkButton btn_Next;
+        private MetroSet_UI.Controls.MetroSetButton btn_Back;
+        private MetroSet_UI.Controls.MetroSetButton btn_Action;
+        private MetroSet_UI.Controls.MetroSetButton btn_Next;
         private ShrineFox.IO.TabControl tabControl_Main;
         private TabPage tabPage_1_Welcome;
         private TabPage tabPage_2_Updates;
         private TabPage tabPage_3_Platform;
         private TabPage tabPage_4_Patches;
         private TableLayoutPanel tlp_1_Welcome_Inner;
-        private DarkUI.Controls.DarkLabel lbl_Platform;
-        private DarkUI.Controls.DarkLabel lbl_Region;
-        private DarkUI.Controls.DarkLabel lbl_Game;
-        private DarkUI.Controls.DarkComboBox comboBox_Game;
-        private DarkUI.Controls.DarkComboBox comboBox_Region;
-        private DarkUI.Controls.DarkComboBox comboBox_Platform;
+        private MetroSet_UI.Controls.MetroSetLabel lbl_Platform;
+        private MetroSet_UI.Controls.MetroSetLabel lbl_Region;
+        private MetroSet_UI.Controls.MetroSetLabel lbl_Game;
+        private MetroSet_UI.Controls.MetroSetComboBox comboBox_Game;
+        private MetroSet_UI.Controls.MetroSetComboBox comboBox_Region;
+        private MetroSet_UI.Controls.MetroSetComboBox comboBox_Platform;
         private RichTextBox rtb_1_Welcome;
         private TableLayoutPanel tlp_3_Platform_Inner;
-        private DarkUI.Controls.DarkLabel lbl_TargetPlatform;
+        private MetroSet_UI.Controls.MetroSetLabel lbl_TargetPlatform;
         private RichTextBox rtb_3_Platform;
-        private DarkUI.Controls.DarkLabel lbl_ExePath;
+        private MetroSet_UI.Controls.MetroSetLabel lbl_ExePath;
         private TableLayoutPanel tlp_3_Platform_ExePath;
-        private DarkUI.Controls.DarkButton btn_ExePath;
-        private DarkUI.Controls.DarkTextBox txt_ExePath;
+        private MetroSet_UI.Controls.MetroSetButton btn_ExePath;
+        private MetroSet_UI.Controls.MetroSetTextBox txt_ExePath;
         private TableLayoutPanel tableLayoutPanel2;
-        private DarkUI.Controls.DarkRadioButton radio_Emu;
-        private DarkUI.Controls.DarkRadioButton radio_Console;
+        private RadioButton radio_Emu;
+        private RadioButton radio_Console;
         private TableLayoutPanel tlp_2_Updates_Inner;
         private RichTextBox rtb_2_Updates;
         private RichTextBox rtb_Updates_Log;
@@ -1030,16 +1253,16 @@ namespace PersonaPatchGen
         private ProgressBar progressBar_Apply;
         private RichTextBox rtb_Apply_Log;
         private RichTextBox rtb_5_Apply;
-        private DarkUI.Controls.DarkLabel lbl_PKGPath;
+        private MetroSet_UI.Controls.MetroSetLabel lbl_PKGPath;
         private TableLayoutPanel tlp_3_Platform_PKGPath;
-        private DarkUI.Controls.DarkButton btn_PKGPath;
-        private DarkUI.Controls.DarkTextBox txt_PKGPath;
+        private MetroSet_UI.Controls.MetroSetButton btn_PKGPath;
+        private MetroSet_UI.Controls.MetroSetTextBox txt_PKGPath;
         private CheckBox chk_Permutations;
-        private DarkUI.Controls.DarkCheckBox chk_Unfakesign;
+        private CheckBox chk_Unfakesign;
         private TableLayoutPanel tableLayoutPanel1;
-        private DarkUI.Controls.DarkButton btn_OutputDir;
-        private DarkUI.Controls.DarkTextBox txt_OutputDir;
-        private DarkUI.Controls.DarkLabel darkLabel1;
+        private MetroSet_UI.Controls.MetroSetButton btn_OutputDir;
+        private MetroSet_UI.Controls.MetroSetTextBox txt_OutputDir;
+        private MetroSet_UI.Controls.MetroSetLabel darkLabel1;
     }
 }
 

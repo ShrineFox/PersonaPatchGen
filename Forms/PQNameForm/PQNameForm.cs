@@ -8,12 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DarkUI.Forms;
 using ShrineFox.IO;
 
 namespace PersonaPatchGen
 {
-    public partial class PQNameForm : DarkForm
+    public partial class PQNameForm : Form
     {
         public string P3HERO_First { get; private set; } = "";
         public string P3HERO_Last { get; private set; } = "";

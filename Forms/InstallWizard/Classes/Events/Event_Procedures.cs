@@ -23,6 +23,8 @@ namespace PersonaPatchGen
 
             this.AutoScaleMode = AutoScaleMode.Dpi;
 
+            Theme.ThemeStyle = MetroSet_UI.Enums.Style.Dark;
+            Theme.ApplyToForm(this);
 
             Output.VerboseLogging = true;
             Output.LogControl = rtb_Apply_Log;

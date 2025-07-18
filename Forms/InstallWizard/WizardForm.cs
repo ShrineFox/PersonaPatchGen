@@ -12,13 +12,13 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DarkUI.Forms;
 using ShrineFox.IO;
 using PersonaGameLib;
+using MetroSet_UI.Forms;
 
 namespace PersonaPatchGen
 {
-    public partial class WizardForm : DarkForm
+    public partial class WizardForm : MetroSetForm
     {
         Platform selectedPlatform = new Platform();
         Game selectedGame = new Game();

@@ -1,8 +1,8 @@
-﻿using DarkUI.Forms;
+﻿using System.Windows.Forms;
 
 namespace PersonaPatchGen
 {
-    partial class PQNameForm : DarkForm
+    partial class PQNameForm : Form
     {
         /// <summary>
         /// Required designer variable.
@@ -32,27 +32,27 @@ namespace PersonaPatchGen
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PQNameForm));
             this.tlp_PQNames_Main = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_Confirm = new DarkUI.Controls.DarkButton();
+            this.btn_Confirm = new Button();
             this.groupBox_PQNames = new System.Windows.Forms.GroupBox();
             this.tlp_PQ1_Names = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_P4HERO_First = new DarkUI.Controls.DarkTextBox();
-            this.lbl_P3HERO_First = new DarkUI.Controls.DarkLabel();
-            this.lbl_P4HERO_First = new DarkUI.Controls.DarkLabel();
-            this.txt_P3HERO_First = new DarkUI.Controls.DarkTextBox();
+            this.txt_P4HERO_First = new TextBox();
+            this.lbl_P3HERO_First = new Button();
+            this.lbl_P4HERO_First = new Button();
+            this.txt_P3HERO_First = new TextBox();
             this.tlp_PQ2_Names = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_P3PHERO_First = new DarkUI.Controls.DarkTextBox();
-            this.lbl_P5HERO_First = new DarkUI.Controls.DarkLabel();
-            this.lbl_P3PHERO = new DarkUI.Controls.DarkLabel();
-            this.txt_P5HERO_First = new DarkUI.Controls.DarkTextBox();
+            this.txt_P3PHERO_First = new TextBox();
+            this.lbl_P5HERO_First = new Button();
+            this.lbl_P3PHERO = new Button();
+            this.txt_P5HERO_First = new TextBox();
             this.groupBox_PQ2Names = new System.Windows.Forms.GroupBox();
-            this.lbl_P3HERO_Last = new DarkUI.Controls.DarkLabel();
-            this.txt_P3HERO_Last = new DarkUI.Controls.DarkTextBox();
-            this.lbl_P4HERO_Last = new DarkUI.Controls.DarkLabel();
-            this.txt_P4HERO_Last = new DarkUI.Controls.DarkTextBox();
-            this.lbl_P3PHERO_Last = new DarkUI.Controls.DarkLabel();
-            this.txt_P3PHERO_Last = new DarkUI.Controls.DarkTextBox();
-            this.lbl_P5HERO_Last = new DarkUI.Controls.DarkLabel();
-            this.txt_P5HERO_Last = new DarkUI.Controls.DarkTextBox();
+            this.lbl_P3HERO_Last = new Button();
+            this.txt_P3HERO_Last = new TextBox();
+            this.lbl_P4HERO_Last = new Button();
+            this.txt_P4HERO_Last = new TextBox();
+            this.lbl_P3PHERO_Last = new Button();
+            this.txt_P3PHERO_Last = new TextBox();
+            this.lbl_P5HERO_Last = new Button();
+            this.txt_P5HERO_Last = new TextBox();
             this.tlp_PQNames_Main.SuspendLayout();
             this.groupBox_PQNames.SuspendLayout();
             this.tlp_PQ1_Names.SuspendLayout();
@@ -383,26 +383,26 @@ namespace PersonaPatchGen
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tlp_PQNames_Main;
-        private DarkUI.Controls.DarkButton btn_Confirm;
+        private Button btn_Confirm;
         private System.Windows.Forms.GroupBox groupBox_PQNames;
         private System.Windows.Forms.TableLayoutPanel tlp_PQ1_Names;
-        private DarkUI.Controls.DarkLabel lbl_P3HERO_First;
-        private DarkUI.Controls.DarkLabel lbl_P4HERO_First;
-        private DarkUI.Controls.DarkTextBox txt_P3HERO_First;
-        private DarkUI.Controls.DarkTextBox txt_P4HERO_First;
+        private Button lbl_P3HERO_First;
+        private Button lbl_P4HERO_First;
+        private TextBox txt_P3HERO_First;
+        private TextBox txt_P4HERO_First;
         private System.Windows.Forms.GroupBox groupBox_PQ2Names;
         private System.Windows.Forms.TableLayoutPanel tlp_PQ2_Names;
-        private DarkUI.Controls.DarkTextBox txt_P5HERO_First;
-        private DarkUI.Controls.DarkLabel lbl_P3PHERO;
-        private DarkUI.Controls.DarkLabel lbl_P5HERO_First;
-        private DarkUI.Controls.DarkTextBox txt_P3PHERO_First;
-        private DarkUI.Controls.DarkLabel lbl_P3HERO_Last;
-        private DarkUI.Controls.DarkTextBox txt_P3HERO_Last;
-        private DarkUI.Controls.DarkLabel lbl_P4HERO_Last;
-        private DarkUI.Controls.DarkTextBox txt_P4HERO_Last;
-        private DarkUI.Controls.DarkLabel lbl_P3PHERO_Last;
-        private DarkUI.Controls.DarkTextBox txt_P3PHERO_Last;
-        private DarkUI.Controls.DarkLabel lbl_P5HERO_Last;
-        private DarkUI.Controls.DarkTextBox txt_P5HERO_Last;
+        private TextBox txt_P5HERO_First;
+        private Button lbl_P3PHERO;
+        private Button lbl_P5HERO_First;
+        private TextBox txt_P3PHERO_First;
+        private Button lbl_P3HERO_Last;
+        private TextBox txt_P3HERO_Last;
+        private Button lbl_P4HERO_Last;
+        private TextBox txt_P4HERO_Last;
+        private Button lbl_P3PHERO_Last;
+        private TextBox txt_P3PHERO_Last;
+        private Button lbl_P5HERO_Last;
+        private TextBox txt_P5HERO_Last;
     }
 }
