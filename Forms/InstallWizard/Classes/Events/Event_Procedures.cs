@@ -341,6 +341,23 @@ namespace PersonaPatchGen
             {
                 chkListBox_Patches.Items.Add(patch.Name, patch.Enabled);
             }
+
+            // Hide PS4 related options for unrelated games
+            if (selectedPlatform.ShortName != "PS4")
+            {
+                chk_Unfakesign.Visible = false;
+                chk_Permutations.Visible = false;
+            }
+            else
+            {
+                chk_Unfakesign.Visible = true;
+                chk_Permutations.Visible = true;
+            }
+
+            // For RPCS3, set output to patches folder
+            if (selectedPlatform.ShortName == "PS3" && radio_Emu.Checked)
+                txt_OutputDir.Text = Path.Combine(Path.GetDirectoryName(txt_ExePath.Text), "patches");
+
             patchesInitialized = true;
         }
 

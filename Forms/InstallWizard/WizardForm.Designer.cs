@@ -431,7 +431,7 @@ namespace PersonaPatchGen
             comboBox_Region.FormattingEnabled = true;
             comboBox_Region.IsDerivedStyle = true;
             comboBox_Region.ItemHeight = 20;
-            comboBox_Region.Items.AddRange(new object[] { "", "USA", "EUR" });
+            comboBox_Region.Items.AddRange(new object[] { "", "USA", "EUR", "JP" });
             comboBox_Region.Location = new System.Drawing.Point(125, 305);
             comboBox_Region.Margin = new Padding(15, 0, 15, 0);
             comboBox_Region.Name = "comboBox_Region";
@@ -573,10 +573,10 @@ namespace PersonaPatchGen
             // tabPage_3_Platform
             // 
             tabPage_3_Platform.Controls.Add(tlp_3_Platform_Inner);
-            tabPage_3_Platform.Location = new System.Drawing.Point(4, 37);
+            tabPage_3_Platform.Location = new System.Drawing.Point(4, 31);
             tabPage_3_Platform.Margin = new Padding(0);
             tabPage_3_Platform.Name = "tabPage_3_Platform";
-            tabPage_3_Platform.Size = new System.Drawing.Size(553, 393);
+            tabPage_3_Platform.Size = new System.Drawing.Size(553, 399);
             tabPage_3_Platform.TabIndex = 2;
             tabPage_3_Platform.Text = "Platform";
             tabPage_3_Platform.UseVisualStyleBackColor = true;
@@ -604,7 +604,7 @@ namespace PersonaPatchGen
             tlp_3_Platform_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tlp_3_Platform_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tlp_3_Platform_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tlp_3_Platform_Inner.Size = new System.Drawing.Size(553, 393);
+            tlp_3_Platform_Inner.Size = new System.Drawing.Size(553, 399);
             tlp_3_Platform_Inner.TabIndex = 3;
             // 
             // tlp_3_Platform_PKGPath
@@ -615,12 +615,12 @@ namespace PersonaPatchGen
             tlp_3_Platform_PKGPath.Controls.Add(btn_PKGPath, 0, 0);
             tlp_3_Platform_PKGPath.Controls.Add(txt_PKGPath, 0, 0);
             tlp_3_Platform_PKGPath.Dock = DockStyle.Fill;
-            tlp_3_Platform_PKGPath.Location = new System.Drawing.Point(110, 312);
+            tlp_3_Platform_PKGPath.Location = new System.Drawing.Point(110, 317);
             tlp_3_Platform_PKGPath.Margin = new Padding(0);
             tlp_3_Platform_PKGPath.Name = "tlp_3_Platform_PKGPath";
             tlp_3_Platform_PKGPath.RowCount = 1;
             tlp_3_Platform_PKGPath.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tlp_3_Platform_PKGPath.Size = new System.Drawing.Size(443, 81);
+            tlp_3_Platform_PKGPath.Size = new System.Drawing.Size(443, 82);
             tlp_3_Platform_PKGPath.TabIndex = 14;
             tlp_3_Platform_PKGPath.Visible = false;
             // 
@@ -645,7 +645,7 @@ namespace PersonaPatchGen
             btn_PKGPath.PressBorderColor = System.Drawing.Color.FromArgb(35, 147, 195);
             btn_PKGPath.PressColor = System.Drawing.Color.FromArgb(35, 147, 195);
             btn_PKGPath.PressTextColor = System.Drawing.Color.White;
-            btn_PKGPath.Size = new System.Drawing.Size(68, 29);
+            btn_PKGPath.Size = new System.Drawing.Size(68, 30);
             btn_PKGPath.Style = MetroSet_UI.Enums.Style.Light;
             btn_PKGPath.StyleManager = null;
             btn_PKGPath.TabIndex = 13;
@@ -669,7 +669,7 @@ namespace PersonaPatchGen
             txt_PKGPath.Image = null;
             txt_PKGPath.IsDerivedStyle = true;
             txt_PKGPath.Lines = null;
-            txt_PKGPath.Location = new System.Drawing.Point(15, 29);
+            txt_PKGPath.Location = new System.Drawing.Point(15, 30);
             txt_PKGPath.Margin = new Padding(15, 0, 15, 0);
             txt_PKGPath.MaxLength = 32767;
             txt_PKGPath.Multiline = false;
@@ -692,9 +692,9 @@ namespace PersonaPatchGen
             lbl_PKGPath.Dock = DockStyle.Fill;
             lbl_PKGPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             lbl_PKGPath.IsDerivedStyle = true;
-            lbl_PKGPath.Location = new System.Drawing.Point(3, 312);
+            lbl_PKGPath.Location = new System.Drawing.Point(3, 317);
             lbl_PKGPath.Name = "lbl_PKGPath";
-            lbl_PKGPath.Size = new System.Drawing.Size(104, 81);
+            lbl_PKGPath.Size = new System.Drawing.Size(104, 82);
             lbl_PKGPath.Style = MetroSet_UI.Enums.Style.Light;
             lbl_PKGPath.StyleManager = null;
             lbl_PKGPath.TabIndex = 13;
@@ -710,7 +710,7 @@ namespace PersonaPatchGen
             lbl_TargetPlatform.AutoSize = true;
             lbl_TargetPlatform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             lbl_TargetPlatform.IsDerivedStyle = true;
-            lbl_TargetPlatform.Location = new System.Drawing.Point(25, 201);
+            lbl_TargetPlatform.Location = new System.Drawing.Point(25, 204);
             lbl_TargetPlatform.Name = "lbl_TargetPlatform";
             lbl_TargetPlatform.Size = new System.Drawing.Size(82, 48);
             lbl_TargetPlatform.Style = MetroSet_UI.Enums.Style.Light;
@@ -733,7 +733,7 @@ namespace PersonaPatchGen
             rtb_3_Platform.Margin = new Padding(0);
             rtb_3_Platform.Name = "rtb_3_Platform";
             rtb_3_Platform.ReadOnly = true;
-            rtb_3_Platform.Size = new System.Drawing.Size(443, 196);
+            rtb_3_Platform.Size = new System.Drawing.Size(443, 199);
             rtb_3_Platform.TabIndex = 1;
             rtb_3_Platform.Text = "";
             // 
@@ -743,7 +743,7 @@ namespace PersonaPatchGen
             lbl_ExePath.AutoSize = true;
             lbl_ExePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             lbl_ExePath.IsDerivedStyle = true;
-            lbl_ExePath.Location = new System.Drawing.Point(16, 259);
+            lbl_ExePath.Location = new System.Drawing.Point(16, 263);
             lbl_ExePath.Name = "lbl_ExePath";
             lbl_ExePath.Size = new System.Drawing.Size(91, 48);
             lbl_ExePath.Style = MetroSet_UI.Enums.Style.Light;
@@ -763,13 +763,13 @@ namespace PersonaPatchGen
             tlp_3_Platform_ExePath.Controls.Add(btn_ExePath, 0, 0);
             tlp_3_Platform_ExePath.Controls.Add(txt_ExePath, 0, 0);
             tlp_3_Platform_ExePath.Dock = DockStyle.Fill;
-            tlp_3_Platform_ExePath.Location = new System.Drawing.Point(110, 254);
+            tlp_3_Platform_ExePath.Location = new System.Drawing.Point(110, 258);
             tlp_3_Platform_ExePath.Margin = new Padding(0);
             tlp_3_Platform_ExePath.Name = "tlp_3_Platform_ExePath";
             tlp_3_Platform_ExePath.RowCount = 1;
             tlp_3_Platform_ExePath.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tlp_3_Platform_ExePath.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
-            tlp_3_Platform_ExePath.Size = new System.Drawing.Size(443, 58);
+            tlp_3_Platform_ExePath.Size = new System.Drawing.Size(443, 59);
             tlp_3_Platform_ExePath.TabIndex = 11;
             tlp_3_Platform_ExePath.Visible = false;
             // 
@@ -794,7 +794,7 @@ namespace PersonaPatchGen
             btn_ExePath.PressBorderColor = System.Drawing.Color.FromArgb(35, 147, 195);
             btn_ExePath.PressColor = System.Drawing.Color.FromArgb(35, 147, 195);
             btn_ExePath.PressTextColor = System.Drawing.Color.White;
-            btn_ExePath.Size = new System.Drawing.Size(68, 26);
+            btn_ExePath.Size = new System.Drawing.Size(68, 27);
             btn_ExePath.Style = MetroSet_UI.Enums.Style.Light;
             btn_ExePath.StyleManager = null;
             btn_ExePath.TabIndex = 13;
@@ -843,12 +843,12 @@ namespace PersonaPatchGen
             tableLayoutPanel2.Controls.Add(radio_Emu, 1, 0);
             tableLayoutPanel2.Controls.Add(radio_Console, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new System.Drawing.Point(110, 196);
+            tableLayoutPanel2.Location = new System.Drawing.Point(110, 199);
             tableLayoutPanel2.Margin = new Padding(0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new System.Drawing.Size(443, 58);
+            tableLayoutPanel2.Size = new System.Drawing.Size(443, 59);
             tableLayoutPanel2.TabIndex = 12;
             // 
             // radio_Emu
@@ -858,7 +858,7 @@ namespace PersonaPatchGen
             radio_Emu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             radio_Emu.Location = new System.Drawing.Point(133, 3);
             radio_Emu.Name = "radio_Emu";
-            radio_Emu.Size = new System.Drawing.Size(110, 52);
+            radio_Emu.Size = new System.Drawing.Size(110, 53);
             radio_Emu.TabIndex = 1;
             radio_Emu.Text = "Emulator";
             radio_Emu.CheckedChanged += Checked_Changed;
@@ -871,7 +871,7 @@ namespace PersonaPatchGen
             radio_Console.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             radio_Console.Location = new System.Drawing.Point(21, 3);
             radio_Console.Name = "radio_Console";
-            radio_Console.Size = new System.Drawing.Size(106, 52);
+            radio_Console.Size = new System.Drawing.Size(106, 53);
             radio_Console.TabIndex = 0;
             radio_Console.TabStop = true;
             radio_Console.Text = "Console";
@@ -974,10 +974,10 @@ namespace PersonaPatchGen
             // tabPage_5_Apply
             // 
             tabPage_5_Apply.Controls.Add(tlp_5_Apply);
-            tabPage_5_Apply.Location = new System.Drawing.Point(4, 37);
+            tabPage_5_Apply.Location = new System.Drawing.Point(4, 31);
             tabPage_5_Apply.Margin = new Padding(0);
             tabPage_5_Apply.Name = "tabPage_5_Apply";
-            tabPage_5_Apply.Size = new System.Drawing.Size(553, 393);
+            tabPage_5_Apply.Size = new System.Drawing.Size(553, 399);
             tabPage_5_Apply.TabIndex = 4;
             tabPage_5_Apply.Text = "Apply";
             tabPage_5_Apply.UseVisualStyleBackColor = true;
@@ -1003,7 +1003,7 @@ namespace PersonaPatchGen
             tlp_5_Apply.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tlp_5_Apply.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
             tlp_5_Apply.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tlp_5_Apply.Size = new System.Drawing.Size(553, 393);
+            tlp_5_Apply.Size = new System.Drawing.Size(553, 399);
             tlp_5_Apply.TabIndex = 5;
             // 
             // darkLabel1
@@ -1011,9 +1011,9 @@ namespace PersonaPatchGen
             darkLabel1.Dock = DockStyle.Fill;
             darkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             darkLabel1.IsDerivedStyle = true;
-            darkLabel1.Location = new System.Drawing.Point(3, 98);
+            darkLabel1.Location = new System.Drawing.Point(3, 99);
             darkLabel1.Name = "darkLabel1";
-            darkLabel1.Size = new System.Drawing.Size(104, 78);
+            darkLabel1.Size = new System.Drawing.Size(104, 79);
             darkLabel1.Style = MetroSet_UI.Enums.Style.Light;
             darkLabel1.StyleManager = null;
             darkLabel1.TabIndex = 14;
@@ -1025,9 +1025,9 @@ namespace PersonaPatchGen
             // 
             tlp_5_Apply.SetColumnSpan(progressBar_Apply, 2);
             progressBar_Apply.Dock = DockStyle.Fill;
-            progressBar_Apply.Location = new System.Drawing.Point(3, 355);
+            progressBar_Apply.Location = new System.Drawing.Point(3, 360);
             progressBar_Apply.Name = "progressBar_Apply";
-            progressBar_Apply.Size = new System.Drawing.Size(547, 35);
+            progressBar_Apply.Size = new System.Drawing.Size(547, 36);
             progressBar_Apply.TabIndex = 2;
             // 
             // rtb_Apply_Log
@@ -1039,11 +1039,11 @@ namespace PersonaPatchGen
             rtb_Apply_Log.Cursor = Cursors.IBeam;
             rtb_Apply_Log.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             rtb_Apply_Log.ForeColor = System.Drawing.Color.LightGray;
-            rtb_Apply_Log.Location = new System.Drawing.Point(0, 176);
+            rtb_Apply_Log.Location = new System.Drawing.Point(0, 178);
             rtb_Apply_Log.Margin = new Padding(0);
             rtb_Apply_Log.Name = "rtb_Apply_Log";
             rtb_Apply_Log.ReadOnly = true;
-            rtb_Apply_Log.Size = new System.Drawing.Size(553, 176);
+            rtb_Apply_Log.Size = new System.Drawing.Size(553, 179);
             rtb_Apply_Log.TabIndex = 3;
             rtb_Apply_Log.Text = "";
             // 
@@ -1059,7 +1059,7 @@ namespace PersonaPatchGen
             rtb_5_Apply.Margin = new Padding(0);
             rtb_5_Apply.Name = "rtb_5_Apply";
             rtb_5_Apply.ReadOnly = true;
-            rtb_5_Apply.Size = new System.Drawing.Size(443, 98);
+            rtb_5_Apply.Size = new System.Drawing.Size(443, 99);
             rtb_5_Apply.TabIndex = 1;
             rtb_5_Apply.Text = "";
             // 
@@ -1072,14 +1072,14 @@ namespace PersonaPatchGen
             tableLayoutPanel1.Controls.Add(chk_Unfakesign, 0, 1);
             tableLayoutPanel1.Controls.Add(btn_OutputDir, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new System.Drawing.Point(110, 98);
+            tableLayoutPanel1.Location = new System.Drawing.Point(110, 99);
             tableLayoutPanel1.Margin = new Padding(0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            tableLayoutPanel1.Size = new System.Drawing.Size(443, 78);
+            tableLayoutPanel1.Size = new System.Drawing.Size(443, 79);
             tableLayoutPanel1.TabIndex = 15;
             // 
             // txt_OutputDir
@@ -1103,7 +1103,7 @@ namespace PersonaPatchGen
             txt_OutputDir.Multiline = false;
             txt_OutputDir.Name = "txt_OutputDir";
             txt_OutputDir.ReadOnly = false;
-            txt_OutputDir.Size = new System.Drawing.Size(351, 39);
+            txt_OutputDir.Size = new System.Drawing.Size(351, 40);
             txt_OutputDir.Style = MetroSet_UI.Enums.Style.Light;
             txt_OutputDir.StyleManager = null;
             txt_OutputDir.TabIndex = 12;
@@ -1122,7 +1122,7 @@ namespace PersonaPatchGen
             chk_Unfakesign.Checked = true;
             chk_Unfakesign.CheckState = CheckState.Checked;
             chk_Unfakesign.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            chk_Unfakesign.Location = new System.Drawing.Point(216, 39);
+            chk_Unfakesign.Location = new System.Drawing.Point(216, 40);
             chk_Unfakesign.Margin = new Padding(0);
             chk_Unfakesign.Name = "chk_Unfakesign";
             chk_Unfakesign.Size = new System.Drawing.Size(165, 38);
@@ -1150,7 +1150,7 @@ namespace PersonaPatchGen
             btn_OutputDir.PressBorderColor = System.Drawing.Color.FromArgb(35, 147, 195);
             btn_OutputDir.PressColor = System.Drawing.Color.FromArgb(35, 147, 195);
             btn_OutputDir.PressTextColor = System.Drawing.Color.White;
-            btn_OutputDir.Size = new System.Drawing.Size(62, 23);
+            btn_OutputDir.Size = new System.Drawing.Size(62, 24);
             btn_OutputDir.Style = MetroSet_UI.Enums.Style.Light;
             btn_OutputDir.StyleManager = null;
             btn_OutputDir.TabIndex = 13;

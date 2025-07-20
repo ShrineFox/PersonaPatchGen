@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PersonaPatchGen
 {
@@ -21,18 +23,34 @@ namespace PersonaPatchGen
             if (radio_Console.Checked)
             {
                 PatchPS3Eboot();
-                FTPPS3Eboot();
+                PatchLog($"Transfer the patched EBOOT to your PS3's dev_hdd0\\game\\{selectedGame.TitleID}\\USRDIR folder using FTP");
+                PatchLog($"More info: https://shrinefox.com/blog/2019/06/12/persona-5-ps3-eboot-patching/");
             }
             else
             {
-                ReplacePatchYML();
-                UpdateRPCS3Settings();
+                PatchLog($"Enable patches in RPCS3 settings. Don't auto-update patches when asked!");
+                PatchLog($"More info: https://shrinefox.com/blog/2019/04/19/persona-5-rpcs3-modding-guide-1-downloads-and-setup/");
             }
         }
 
         private void GetPPUHash()
         {
-            throw new NotImplementedException();
+            Exe.Run(txt_ExePath.Text, $"--no-gui \"%RPCS3_GAMEID%:{selectedGame.TitleID}\"", hideWindow:false);
+            Thread.Sleep(1000); // Wait for RPCS3 to hopefully load PPU hash
+            Exe.CloseProcess("rpcs3");
+
+            string logPath = Path.Combine(Path.GetDirectoryName(txt_ExePath.Text), "RPCS3.log");
+            if (File.Exists(logPath))
+            {
+                var logLines = File.ReadAllLines(logPath);
+                var ppuLine = logLines.FirstOrDefault(line => line.Contains("PPU executable"));
+                if (ppuLine.Contains("PPU executable"))
+                {
+                    // sanitize the PPU hash
+                }
+            }
+            else
+                MessageBox.Show($"Could not find RPCS3.log at:\r\n{logPath}", "Fetching PPU Hash Failed");
         }
 
         private void CreateYML()
@@ -43,27 +61,11 @@ namespace PersonaPatchGen
             else
                 ymlText = PatchYML_NewFormat();
 
-            File.WriteAllText(Path.Combine(Exe.Directory(), 
-                $"Output\\{selectedPlatform.ShortName}\\{selectedGame.ShortName}\\{selectedRegion}\\patch.yml"), 
-                ymlText);
+            string outDir = Path.Combine(txt_OutputDir.Text, "patch.yml");
+            File.WriteAllText(outDir, ymlText);
         }
 
         private void PatchPS3Eboot()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void FTPPS3Eboot()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void ReplacePatchYML()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void UpdateRPCS3Settings()
         {
             throw new NotImplementedException();
         }
