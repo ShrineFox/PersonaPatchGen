@@ -30,10 +30,10 @@ namespace PersonaPatchGen
             Output.LogControl = rtb_Apply_Log;
             Output.Logging = true;
 #if DEBUG
-            comboBox_Platform.SelectedIndex = comboBox_Platform.Items.IndexOf("PlayStation 4");
-            comboBox_Region.SelectedIndex = comboBox_Region.Items.IndexOf("USA");
-            comboBox_Game.SelectedIndex = comboBox_Game.Items.IndexOf("Persona 5 Royal");
-            txt_PKGPath.Text = @"Z:\Games\Persona\Backups\PS4\Persona 5 Royal\USA\UP0177-CUSA17416_00-PERSONA5R0000000-A0100-V0100.pkg";
+            comboBox_Platform.SelectedIndex = comboBox_Platform.Items.IndexOf("PlayStation 3");
+            comboBox_Region.SelectedIndex = comboBox_Region.Items.IndexOf("JP");
+            comboBox_Game.SelectedIndex = comboBox_Game.Items.IndexOf("Persona 5 Beta");
+            txt_ExePath.Text = @"C:\_PROJECTS\P5V\Tools\RPCS3\rpcs3.exe";
             btn_Next.Enabled = true;
 #endif
         }
