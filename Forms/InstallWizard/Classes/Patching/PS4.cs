@@ -87,7 +87,7 @@ namespace PersonaPatchGen
         {
             PatchLog("Extracting required files from Base Game PKG...");
             
-            var pkgPath = txt_PKGPath.Text;
+            var pkgPath = txt_GamePath.Text;
             var passcode = "00000000000000000000000000000000";
 
             // Extract required files from PKG Meta
@@ -193,7 +193,7 @@ namespace PersonaPatchGen
             var gp4Text = File.ReadAllLines(gp4Path);
             for (int i = 0; i < gp4Text.Count(); i++)
                 if (gp4Text[i].Contains("app_path="))
-                    gp4Text[i] = $"      app_path=\"{txt_PKGPath.Text}\"";
+                    gp4Text[i] = $"      app_path=\"{txt_GamePath.Text}\"";
             File.WriteAllText(gp4Path, string.Join("\n", gp4Text));
 
             SetProgress(20);

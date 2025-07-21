@@ -226,7 +226,7 @@ namespace PersonaPatchGen
         /// </summary>
         private void AdvanceIfPKGValid()
         {
-            if (radio_Console.Checked && File.Exists(txt_PKGPath.Text))
+            if (radio_Console.Checked && File.Exists(txt_GamePath.Text))
                 btn_Next.Enabled = true;
             else
                 btn_Next.Enabled = false;
@@ -239,36 +239,33 @@ namespace PersonaPatchGen
         {
             if (selectedPlatform.ShortName != "3DS")
             {
-                lbl_PKGPath.Visible = true;
-                tlp_3_Platform_PKGPath.Visible = true;
+                lbl_GamePath.Visible = true;
+                tlp_3_Platform_GamePath.Visible = true;
             }
 
             switch (selectedPlatform.ShortName)
             {
                 case "PS2":
-                    lbl_PKGPath.Text = ".ISO Path:";
+                    lbl_GamePath.Text = "Game .ISO Path:";
                     break;
                 case "PS3":
+                    lbl_GamePath.Text = "EBOOT .BIN Path:";
+                    break;
                 case "PSV":
                 case "PSP":
                     chk_Permutations.Visible = true;
-                    lbl_PKGPath.Text = "EBOOT .BIN Path:";
+                    lbl_GamePath.Text = "EBOOT .BIN Path:";
                     break;
                 case "PS4":
                     chk_Permutations.Visible = true;
-                    lbl_PKGPath.Text = "Base Game FPKG Path:";
+                    lbl_GamePath.Text = "Base Game FPKG Path:";
                     break;
                 default:
                     chk_Permutations.Visible = false;
                     chk_Permutations.Checked = false;
-                    lbl_PKGPath.Text = "Input File Path:";
+                    lbl_GamePath.Text = "Input File Path:";
                     break;
             }
-
-            if (!File.Exists(txt_PKGPath.Text) && (selectedPlatform.ShortName != "3DS"))
-                btn_Next.Enabled = false;
-            else
-                btn_Next.Enabled = true;
         }
 
         /// <summary>
@@ -294,7 +291,7 @@ namespace PersonaPatchGen
                 else if (radio_Console.Checked)
                 {
                     if ((selectedPlatform.ShortName == "PS4" || selectedPlatform.ShortName == "PSV" || selectedPlatform.ShortName == "PS2" || selectedPlatform.ShortName == "PSP")
-                        && !File.Exists(txt_PKGPath.Text))
+                        && !File.Exists(txt_GamePath.Text))
                         btn_Next.Enabled = false;
                     else
                         btn_Next.Enabled = true;
@@ -379,14 +376,22 @@ namespace PersonaPatchGen
             {
                 lbl_ExePath.Visible = true;
                 tlp_3_Platform_ExePath.Visible = true;
-                lbl_PKGPath.Visible = false;
-                tlp_3_Platform_PKGPath.Visible = false;
 
+                lbl_GamePath.Visible = false;
+                tlp_3_Platform_GamePath.Visible = false;
+
+                // Require emulator path if not console
                 if (!File.Exists(txt_ExePath.Text))
                     btn_Next.Enabled = false;
                 else
                     btn_Next.Enabled = true;
             }
+
+            // Require game path if not 3DS
+            if (!File.Exists(txt_GamePath.Text) && (selectedPlatform.ShortName != "3DS"))
+                btn_Next.Enabled = false;
+            else
+                btn_Next.Enabled = true;
         }
 
         /// <summary>
@@ -459,6 +464,7 @@ namespace PersonaPatchGen
 
             foreach (var patch in chkListBox_Patches.CheckedItems)
                 selectedPatches.Add(selectedGame.Patches.First(x => x.Name.Equals(patch.ToString())));
+
             if (chk_Permutations.Checked)
             {
                 if (selectedGame.ShortName == "P5R")

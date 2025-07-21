@@ -13,6 +13,7 @@
     </Reference>
     <PackageReference Include="MetroSet_UI" Version="2.0.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="SevenZipExtractor" Version="1.0.19" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>

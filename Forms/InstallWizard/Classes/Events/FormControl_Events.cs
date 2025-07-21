@@ -91,7 +91,7 @@ namespace PersonaPatchGen
         {
             var files = WinFormsDialogs.SelectFile($"Select game file");
             if (files.Count > 0)
-                txt_PKGPath.Text = files.FirstOrDefault();
+                txt_GamePath.Text = files.FirstOrDefault();
 
             AdvanceIfPKGValid();
         }

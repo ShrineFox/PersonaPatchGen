@@ -56,10 +56,10 @@ namespace PersonaPatchGen
             rtb_2_Updates = new RichTextBox();
             tabPage_3_Platform = new TabPage();
             tlp_3_Platform_Inner = new TableLayoutPanel();
-            tlp_3_Platform_PKGPath = new TableLayoutPanel();
-            btn_PKGPath = new MetroSet_UI.Controls.MetroSetButton();
-            txt_PKGPath = new MetroSet_UI.Controls.MetroSetTextBox();
-            lbl_PKGPath = new MetroSet_UI.Controls.MetroSetLabel();
+            tlp_3_Platform_GamePath = new TableLayoutPanel();
+            btn_GamePath = new MetroSet_UI.Controls.MetroSetButton();
+            txt_GamePath = new MetroSet_UI.Controls.MetroSetTextBox();
+            lbl_GamePath = new MetroSet_UI.Controls.MetroSetLabel();
             lbl_TargetPlatform = new MetroSet_UI.Controls.MetroSetLabel();
             rtb_3_Platform = new RichTextBox();
             lbl_ExePath = new MetroSet_UI.Controls.MetroSetLabel();
@@ -96,7 +96,7 @@ namespace PersonaPatchGen
             tlp_2_Updates_Inner.SuspendLayout();
             tabPage_3_Platform.SuspendLayout();
             tlp_3_Platform_Inner.SuspendLayout();
-            tlp_3_Platform_PKGPath.SuspendLayout();
+            tlp_3_Platform_GamePath.SuspendLayout();
             tlp_3_Platform_ExePath.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tabPage_4_Patches.SuspendLayout();
@@ -573,10 +573,10 @@ namespace PersonaPatchGen
             // tabPage_3_Platform
             // 
             tabPage_3_Platform.Controls.Add(tlp_3_Platform_Inner);
-            tabPage_3_Platform.Location = new System.Drawing.Point(4, 31);
+            tabPage_3_Platform.Location = new System.Drawing.Point(4, 37);
             tabPage_3_Platform.Margin = new Padding(0);
             tabPage_3_Platform.Name = "tabPage_3_Platform";
-            tabPage_3_Platform.Size = new System.Drawing.Size(553, 399);
+            tabPage_3_Platform.Size = new System.Drawing.Size(553, 393);
             tabPage_3_Platform.TabIndex = 2;
             tabPage_3_Platform.Text = "Platform";
             tabPage_3_Platform.UseVisualStyleBackColor = true;
@@ -588,8 +588,8 @@ namespace PersonaPatchGen
             tlp_3_Platform_Inner.ColumnCount = 2;
             tlp_3_Platform_Inner.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tlp_3_Platform_Inner.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
-            tlp_3_Platform_Inner.Controls.Add(tlp_3_Platform_PKGPath, 1, 3);
-            tlp_3_Platform_Inner.Controls.Add(lbl_PKGPath, 0, 3);
+            tlp_3_Platform_Inner.Controls.Add(tlp_3_Platform_GamePath, 1, 3);
+            tlp_3_Platform_Inner.Controls.Add(lbl_GamePath, 0, 3);
             tlp_3_Platform_Inner.Controls.Add(lbl_TargetPlatform, 0, 1);
             tlp_3_Platform_Inner.Controls.Add(rtb_3_Platform, 1, 0);
             tlp_3_Platform_Inner.Controls.Add(lbl_ExePath, 0, 2);
@@ -604,105 +604,105 @@ namespace PersonaPatchGen
             tlp_3_Platform_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tlp_3_Platform_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tlp_3_Platform_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tlp_3_Platform_Inner.Size = new System.Drawing.Size(553, 399);
+            tlp_3_Platform_Inner.Size = new System.Drawing.Size(553, 393);
             tlp_3_Platform_Inner.TabIndex = 3;
             // 
-            // tlp_3_Platform_PKGPath
+            // tlp_3_Platform_GamePath
             // 
-            tlp_3_Platform_PKGPath.ColumnCount = 2;
-            tlp_3_Platform_PKGPath.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tlp_3_Platform_PKGPath.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 88F));
-            tlp_3_Platform_PKGPath.Controls.Add(btn_PKGPath, 0, 0);
-            tlp_3_Platform_PKGPath.Controls.Add(txt_PKGPath, 0, 0);
-            tlp_3_Platform_PKGPath.Dock = DockStyle.Fill;
-            tlp_3_Platform_PKGPath.Location = new System.Drawing.Point(110, 317);
-            tlp_3_Platform_PKGPath.Margin = new Padding(0);
-            tlp_3_Platform_PKGPath.Name = "tlp_3_Platform_PKGPath";
-            tlp_3_Platform_PKGPath.RowCount = 1;
-            tlp_3_Platform_PKGPath.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tlp_3_Platform_PKGPath.Size = new System.Drawing.Size(443, 82);
-            tlp_3_Platform_PKGPath.TabIndex = 14;
-            tlp_3_Platform_PKGPath.Visible = false;
+            tlp_3_Platform_GamePath.ColumnCount = 2;
+            tlp_3_Platform_GamePath.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlp_3_Platform_GamePath.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 88F));
+            tlp_3_Platform_GamePath.Controls.Add(btn_GamePath, 0, 0);
+            tlp_3_Platform_GamePath.Controls.Add(txt_GamePath, 0, 0);
+            tlp_3_Platform_GamePath.Dock = DockStyle.Fill;
+            tlp_3_Platform_GamePath.Location = new System.Drawing.Point(110, 312);
+            tlp_3_Platform_GamePath.Margin = new Padding(0);
+            tlp_3_Platform_GamePath.Name = "tlp_3_Platform_GamePath";
+            tlp_3_Platform_GamePath.RowCount = 1;
+            tlp_3_Platform_GamePath.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tlp_3_Platform_GamePath.Size = new System.Drawing.Size(443, 81);
+            tlp_3_Platform_GamePath.TabIndex = 14;
+            tlp_3_Platform_GamePath.Visible = false;
             // 
-            // btn_PKGPath
+            // btn_GamePath
             // 
-            btn_PKGPath.DisabledBackColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
-            btn_PKGPath.DisabledBorderColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
-            btn_PKGPath.DisabledForeColor = System.Drawing.Color.Gray;
-            btn_PKGPath.Dock = DockStyle.Fill;
-            btn_PKGPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            btn_PKGPath.HoverBorderColor = System.Drawing.Color.FromArgb(95, 207, 255);
-            btn_PKGPath.HoverColor = System.Drawing.Color.FromArgb(95, 207, 255);
-            btn_PKGPath.HoverTextColor = System.Drawing.Color.White;
-            btn_PKGPath.IsDerivedStyle = true;
-            btn_PKGPath.Location = new System.Drawing.Point(365, 26);
-            btn_PKGPath.Margin = new Padding(10, 26, 10, 26);
-            btn_PKGPath.Name = "btn_PKGPath";
-            btn_PKGPath.NormalBorderColor = System.Drawing.Color.FromArgb(65, 177, 225);
-            btn_PKGPath.NormalColor = System.Drawing.Color.FromArgb(65, 177, 225);
-            btn_PKGPath.NormalTextColor = System.Drawing.Color.White;
-            btn_PKGPath.Padding = new Padding(5);
-            btn_PKGPath.PressBorderColor = System.Drawing.Color.FromArgb(35, 147, 195);
-            btn_PKGPath.PressColor = System.Drawing.Color.FromArgb(35, 147, 195);
-            btn_PKGPath.PressTextColor = System.Drawing.Color.White;
-            btn_PKGPath.Size = new System.Drawing.Size(68, 30);
-            btn_PKGPath.Style = MetroSet_UI.Enums.Style.Light;
-            btn_PKGPath.StyleManager = null;
-            btn_PKGPath.TabIndex = 13;
-            btn_PKGPath.Text = "...";
-            btn_PKGPath.ThemeAuthor = "Narwin";
-            btn_PKGPath.ThemeName = "MetroLite";
-            btn_PKGPath.Click += PKGPath_Browse;
+            btn_GamePath.DisabledBackColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
+            btn_GamePath.DisabledBorderColor = System.Drawing.Color.FromArgb(120, 65, 177, 225);
+            btn_GamePath.DisabledForeColor = System.Drawing.Color.Gray;
+            btn_GamePath.Dock = DockStyle.Fill;
+            btn_GamePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            btn_GamePath.HoverBorderColor = System.Drawing.Color.FromArgb(95, 207, 255);
+            btn_GamePath.HoverColor = System.Drawing.Color.FromArgb(95, 207, 255);
+            btn_GamePath.HoverTextColor = System.Drawing.Color.White;
+            btn_GamePath.IsDerivedStyle = true;
+            btn_GamePath.Location = new System.Drawing.Point(365, 26);
+            btn_GamePath.Margin = new Padding(10, 26, 10, 26);
+            btn_GamePath.Name = "btn_GamePath";
+            btn_GamePath.NormalBorderColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            btn_GamePath.NormalColor = System.Drawing.Color.FromArgb(65, 177, 225);
+            btn_GamePath.NormalTextColor = System.Drawing.Color.White;
+            btn_GamePath.Padding = new Padding(5);
+            btn_GamePath.PressBorderColor = System.Drawing.Color.FromArgb(35, 147, 195);
+            btn_GamePath.PressColor = System.Drawing.Color.FromArgb(35, 147, 195);
+            btn_GamePath.PressTextColor = System.Drawing.Color.White;
+            btn_GamePath.Size = new System.Drawing.Size(68, 29);
+            btn_GamePath.Style = MetroSet_UI.Enums.Style.Light;
+            btn_GamePath.StyleManager = null;
+            btn_GamePath.TabIndex = 13;
+            btn_GamePath.Text = "...";
+            btn_GamePath.ThemeAuthor = "Narwin";
+            btn_GamePath.ThemeName = "MetroLite";
+            btn_GamePath.Click += PKGPath_Browse;
             // 
-            // txt_PKGPath
+            // txt_GamePath
             // 
-            txt_PKGPath.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txt_PKGPath.AutoCompleteCustomSource = null;
-            txt_PKGPath.AutoCompleteMode = AutoCompleteMode.None;
-            txt_PKGPath.AutoCompleteSource = AutoCompleteSource.None;
-            txt_PKGPath.BorderColor = System.Drawing.Color.FromArgb(155, 155, 155);
-            txt_PKGPath.DisabledBackColor = System.Drawing.Color.FromArgb(204, 204, 204);
-            txt_PKGPath.DisabledBorderColor = System.Drawing.Color.FromArgb(155, 155, 155);
-            txt_PKGPath.DisabledForeColor = System.Drawing.Color.FromArgb(136, 136, 136);
-            txt_PKGPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            txt_PKGPath.HoverColor = System.Drawing.Color.FromArgb(102, 102, 102);
-            txt_PKGPath.Image = null;
-            txt_PKGPath.IsDerivedStyle = true;
-            txt_PKGPath.Lines = null;
-            txt_PKGPath.Location = new System.Drawing.Point(15, 30);
-            txt_PKGPath.Margin = new Padding(15, 0, 15, 0);
-            txt_PKGPath.MaxLength = 32767;
-            txt_PKGPath.Multiline = false;
-            txt_PKGPath.Name = "txt_PKGPath";
-            txt_PKGPath.ReadOnly = false;
-            txt_PKGPath.Size = new System.Drawing.Size(325, 22);
-            txt_PKGPath.Style = MetroSet_UI.Enums.Style.Light;
-            txt_PKGPath.StyleManager = null;
-            txt_PKGPath.TabIndex = 12;
-            txt_PKGPath.TextAlign = HorizontalAlignment.Left;
-            txt_PKGPath.ThemeAuthor = "Narwin";
-            txt_PKGPath.ThemeName = "MetroLite";
-            txt_PKGPath.UseSystemPasswordChar = false;
-            txt_PKGPath.WatermarkText = "";
-            txt_PKGPath.TextChanged += Path_TextChanged;
+            txt_GamePath.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txt_GamePath.AutoCompleteCustomSource = null;
+            txt_GamePath.AutoCompleteMode = AutoCompleteMode.None;
+            txt_GamePath.AutoCompleteSource = AutoCompleteSource.None;
+            txt_GamePath.BorderColor = System.Drawing.Color.FromArgb(155, 155, 155);
+            txt_GamePath.DisabledBackColor = System.Drawing.Color.FromArgb(204, 204, 204);
+            txt_GamePath.DisabledBorderColor = System.Drawing.Color.FromArgb(155, 155, 155);
+            txt_GamePath.DisabledForeColor = System.Drawing.Color.FromArgb(136, 136, 136);
+            txt_GamePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            txt_GamePath.HoverColor = System.Drawing.Color.FromArgb(102, 102, 102);
+            txt_GamePath.Image = null;
+            txt_GamePath.IsDerivedStyle = true;
+            txt_GamePath.Lines = null;
+            txt_GamePath.Location = new System.Drawing.Point(15, 29);
+            txt_GamePath.Margin = new Padding(15, 0, 15, 0);
+            txt_GamePath.MaxLength = 32767;
+            txt_GamePath.Multiline = false;
+            txt_GamePath.Name = "txt_GamePath";
+            txt_GamePath.ReadOnly = false;
+            txt_GamePath.Size = new System.Drawing.Size(325, 22);
+            txt_GamePath.Style = MetroSet_UI.Enums.Style.Light;
+            txt_GamePath.StyleManager = null;
+            txt_GamePath.TabIndex = 12;
+            txt_GamePath.TextAlign = HorizontalAlignment.Left;
+            txt_GamePath.ThemeAuthor = "Narwin";
+            txt_GamePath.ThemeName = "MetroLite";
+            txt_GamePath.UseSystemPasswordChar = false;
+            txt_GamePath.WatermarkText = "";
+            txt_GamePath.TextChanged += Path_TextChanged;
             // 
-            // lbl_PKGPath
+            // lbl_GamePath
             // 
-            lbl_PKGPath.AutoSize = true;
-            lbl_PKGPath.Dock = DockStyle.Fill;
-            lbl_PKGPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            lbl_PKGPath.IsDerivedStyle = true;
-            lbl_PKGPath.Location = new System.Drawing.Point(3, 317);
-            lbl_PKGPath.Name = "lbl_PKGPath";
-            lbl_PKGPath.Size = new System.Drawing.Size(104, 82);
-            lbl_PKGPath.Style = MetroSet_UI.Enums.Style.Light;
-            lbl_PKGPath.StyleManager = null;
-            lbl_PKGPath.TabIndex = 13;
-            lbl_PKGPath.Text = "Base Game FPKG Path:";
-            lbl_PKGPath.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            lbl_PKGPath.ThemeAuthor = "Narwin";
-            lbl_PKGPath.ThemeName = "MetroLite";
-            lbl_PKGPath.Visible = false;
+            lbl_GamePath.AutoSize = true;
+            lbl_GamePath.Dock = DockStyle.Fill;
+            lbl_GamePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            lbl_GamePath.IsDerivedStyle = true;
+            lbl_GamePath.Location = new System.Drawing.Point(3, 312);
+            lbl_GamePath.Name = "lbl_GamePath";
+            lbl_GamePath.Size = new System.Drawing.Size(104, 81);
+            lbl_GamePath.Style = MetroSet_UI.Enums.Style.Light;
+            lbl_GamePath.StyleManager = null;
+            lbl_GamePath.TabIndex = 13;
+            lbl_GamePath.Text = "Base Game FPKG Path:";
+            lbl_GamePath.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lbl_GamePath.ThemeAuthor = "Narwin";
+            lbl_GamePath.ThemeName = "MetroLite";
+            lbl_GamePath.Visible = false;
             // 
             // lbl_TargetPlatform
             // 
@@ -710,7 +710,7 @@ namespace PersonaPatchGen
             lbl_TargetPlatform.AutoSize = true;
             lbl_TargetPlatform.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             lbl_TargetPlatform.IsDerivedStyle = true;
-            lbl_TargetPlatform.Location = new System.Drawing.Point(25, 204);
+            lbl_TargetPlatform.Location = new System.Drawing.Point(25, 201);
             lbl_TargetPlatform.Name = "lbl_TargetPlatform";
             lbl_TargetPlatform.Size = new System.Drawing.Size(82, 48);
             lbl_TargetPlatform.Style = MetroSet_UI.Enums.Style.Light;
@@ -733,7 +733,7 @@ namespace PersonaPatchGen
             rtb_3_Platform.Margin = new Padding(0);
             rtb_3_Platform.Name = "rtb_3_Platform";
             rtb_3_Platform.ReadOnly = true;
-            rtb_3_Platform.Size = new System.Drawing.Size(443, 199);
+            rtb_3_Platform.Size = new System.Drawing.Size(443, 196);
             rtb_3_Platform.TabIndex = 1;
             rtb_3_Platform.Text = "";
             // 
@@ -743,7 +743,7 @@ namespace PersonaPatchGen
             lbl_ExePath.AutoSize = true;
             lbl_ExePath.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             lbl_ExePath.IsDerivedStyle = true;
-            lbl_ExePath.Location = new System.Drawing.Point(16, 263);
+            lbl_ExePath.Location = new System.Drawing.Point(16, 259);
             lbl_ExePath.Name = "lbl_ExePath";
             lbl_ExePath.Size = new System.Drawing.Size(91, 48);
             lbl_ExePath.Style = MetroSet_UI.Enums.Style.Light;
@@ -763,13 +763,13 @@ namespace PersonaPatchGen
             tlp_3_Platform_ExePath.Controls.Add(btn_ExePath, 0, 0);
             tlp_3_Platform_ExePath.Controls.Add(txt_ExePath, 0, 0);
             tlp_3_Platform_ExePath.Dock = DockStyle.Fill;
-            tlp_3_Platform_ExePath.Location = new System.Drawing.Point(110, 258);
+            tlp_3_Platform_ExePath.Location = new System.Drawing.Point(110, 254);
             tlp_3_Platform_ExePath.Margin = new Padding(0);
             tlp_3_Platform_ExePath.Name = "tlp_3_Platform_ExePath";
             tlp_3_Platform_ExePath.RowCount = 1;
             tlp_3_Platform_ExePath.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tlp_3_Platform_ExePath.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
-            tlp_3_Platform_ExePath.Size = new System.Drawing.Size(443, 59);
+            tlp_3_Platform_ExePath.Size = new System.Drawing.Size(443, 58);
             tlp_3_Platform_ExePath.TabIndex = 11;
             tlp_3_Platform_ExePath.Visible = false;
             // 
@@ -794,7 +794,7 @@ namespace PersonaPatchGen
             btn_ExePath.PressBorderColor = System.Drawing.Color.FromArgb(35, 147, 195);
             btn_ExePath.PressColor = System.Drawing.Color.FromArgb(35, 147, 195);
             btn_ExePath.PressTextColor = System.Drawing.Color.White;
-            btn_ExePath.Size = new System.Drawing.Size(68, 27);
+            btn_ExePath.Size = new System.Drawing.Size(68, 26);
             btn_ExePath.Style = MetroSet_UI.Enums.Style.Light;
             btn_ExePath.StyleManager = null;
             btn_ExePath.TabIndex = 13;
@@ -843,12 +843,12 @@ namespace PersonaPatchGen
             tableLayoutPanel2.Controls.Add(radio_Emu, 1, 0);
             tableLayoutPanel2.Controls.Add(radio_Console, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new System.Drawing.Point(110, 199);
+            tableLayoutPanel2.Location = new System.Drawing.Point(110, 196);
             tableLayoutPanel2.Margin = new Padding(0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new System.Drawing.Size(443, 59);
+            tableLayoutPanel2.Size = new System.Drawing.Size(443, 58);
             tableLayoutPanel2.TabIndex = 12;
             // 
             // radio_Emu
@@ -858,7 +858,7 @@ namespace PersonaPatchGen
             radio_Emu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             radio_Emu.Location = new System.Drawing.Point(133, 3);
             radio_Emu.Name = "radio_Emu";
-            radio_Emu.Size = new System.Drawing.Size(110, 53);
+            radio_Emu.Size = new System.Drawing.Size(110, 52);
             radio_Emu.TabIndex = 1;
             radio_Emu.Text = "Emulator";
             radio_Emu.CheckedChanged += Checked_Changed;
@@ -871,7 +871,7 @@ namespace PersonaPatchGen
             radio_Console.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             radio_Console.Location = new System.Drawing.Point(21, 3);
             radio_Console.Name = "radio_Console";
-            radio_Console.Size = new System.Drawing.Size(106, 53);
+            radio_Console.Size = new System.Drawing.Size(106, 52);
             radio_Console.TabIndex = 0;
             radio_Console.TabStop = true;
             radio_Console.Text = "Console";
@@ -880,10 +880,10 @@ namespace PersonaPatchGen
             // tabPage_4_Patches
             // 
             tabPage_4_Patches.Controls.Add(tlp_4_Patches_Inner);
-            tabPage_4_Patches.Location = new System.Drawing.Point(4, 37);
+            tabPage_4_Patches.Location = new System.Drawing.Point(4, 31);
             tabPage_4_Patches.Margin = new Padding(0);
             tabPage_4_Patches.Name = "tabPage_4_Patches";
-            tabPage_4_Patches.Size = new System.Drawing.Size(553, 393);
+            tabPage_4_Patches.Size = new System.Drawing.Size(553, 399);
             tabPage_4_Patches.TabIndex = 3;
             tabPage_4_Patches.Text = "Patches";
             tabPage_4_Patches.UseVisualStyleBackColor = true;
@@ -907,7 +907,7 @@ namespace PersonaPatchGen
             tlp_4_Patches_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tlp_4_Patches_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tlp_4_Patches_Inner.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tlp_4_Patches_Inner.Size = new System.Drawing.Size(553, 393);
+            tlp_4_Patches_Inner.Size = new System.Drawing.Size(553, 399);
             tlp_4_Patches_Inner.TabIndex = 4;
             // 
             // rtb_Patches_Log
@@ -919,11 +919,11 @@ namespace PersonaPatchGen
             rtb_Patches_Log.Cursor = Cursors.IBeam;
             rtb_Patches_Log.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             rtb_Patches_Log.ForeColor = System.Drawing.Color.LightGray;
-            rtb_Patches_Log.Location = new System.Drawing.Point(0, 294);
+            rtb_Patches_Log.Location = new System.Drawing.Point(0, 298);
             rtb_Patches_Log.Margin = new Padding(0);
             rtb_Patches_Log.Name = "rtb_Patches_Log";
             rtb_Patches_Log.ReadOnly = true;
-            rtb_Patches_Log.Size = new System.Drawing.Size(553, 99);
+            rtb_Patches_Log.Size = new System.Drawing.Size(553, 101);
             rtb_Patches_Log.TabIndex = 4;
             rtb_Patches_Log.Text = "";
             // 
@@ -939,7 +939,7 @@ namespace PersonaPatchGen
             rtb_4_Patches.Margin = new Padding(0);
             rtb_4_Patches.Name = "rtb_4_Patches";
             rtb_4_Patches.ReadOnly = true;
-            rtb_4_Patches.Size = new System.Drawing.Size(443, 98);
+            rtb_4_Patches.Size = new System.Drawing.Size(443, 99);
             rtb_4_Patches.TabIndex = 1;
             rtb_4_Patches.Text = "";
             // 
@@ -951,9 +951,9 @@ namespace PersonaPatchGen
             chkListBox_Patches.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             chkListBox_Patches.ForeColor = System.Drawing.Color.Silver;
             chkListBox_Patches.FormattingEnabled = true;
-            chkListBox_Patches.Location = new System.Drawing.Point(113, 101);
+            chkListBox_Patches.Location = new System.Drawing.Point(113, 102);
             chkListBox_Patches.Name = "chkListBox_Patches";
-            chkListBox_Patches.Size = new System.Drawing.Size(437, 190);
+            chkListBox_Patches.Size = new System.Drawing.Size(437, 193);
             chkListBox_Patches.TabIndex = 5;
             chkListBox_Patches.SelectedIndexChanged += SelectedPatch_Changed;
             // 
@@ -961,7 +961,7 @@ namespace PersonaPatchGen
             // 
             chk_Permutations.Anchor = AnchorStyles.Bottom;
             chk_Permutations.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            chk_Permutations.Location = new System.Drawing.Point(0, 244);
+            chk_Permutations.Location = new System.Drawing.Point(0, 248);
             chk_Permutations.Margin = new Padding(0);
             chk_Permutations.Name = "chk_Permutations";
             chk_Permutations.Size = new System.Drawing.Size(110, 50);
@@ -1193,7 +1193,7 @@ namespace PersonaPatchGen
             tabPage_3_Platform.ResumeLayout(false);
             tlp_3_Platform_Inner.ResumeLayout(false);
             tlp_3_Platform_Inner.PerformLayout();
-            tlp_3_Platform_PKGPath.ResumeLayout(false);
+            tlp_3_Platform_GamePath.ResumeLayout(false);
             tlp_3_Platform_ExePath.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
@@ -1253,10 +1253,10 @@ namespace PersonaPatchGen
         private ProgressBar progressBar_Apply;
         private RichTextBox rtb_Apply_Log;
         private RichTextBox rtb_5_Apply;
-        private MetroSet_UI.Controls.MetroSetLabel lbl_PKGPath;
-        private TableLayoutPanel tlp_3_Platform_PKGPath;
-        private MetroSet_UI.Controls.MetroSetButton btn_PKGPath;
-        private MetroSet_UI.Controls.MetroSetTextBox txt_PKGPath;
+        private MetroSet_UI.Controls.MetroSetLabel lbl_GamePath;
+        private TableLayoutPanel tlp_3_Platform_GamePath;
+        private MetroSet_UI.Controls.MetroSetButton btn_GamePath;
+        private MetroSet_UI.Controls.MetroSetTextBox txt_GamePath;
         private CheckBox chk_Permutations;
         private CheckBox chk_Unfakesign;
         private TableLayoutPanel tableLayoutPanel1;
